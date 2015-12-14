@@ -1,23 +1,15 @@
 package View;
 
 import java.awt.Color;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.File;
-
 import javax.swing.BorderFactory;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class NoticeBoardHomeScreen {
-	
+public class NoticeBoardHomeScreen {	
 	
 	public void init_HomeScreen(){
 		
@@ -30,8 +22,7 @@ public class NoticeBoardHomeScreen {
 		int settings_width = settings_icon.getIconWidth();
 		int settings_height = settings_icon.getIconHeight();
 		int warning_width = warning_icon.getIconWidth();
-		int warning_height = warning_icon.getIconHeight();
-		
+		int warning_height = warning_icon.getIconHeight();		
 		
 		// create the main frame for the notice board
 		JFrame main_frame = new JFrame();
@@ -49,16 +40,14 @@ public class NoticeBoardHomeScreen {
 		main_panel.setSize(main_frame.getWidth(), main_frame.getHeight());
 		main_panel.setBackground(new Color(64, 220, 79));
 		main_panel.setVisible(true);
-		main_panel.setLayout(null);
-		
+		main_panel.setLayout(null);		
 				
 		// create 3 Buttons for the home_screen
 		JButton notes = new JButton(note_icon);
 		JButton settings = new JButton(settings_icon);
 		JButton warnings = new JButton(warning_icon);
 		
-		//Exit system button for test purposes
-		
+		//Exit system button for test purposes		
 		JButton exit = new JButton("Exit System");
 		exit.setBounds(6, 6, 100, 20);
 		exit.addActionListener(new ActionListener() {
@@ -92,10 +81,8 @@ public class NoticeBoardHomeScreen {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		NoticeBoardHomeScreen view = new NoticeBoardHomeScreen();
 		view.init_HomeScreen();
 
 	}
-
 }
