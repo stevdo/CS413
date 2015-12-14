@@ -3,6 +3,8 @@ package View;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -55,6 +57,16 @@ public class NoticeBoardHomeScreen {
 		JButton settings = new JButton(settings_icon);
 		JButton warnings = new JButton(warning_icon);
 		
+		//Exit system button for test purposes
+		
+		JButton exit = new JButton("Exit System");
+		exit.setBounds(6, 6, 100, 20);
+		exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		
 		// size and location of the buttons
 		notes.setBounds(100, 225, notes_width, notes_height);
 		notes.setBorder(BorderFactory.createEmptyBorder());
@@ -72,6 +84,7 @@ public class NoticeBoardHomeScreen {
 		main_panel.add(notes);
 		main_panel.add(settings);
 		main_panel.add(warnings);
+		main_panel.add(exit);
 		
 		// add the components to the frame
 		main_frame.add(main_panel);
