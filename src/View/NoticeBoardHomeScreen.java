@@ -6,6 +6,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+
+import javax.print.DocFlavor.URL;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -20,9 +22,15 @@ public class NoticeBoardHomeScreen {
 	
 	public void init_HomeScreen(){
 		
-		ImageIcon note_icon = new ImageIcon("sticky_note.png");
-		ImageIcon settings_icon = new ImageIcon("settings.png");
-		ImageIcon warning_icon = new ImageIcon("warning.png");
+		java.net.URL stickyPNG = NoticeBoardHomeScreen.class.getResource(
+                 "/images/sticky_note.png");
+		ImageIcon note_icon = new ImageIcon(stickyPNG);
+		java.net.URL settingsPNG = NoticeBoardHomeScreen.class.getResource(
+                 "/images/settings.png");
+		ImageIcon settings_icon = new ImageIcon(settingsPNG);
+		java.net.URL warningPNG = NoticeBoardHomeScreen.class.getResource(
+                 "/images/warning.png");
+		ImageIcon warning_icon = new ImageIcon(warningPNG);
 		
 		int notes_width = note_icon.getIconWidth();
 		int notes_height = note_icon.getIconHeight();
@@ -33,7 +41,6 @@ public class NoticeBoardHomeScreen {
 		
 		// create the main frame for the notice board
 		JFrame main_frame = new JFrame();
-		main_frame.setSize(1000, 700);
 		main_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		main_frame.setUndecorated(true);
 		main_frame.setTitle("CS413 NoticeBoard");
@@ -55,9 +62,9 @@ public class NoticeBoardHomeScreen {
 		c.insets = new Insets(10, 0, 10, 0); //padding
 		
 		// create 3 Buttons for the home_screen
-		JButton notes = new JButton("notes", note_icon);
-		JButton settings = new JButton("settings", settings_icon);
-		JButton warnings = new JButton("warning", warning_icon);
+		JButton notes = new JButton(note_icon);
+		JButton settings = new JButton(settings_icon);
+		JButton warnings = new JButton(warning_icon);
 		
 		//Exit system button for test purposes		
 		JButton exit = new JButton("Exit System");
