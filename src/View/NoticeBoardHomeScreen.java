@@ -1,8 +1,13 @@
 package View;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -42,7 +47,12 @@ public class NoticeBoardHomeScreen {
 		main_panel.setBackground(new Color(64, 220, 79));
 		main_panel.setVisible(true);
 		main_panel.setLayout(null);		
-				
+		
+		main_panel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = GridBagConstraints.REMAINDER; //adding c makes the content take up the entire row
+		c.insets = new Insets(10, 0, 10, 0); //padding
+		
 		// create 3 Buttons for the home_screen
 		JButton notes = new JButton(note_icon);
 		JButton settings = new JButton(settings_icon);
@@ -69,10 +79,19 @@ public class NoticeBoardHomeScreen {
 		warnings.setBorder(BorderFactory.createEmptyBorder());
 		warnings.setContentAreaFilled(false);
 		
+		//Create container for buttons
+		Box horizontalBox = Box.createHorizontalBox();
+		horizontalBox.add(notes);
+		horizontalBox.add(Box.createRigidArea(new Dimension(75,0)));
+		horizontalBox.add(settings);
+		horizontalBox.add(Box.createRigidArea(new Dimension(75,0)));
+		horizontalBox.add(warnings);
+		
 		// add the buttons to the panel
-		main_panel.add(notes);
-		main_panel.add(settings);
-		main_panel.add(warnings);
+		//main_panel.add(notes);
+		//main_panel.add(settings);
+		//main_panel.add(warnings);
+		main_panel.add(horizontalBox, c);
 		main_panel.add(exit);
 		
 		// add the components to the frame
