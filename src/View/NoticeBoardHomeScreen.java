@@ -34,14 +34,17 @@ public class NoticeBoardHomeScreen {
 		// create the main frame for the notice board
 		JFrame main_frame = new JFrame();
 		main_frame.setSize(1000, 700);
+		main_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		main_frame.setUndecorated(true);
 		main_frame.setTitle("CS413 NoticeBoard");
 		main_frame.setVisible(true);
 		main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main_frame.setLayout(null);
-		
+		main_frame.setResizable(false);
+				
 		// create panel to sit on top of frame
 		JPanel main_panel = new JPanel();
-		main_panel.setSize(1000,700);
+		main_panel.setSize(main_frame.getWidth(), main_frame.getHeight());
 		main_panel.setBackground(new Color(64, 220, 79));
 		main_panel.setVisible(true);
 		main_panel.setLayout(null);
