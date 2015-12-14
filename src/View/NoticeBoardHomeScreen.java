@@ -1,13 +1,14 @@
 package View;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import controller.ExitActionListener;
 
 public class NoticeBoardHomeScreen {	
 	
@@ -50,11 +51,10 @@ public class NoticeBoardHomeScreen {
 		//Exit system button for test purposes		
 		JButton exit = new JButton("Exit System");
 		exit.setBounds(6, 6, 100, 20);
-		exit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
+		ActionListener exitActionListener;
+		exitActionListener = new ExitActionListener();
+		
+		exit.addActionListener(exitActionListener);
 		
 		// size and location of the buttons
 		notes.setBounds(100, 225, notes_width, notes_height);
