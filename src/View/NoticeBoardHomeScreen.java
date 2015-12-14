@@ -87,7 +87,7 @@ public class NoticeBoardHomeScreen {
 		horizontalBox.add(Box.createRigidArea(new Dimension(75,0)));
 		horizontalBox.add(warnings);
 		
-		// add the buttons to the panel
+		// add the buttons to the panel 
 		//main_panel.add(notes);
 		//main_panel.add(settings);
 		//main_panel.add(warnings);
