@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import controller.ExitActionListener;
+import controller.HomeButtonListener;
 
 public class NoticeBoardHomeScreen {	
 	
@@ -54,9 +55,9 @@ public class NoticeBoardHomeScreen {
 		c.insets = new Insets(10, 0, 10, 0); //padding
 		
 		// create 3 Buttons for the home_screen
-		JButton notes = new JButton(note_icon);
-		JButton settings = new JButton(settings_icon);
-		JButton warnings = new JButton(warning_icon);
+		JButton notes = new JButton("notes", note_icon);
+		JButton settings = new JButton("settings", settings_icon);
+		JButton warnings = new JButton("warning", warning_icon);
 		
 		//Exit system button for test purposes		
 		JButton exit = new JButton("Exit System");
@@ -66,18 +67,24 @@ public class NoticeBoardHomeScreen {
 		
 		exit.addActionListener(exitActionListener);
 		
+		// HomeButtonListener
+		ActionListener hmb = new HomeButtonListener();
+		
 		// size and location of the buttons
 		notes.setBounds(100, 225, notes_width, notes_height);
 		notes.setBorder(BorderFactory.createEmptyBorder());
 		notes.setContentAreaFilled(false);
-				
+		notes.addActionListener(hmb);
+						
 		settings.setBounds(425, 225, settings_width, settings_height);
 		settings.setBorder(BorderFactory.createEmptyBorder());
 		settings.setContentAreaFilled(false);
+		settings.addActionListener(hmb);
 		
 		warnings.setBounds(750, 225, warning_width, warning_height);
 		warnings.setBorder(BorderFactory.createEmptyBorder());
 		warnings.setContentAreaFilled(false);
+		warnings.addActionListener(hmb);
 		
 		//Create container for buttons
 		Box horizontalBox = Box.createHorizontalBox();
@@ -95,8 +102,7 @@ public class NoticeBoardHomeScreen {
 		main_panel.add(exit);
 		
 		// add the components to the frame
-		main_frame.add(main_panel);
-		
+		main_frame.add(main_panel);		
 	}
 
 	public static void main(String[] args) {
