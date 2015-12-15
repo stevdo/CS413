@@ -1,9 +1,14 @@
 package View;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -34,14 +39,15 @@ public class NoticeBoardNotesScreen {
 		settings_frame.setUndecorated(true);
 		settings_frame.setVisible(true);		
 		
+		
 		/*
 		 * need int for settings panel, exact size needs to be 
 		 * experimented with
 		 */
 		int settings_width = (int) (settings_frame.getWidth() -
-				(0.1 * settings_frame.getWidth()));
+				(0.12 * settings_frame.getWidth()));
 		int options_width = (int) (settings_frame.getWidth() -
-				(0.9 * settings_frame.getWidth()));
+				(0.88 * settings_frame.getWidth()));
 		
 		JPanel settings_panel = new JPanel();		
 		settings_panel.setSize(settings_width, settings_frame.getHeight());
@@ -51,6 +57,10 @@ public class NoticeBoardNotesScreen {
 		JPanel options_panel = new JPanel();
 		options_panel.setSize(options_width, settings_frame.getHeight());
 		options_panel.setBackground(new Color(153, 76, 0));
+		options_panel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = GridBagConstraints.REMAINDER; //adding c makes the content take up the entire row
+		c.insets = new Insets(10, 0, 10, 0); //padding
 		
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
@@ -68,12 +78,27 @@ public class NoticeBoardNotesScreen {
 		warnings.setActionCommand("2");
 		home.setActionCommand("3");
 		
+		//Create container for buttons
+		Box verticalBox = Box.createVerticalBox();
+		verticalBox.add(home);
+		verticalBox.add(Box.createRigidArea(new Dimension(0, 75))); //Adds space between buttons
+		verticalBox.add(settings);
+		verticalBox.add(Box.createRigidArea(new Dimension(0, 75))); //Adds space between buttons
+		verticalBox.add(warnings);
+		
 		
 		// temporary
-		home.setBounds(0, 0, 150, 150);
 		home.setBorder(BorderFactory.createEmptyBorder());
 		home.setContentAreaFilled(false);
 		home.addActionListener(button_listener);
+		
+		settings.setBorder(BorderFactory.createEmptyBorder());
+		settings.setContentAreaFilled(false);
+		settings.addActionListener(button_listener);
+		
+		warnings.setBorder(BorderFactory.createEmptyBorder());
+		warnings.setContentAreaFilled(false);
+		warnings.addActionListener(button_listener);
 		
 		// temporary close button
 		JButton exit = new JButton("Exit System");
@@ -82,7 +107,7 @@ public class NoticeBoardNotesScreen {
 		
 		// add components to the panel
 		settings_panel.add(exit);
-		options_panel.add(home);
+		options_panel.add(verticalBox, c);
 		
 		// add the panels to the frame
 		settings_frame.add(options_panel);
