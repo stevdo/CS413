@@ -19,6 +19,7 @@ import controller.ButtonListener;
 
 public class NoticeBoardNotesScreen {
 
+	// rename this, not sure why i called everything settings?
 	public void init_SettingsScreen(){
 		
 		// images
