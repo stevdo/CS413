@@ -9,16 +9,20 @@ public class HomeButtonListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		switch(e.getActionCommand()){
-		case("notes"):
+		int buttonPress = Integer.parseInt(e.getActionCommand());
+		switch(buttonPress){
+		case 0:
 			// need to change the functionality here
 			System.exit(0);
-		case("settings"):
+			break;
+		case 1:
 			// need to change the functionality here
 			System.exit(0);
-		case("warning"):
+			break;
+		case 2:
 			// need to change the functionality here
 			System.exit(0);
+			break;
 		}		
 	}	
 }

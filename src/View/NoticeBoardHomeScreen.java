@@ -62,6 +62,10 @@ public class NoticeBoardHomeScreen {
 		JButton settings = new JButton(settings_icon);
 		JButton warnings = new JButton(warning_icon);
 		
+		notes.setActionCommand("1");
+	    settings.setActionCommand("2");
+	    warnings.setActionCommand("3");
+		
 		// size and location of the buttons
 		notes.setBorder(BorderFactory.createEmptyBorder());
 		notes.setContentAreaFilled(false);
