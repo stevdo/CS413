@@ -3,6 +3,7 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.event.ActionListener;
 
@@ -45,7 +46,8 @@ public class NoticeBoardSettingsScreen {
 		settings_panel.setBackground(new Color(64, 220, 79));
 		
 		JPanel options_panel = new JPanel();
-		options_panel.setSize(options_width, settings_frame.getHeight());
+		options_panel.setPreferredSize(new Dimension(options_width, settings_frame.getHeight()));
+		options_panel.getPreferredSize();
 		options_panel.setBackground(new Color(153, 76, 0));
 		
 		// ActionListener's
@@ -60,7 +62,7 @@ public class NoticeBoardSettingsScreen {
 		settings_panel.add(exit);
 		
 		// add to the frame	
-		settings_frame.add(options_panel, BorderLayout.CENTER);
+		settings_frame.add(options_panel, BorderLayout.LINE_START);
 		settings_frame.add(settings_panel, BorderLayout.CENTER);
 		
 		// Set program as full screen

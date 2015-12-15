@@ -12,9 +12,10 @@ public class Main {
 		view.init_HomeScreen();*/
 		
 		// the following are tests, to open the system on other pages
-		/*NoticeBoardNotesScreen settings_view = new NoticeBoardNotesScreen();
-		settings_view.init_SettingsScreen();*/
-		NoticeBoardSettingsScreen settings_view = new NoticeBoardSettingsScreen();
+		NoticeBoardNotesScreen settings_view = new NoticeBoardNotesScreen();
 		settings_view.init_SettingsScreen();
+		
+		/*NoticeBoardSettingsScreen settings_view = new NoticeBoardSettingsScreen();
+		settings_view.init_SettingsScreen();*/
 	}
 }

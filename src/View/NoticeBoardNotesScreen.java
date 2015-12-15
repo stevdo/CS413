@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -56,7 +57,8 @@ public class NoticeBoardNotesScreen {
 		
 		// options panel allows user to navigate between screens
 		JPanel options_panel = new JPanel();
-		options_panel.setSize(options_width, settings_frame.getHeight());
+		options_panel.setPreferredSize(new Dimension(options_width, settings_frame.getHeight()));
+		options_panel.getPreferredSize();
 		options_panel.setBackground(new Color(153, 76, 0));
 		options_panel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -111,7 +113,7 @@ public class NoticeBoardNotesScreen {
 		options_panel.add(verticalBox, c);
 		
 		// add the panels to the frame
-		settings_frame.add(options_panel);
+		settings_frame.add(options_panel, BorderLayout.LINE_START);
 		settings_frame.add(settings_panel);		
 		
 	}
