@@ -96,11 +96,5 @@ public class NoticeBoardHomeScreen {
 		
 		//Set program as full screen
 		device.setFullScreenWindow(main_frame);
-	}
-
-	public static void main(String[] args) {
-		NoticeBoardHomeScreen view = new NoticeBoardHomeScreen();
-		view.init_HomeScreen();
-
-	}
+	}	
 }
