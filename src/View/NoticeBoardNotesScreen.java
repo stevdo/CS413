@@ -3,17 +3,30 @@ package View;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import controller.ExitActionListener;
+import controller.ButtonListener;
 
 public class NoticeBoardNotesScreen {
 
-	// need to include the images here
-	
 	public void init_SettingsScreen(){
+		
+		// images
+		java.net.URL homePNG = NoticeBoardNotesScreen.class.getResource(
+				"/images/home.png");
+		ImageIcon home_icon = new ImageIcon(homePNG);
+		java.net.URL settingsPNG = NoticeBoardHomeScreen.class.getResource(
+                "/images/settings.png");
+		ImageIcon settings_icon = new ImageIcon(settingsPNG);
+		java.net.URL warningPNG = NoticeBoardHomeScreen.class.getResource(
+                "/images/warning.png");
+		ImageIcon warning_icon = new ImageIcon(warningPNG);
+		
 		// settings screen frame
 		JFrame settings_frame = new JFrame();
 		// do we need the GraphicsDevice line?
@@ -41,7 +54,26 @@ public class NoticeBoardNotesScreen {
 		
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
-		// need to make SettingsScreenListner class
+		ActionListener button_listener = new ButtonListener();
+		
+		// create 3 Buttons for the notes screen
+		JButton home = new JButton(home_icon);
+		JButton settings = new JButton(settings_icon);
+		JButton warnings = new JButton(warning_icon);
+		
+		/*
+		 * Need to add the action command 
+		 */
+		settings.setActionCommand("1");
+		warnings.setActionCommand("2");
+		home.setActionCommand("3");
+		
+		
+		// temporary
+		home.setBounds(0, 0, 150, 150);
+		home.setBorder(BorderFactory.createEmptyBorder());
+		home.setContentAreaFilled(false);
+		home.addActionListener(button_listener);
 		
 		// temporary close button
 		JButton exit = new JButton("Exit System");
@@ -49,7 +81,8 @@ public class NoticeBoardNotesScreen {
 		exit.addActionListener(exitActionListener);
 		
 		// add components to the panel
-		settings_panel.add(exit);		
+		settings_panel.add(exit);
+		options_panel.add(home);
 		
 		// add the panels to the frame
 		settings_frame.add(options_panel);

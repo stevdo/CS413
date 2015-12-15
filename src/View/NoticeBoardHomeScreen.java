@@ -17,7 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import controller.ExitActionListener;
-import controller.HomeButtonListener;
+import controller.ButtonListener;
 
 public class NoticeBoardHomeScreen {	
 	
@@ -55,16 +55,16 @@ public class NoticeBoardHomeScreen {
 		//ActionListener's
 		ActionListener exitActionListener;
 		exitActionListener = new ExitActionListener();
-		ActionListener hmb = new HomeButtonListener();
+		ActionListener hmb = new ButtonListener();
 		
 		// create 3 Buttons for the home_screen
 		JButton notes = new JButton(note_icon);
 		JButton settings = new JButton(settings_icon);
 		JButton warnings = new JButton(warning_icon);
 		
-		notes.setActionCommand("1");
-	    settings.setActionCommand("2");
-	    warnings.setActionCommand("3");
+		notes.setActionCommand("0");
+	    settings.setActionCommand("1");
+	    warnings.setActionCommand("2");
 		
 		// size and location of the buttons
 		notes.setBorder(BorderFactory.createEmptyBorder());
