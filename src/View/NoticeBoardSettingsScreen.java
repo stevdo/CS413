@@ -52,7 +52,7 @@ public class NoticeBoardSettingsScreen {
 		ActionListener exitActionListener = new ExitActionListener();
 		
 		//temporary exit button
-		JButton exit = new JButton("Exit System");
+		JButton exit = new JButton("Exit System"); 
 		exit.setBounds(200, 200, 150, 100);
 		exit.addActionListener(exitActionListener);
 		
