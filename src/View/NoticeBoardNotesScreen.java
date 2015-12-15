@@ -19,8 +19,7 @@ public class NoticeBoardNotesScreen {
 		// do we need the GraphicsDevice line?
 		settings_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		settings_frame.setUndecorated(true);
-		settings_frame.setVisible(true);
-		
+		settings_frame.setVisible(true);		
 		
 		/*
 		 * need int for settings panel, exact size needs to be 
@@ -28,11 +27,17 @@ public class NoticeBoardNotesScreen {
 		 */
 		int settings_width = (int) (settings_frame.getWidth() -
 				(0.1 * settings_frame.getWidth()));
+		int options_width = (int) (settings_frame.getWidth() -
+				(0.9 * settings_frame.getWidth()));
 		
 		JPanel settings_panel = new JPanel();		
 		settings_panel.setSize(settings_width, settings_frame.getHeight());
 		settings_panel.setBackground(new Color(64, 220, 79));
 		
+		// options panel allows user to navigate between screens
+		JPanel options_panel = new JPanel();
+		options_panel.setSize(options_width, settings_frame.getHeight());
+		options_panel.setBackground(new Color(153, 76, 0));
 		
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
@@ -44,11 +49,11 @@ public class NoticeBoardNotesScreen {
 		exit.addActionListener(exitActionListener);
 		
 		// add components to the panel
-		settings_panel.add(exit);
+		settings_panel.add(exit);		
 		
-		// add the panel to the frame
-		settings_frame.add(settings_panel);
-		
+		// add the panels to the frame
+		settings_frame.add(options_panel);
+		settings_frame.add(settings_panel);		
 		
 	}
 	

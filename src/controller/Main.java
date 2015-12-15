@@ -1,6 +1,5 @@
 package controller;
 
-import View.NoticeBoardHomeScreen;
 import View.NoticeBoardNotesScreen;
 
 public class Main {
