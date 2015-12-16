@@ -4,12 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GraphicsDevice;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+
 
 
 
@@ -40,7 +44,14 @@ public class NoticeBoardSettingsScreen {
 				(0.12 * settings_frame.getWidth()));
 		int options_width = (int) (settings_frame.getWidth() - 
 				(0.88 * settings_frame.getWidth()));
+		int title_font_size = (int) (0.05 * settings_frame.getWidth());
+				
+		// JLabel for the title of the current screen
+		JLabel title = new JLabel("Settings");
+		//title.setPreferredSize(new Dimension (title_width, title_height));
+		title.setFont(new Font("Serif", Font.BOLD, title_font_size));
 		
+		// create the two panels needed for the screen
 		JPanel settings_panel = new JPanel();
 		settings_panel.setSize(settings_width, settings_frame.getHeight());
 		settings_panel.setBackground(new Color(64, 220, 79));
@@ -59,6 +70,7 @@ public class NoticeBoardSettingsScreen {
 		exit.addActionListener(exitActionListener);
 		
 		// add to the panels
+		settings_panel.add(title);
 		settings_panel.add(exit);
 		
 		// add to the frame	

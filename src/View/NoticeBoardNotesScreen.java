@@ -3,6 +3,7 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -13,6 +14,7 @@ import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.ExitActionListener;
@@ -35,29 +37,36 @@ public class NoticeBoardNotesScreen {
 		ImageIcon warning_icon = new ImageIcon(warningPNG);
 		
 		// settings screen frame
-		JFrame settings_frame = new JFrame();
+		JFrame notes_frame = new JFrame();
 		// do we need the GraphicsDevice line?
-		settings_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		settings_frame.setUndecorated(true);
-		settings_frame.setVisible(true);		
+		notes_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		notes_frame.setUndecorated(true);
+		notes_frame.setVisible(true);		
 		
 		
 		/*
 		 * need int for settings panel, exact size needs to be 
 		 * experimented with
 		 */
-		int settings_width = (int) (settings_frame.getWidth() -
-				(0.12 * settings_frame.getWidth()));
-		int options_width = (int) (settings_frame.getWidth() -
-				(0.88 * settings_frame.getWidth()));
+		int settings_width = (int) (notes_frame.getWidth() -
+				(0.12 * notes_frame.getWidth()));
+		int options_width = (int) (notes_frame.getWidth() -
+				(0.88 * notes_frame.getWidth()));
 		
-		JPanel settings_panel = new JPanel();		
-		settings_panel.setSize(settings_width, settings_frame.getHeight());
-		settings_panel.setBackground(new Color(64, 220, 79));
+		int title_font_size = (int) (0.05 * notes_frame.getWidth());
+		
+		// JLabel for the title of the current screen
+		JLabel title = new JLabel("Notice Board");
+		//title.setPreferredSize(new Dimension (title_width, title_height));
+		title.setFont(new Font("Serif", Font.BOLD, title_font_size));
+		
+		JPanel notes_panel = new JPanel();		
+		notes_panel.setSize(settings_width, notes_frame.getHeight());
+		notes_panel.setBackground(new Color(64, 220, 79));
 		
 		// options panel allows user to navigate between screens
 		JPanel options_panel = new JPanel();
-		options_panel.setPreferredSize(new Dimension(options_width, settings_frame.getHeight()));
+		options_panel.setPreferredSize(new Dimension(options_width, notes_frame.getHeight()));
 		options_panel.getPreferredSize();
 		options_panel.setBackground(new Color(153, 76, 0));
 		options_panel.setLayout(new GridBagLayout());
@@ -105,16 +114,17 @@ public class NoticeBoardNotesScreen {
 		
 		// temporary close button
 		JButton exit = new JButton("Exit System");
-		exit.setBounds(200,200, 150, 100);
+		exit.setBounds(200, 200, 150, 100);
 		exit.addActionListener(exitActionListener);
 		
 		// add components to the panel
-		settings_panel.add(exit);
+		notes_panel.add(title);
+		notes_panel.add(exit);
 		options_panel.add(verticalBox, c);
 		
 		// add the panels to the frame
-		settings_frame.add(options_panel, BorderLayout.LINE_START);
-		settings_frame.add(settings_panel);		
+		notes_frame.add(options_panel, BorderLayout.LINE_START);
+		notes_frame.add(notes_panel);		
 		
 	}
 	
