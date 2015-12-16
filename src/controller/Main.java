@@ -1,5 +1,6 @@
 package controller;
 
+import model.NoticeboardImages;
 import View.MainView;
 import View.NoticeBoardNotesScreen;
 import View.NoticeBoardHomeScreen;
@@ -22,7 +23,8 @@ public class Main {
 		
 		/*NoticeBoardWarningsScreen warnings_view = new NoticeBoardWarningsScreen();
 		warnings_view.init_WarningsScreen();*/
-		
+		NoticeboardImages.setSideImages();
+		NoticeboardImages.setHomeImages();
 		MainView mv = new MainView();
 		mv.init_NoticeboardFrame();
 		mv.updateWindow("home");

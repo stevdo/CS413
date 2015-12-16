@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 
 import controller.ExitActionListener;
 import controller.ButtonListener;
+import controller.ImageCollect;
 
 public class NoticeBoardHomeScreen {
 	
@@ -31,7 +32,7 @@ public class NoticeBoardHomeScreen {
 				
 		main_frame.getContentPane().removeAll();
 		
-		java.net.URL stickyPNG = NoticeBoardHomeScreen.class.getResource(
+		/*java.net.URL stickyPNG = NoticeBoardHomeScreen.class.getResource(
                  "/home_images/sticky_note.png");
 		ImageIcon note_icon = new ImageIcon(stickyPNG);
 		java.net.URL settingsPNG = NoticeBoardHomeScreen.class.getResource(
@@ -39,7 +40,10 @@ public class NoticeBoardHomeScreen {
 		ImageIcon settings_icon = new ImageIcon(settingsPNG);
 		java.net.URL warningPNG = NoticeBoardHomeScreen.class.getResource(
                  "/home_images/warning.png");
-		ImageIcon warning_icon = new ImageIcon(warningPNG);
+		ImageIcon warning_icon = new ImageIcon(warningPNG);*/
+		ImageIcon note_icon = ImageCollect.getHomeImageNoteIcon();
+		ImageIcon settings_icon = ImageCollect.getHomeImageSettingsIcon();
+		ImageIcon warning_icon = ImageCollect.getHomeImageWarningIcon();
 		
 		// create the main frame for the notice board
 		

@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 
 import controller.ExitActionListener;
 import controller.ButtonListener;
+import controller.ImageCollect;
 
 public class NoticeBoardNotesScreen {
 	
@@ -35,7 +36,7 @@ public class NoticeBoardNotesScreen {
 		notes_frame.getContentPane().removeAll();
 		
 		// images
-		java.net.URL homePNG = NoticeBoardNotesScreen.class.getResource(
+		/*java.net.URL homePNG = NoticeBoardNotesScreen.class.getResource(
 				"/side_images/home.png");
 		ImageIcon home_icon = new ImageIcon(homePNG);
 		java.net.URL settingsPNG = NoticeBoardHomeScreen.class.getResource(
@@ -43,7 +44,11 @@ public class NoticeBoardNotesScreen {
 		ImageIcon settings_icon = new ImageIcon(settingsPNG);
 		java.net.URL warningPNG = NoticeBoardHomeScreen.class.getResource(
                 "/side_images/warning.png");
-		ImageIcon warning_icon = new ImageIcon(warningPNG);
+		ImageIcon warning_icon = new ImageIcon(warningPNG);*/
+		
+		ImageIcon home_icon = ImageCollect.getSideImageHomeIcon();
+		ImageIcon settings_icon = ImageCollect.getSideImageSettingsIcon();
+		ImageIcon warning_icon = ImageCollect.getSideImageWarningIcon();
 		
 		// settings screen frame
 		/*JFrame notes_frame = new JFrame();
