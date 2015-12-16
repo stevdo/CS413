@@ -48,7 +48,6 @@ public class NoticeBoardSettingsScreen {
 				
 		// JLabel for the title of the current screen
 		JLabel title = new JLabel("Settings");
-		//title.setPreferredSize(new Dimension (title_width, title_height));
 		title.setFont(new Font("Serif", Font.BOLD, title_font_size));
 		
 		// create the two panels needed for the screen

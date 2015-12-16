@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GraphicsDevice;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -38,7 +39,7 @@ public class NoticeBoardNotesScreen {
 		
 		// settings screen frame
 		JFrame notes_frame = new JFrame();
-		// do we need the GraphicsDevice line?
+		GraphicsDevice device = notes_frame.getGraphicsConfiguration().getDevice();
 		notes_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		notes_frame.setUndecorated(true);
 		notes_frame.setVisible(true);		
@@ -124,7 +125,10 @@ public class NoticeBoardNotesScreen {
 		
 		// add the panels to the frame
 		notes_frame.add(options_panel, BorderLayout.LINE_START);
-		notes_frame.add(notes_panel);		
+		notes_frame.add(notes_panel);	
+		
+		// Set program as full screen
+		device.setFullScreenWindow(notes_frame);
 		
 	}
 	
