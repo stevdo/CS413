@@ -3,6 +3,7 @@ package controller;
 import View.NoticeBoardNotesScreen;
 import View.NoticeBoardHomeScreen;
 import View.NoticeBoardSettingsScreen;
+import View.NoticeBoardWarningsScreen;
 
 public class Main {
 	public static void main(String[] args) {
@@ -12,10 +13,13 @@ public class Main {
 		view.init_HomeScreen();*/
 		
 		// the following are tests, to open the system on other pages
-		NoticeBoardNotesScreen notes_view = new NoticeBoardNotesScreen();
-		notes_view.init_SettingsScreen();
+		/*NoticeBoardNotesScreen notes_view = new NoticeBoardNotesScreen();
+		notes_view.init_SettingsScreen();*/
 		
-		/*NoticeBoardSettingsScreen settings_view = new NoticeBoardSettingsScreen();
-		settings_view.init_SettingsScreen();*/
+		NoticeBoardSettingsScreen settings_view = new NoticeBoardSettingsScreen();
+		settings_view.init_SettingsScreen();
+		
+		/*NoticeBoardWarningsScreen warnings_view = new NoticeBoardWarningsScreen();
+		warnings_view.init_WarningsScreen();*/
 	}
 }

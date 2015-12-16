@@ -7,11 +7,13 @@ import java.awt.Font;
 import java.awt.GraphicsDevice;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.ButtonListener;
 import controller.ExitActionListener;
 
 public class NoticeBoardWarningsScreen {
@@ -19,6 +21,15 @@ public class NoticeBoardWarningsScreen {
 	public void init_WarningsScreen(){
 		
 		// The images for the buttons
+		java.net.URL homePNG = NoticeBoardNotesScreen.class.getResource(
+				"/images/home.png");
+		ImageIcon home_icon = new ImageIcon(homePNG);
+		java.net.URL settingsPNG = NoticeBoardHomeScreen.class.getResource(
+                "/images/settings.png");
+		ImageIcon settings_icon = new ImageIcon(settingsPNG);
+		java.net.URL stickyPNG = NoticeBoardHomeScreen.class.getResource(
+                "/images/sticky_note.png");
+		ImageIcon note_icon = new ImageIcon(stickyPNG);
 		
 		// Frame for the window
 		JFrame warnings_frame = new JFrame();
@@ -54,8 +65,20 @@ public class NoticeBoardWarningsScreen {
 		
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
+		ActionListener button_listener = new ButtonListener();
 		
 		// 3 buttons for the screen
+		JButton home = new JButton(home_icon);
+		JButton settings = new JButton(settings_icon);
+		JButton notes = new JButton(note_icon);
+		
+		home.setActionCommand("3");
+		notes.setActionCommand("0");
+		settings.setActionCommand("1");		
+		
+		home.addActionListener(button_listener);
+		notes.addActionListener(button_listener);
+		settings.addActionListener(button_listener);
 		
 		// temporary exit button
 		JButton exit = new JButton("Exit System");
@@ -66,6 +89,9 @@ public class NoticeBoardWarningsScreen {
 		// add the components to the panels
 		warnings_panel.add(title);
 		warnings_panel.add(exit);
+		options_panel.add(home);
+		options_panel.add(notes);
+		options_panel.add(settings);
 		
 		// add the panels to the frame
 		warnings_frame.add(options_panel, BorderLayout.LINE_START);
