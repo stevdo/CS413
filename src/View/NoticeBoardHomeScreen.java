@@ -24,13 +24,13 @@ public class NoticeBoardHomeScreen {
 	public void init_HomeScreen(){
 		
 		java.net.URL stickyPNG = NoticeBoardHomeScreen.class.getResource(
-                 "/images/sticky_note.png");
+                 "/home_images/sticky_note.png");
 		ImageIcon note_icon = new ImageIcon(stickyPNG);
 		java.net.URL settingsPNG = NoticeBoardHomeScreen.class.getResource(
-                 "/images/settings.png");
+                 "/home_images/settings.png");
 		ImageIcon settings_icon = new ImageIcon(settingsPNG);
 		java.net.URL warningPNG = NoticeBoardHomeScreen.class.getResource(
-                 "/images/warning.png");
+                 "/home_images/warning.png");
 		ImageIcon warning_icon = new ImageIcon(warningPNG);
 		
 		// create the main frame for the notice board

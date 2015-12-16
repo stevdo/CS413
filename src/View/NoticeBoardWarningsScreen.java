@@ -5,8 +5,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsDevice;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,13 +27,13 @@ public class NoticeBoardWarningsScreen {
 		
 		// The images for the buttons
 		java.net.URL homePNG = NoticeBoardNotesScreen.class.getResource(
-				"/images/home.png");
+				"/side_images/home.png");
 		ImageIcon home_icon = new ImageIcon(homePNG);
 		java.net.URL settingsPNG = NoticeBoardHomeScreen.class.getResource(
-                "/images/settings.png");
+                "/side_images/settings.png");
 		ImageIcon settings_icon = new ImageIcon(settingsPNG);
 		java.net.URL stickyPNG = NoticeBoardHomeScreen.class.getResource(
-                "/images/sticky_note.png");
+                "/side_images/sticky_note.png");
 		ImageIcon note_icon = new ImageIcon(stickyPNG);
 		
 		// Frame for the window
@@ -62,6 +67,10 @@ public class NoticeBoardWarningsScreen {
 		options_panel.setPreferredSize(new Dimension(options_width, warnings_frame.getHeight()));
 		options_panel.getPreferredSize();
 		options_panel.setBackground(new Color(153, 76, 0));
+		options_panel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = GridBagConstraints.REMAINDER; //adding c makes the content take up the entire row
+		c.insets = new Insets(10, 0, 10, 0); //padding
 		
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
@@ -74,10 +83,26 @@ public class NoticeBoardWarningsScreen {
 		
 		home.setActionCommand("3");
 		notes.setActionCommand("0");
-		settings.setActionCommand("1");		
+		settings.setActionCommand("1");
 		
+		//Create container for buttons
+		Box verticalBox = Box.createVerticalBox();
+		verticalBox.add(home);
+		verticalBox.add(Box.createRigidArea(new Dimension(0, 80))); //Adds space between buttons
+		verticalBox.add(notes);
+		verticalBox.add(Box.createRigidArea(new Dimension(0, 80))); //Adds space between buttons
+		verticalBox.add(settings);
+		
+		home.setBorder(BorderFactory.createEmptyBorder());
+		home.setContentAreaFilled(false);
 		home.addActionListener(button_listener);
+		
+		notes.setBorder(BorderFactory.createEmptyBorder());
+		notes.setContentAreaFilled(false);
 		notes.addActionListener(button_listener);
+		
+		settings.setBorder(BorderFactory.createEmptyBorder());
+		settings.setContentAreaFilled(false);
 		settings.addActionListener(button_listener);
 		
 		// temporary exit button
@@ -89,9 +114,7 @@ public class NoticeBoardWarningsScreen {
 		// add the components to the panels
 		warnings_panel.add(title);
 		warnings_panel.add(exit);
-		options_panel.add(home);
-		options_panel.add(notes);
-		options_panel.add(settings);
+		options_panel.add(verticalBox, c);
 		
 		// add the panels to the frame
 		warnings_frame.add(options_panel, BorderLayout.LINE_START);

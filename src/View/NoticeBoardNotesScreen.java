@@ -28,13 +28,13 @@ public class NoticeBoardNotesScreen {
 		
 		// images
 		java.net.URL homePNG = NoticeBoardNotesScreen.class.getResource(
-				"/images/home.png");
+				"/side_images/home.png");
 		ImageIcon home_icon = new ImageIcon(homePNG);
 		java.net.URL settingsPNG = NoticeBoardHomeScreen.class.getResource(
-                "/images/settings.png");
+                "/side_images/settings.png");
 		ImageIcon settings_icon = new ImageIcon(settingsPNG);
 		java.net.URL warningPNG = NoticeBoardHomeScreen.class.getResource(
-                "/images/warning.png");
+                "/side_images/warning.png");
 		ImageIcon warning_icon = new ImageIcon(warningPNG);
 		
 		// settings screen frame
@@ -94,11 +94,10 @@ public class NoticeBoardNotesScreen {
 		//Create container for buttons
 		Box verticalBox = Box.createVerticalBox();
 		verticalBox.add(home);
-		verticalBox.add(Box.createRigidArea(new Dimension(0, 75))); //Adds space between buttons
+		verticalBox.add(Box.createRigidArea(new Dimension(0, 80))); //Adds space between buttons
 		verticalBox.add(settings);
-		verticalBox.add(Box.createRigidArea(new Dimension(0, 75))); //Adds space between buttons
+		verticalBox.add(Box.createRigidArea(new Dimension(0, 80))); //Adds space between buttons
 		verticalBox.add(warnings);
-		
 		
 		// temporary
 		home.setBorder(BorderFactory.createEmptyBorder());
