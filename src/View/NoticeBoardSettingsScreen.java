@@ -23,7 +23,15 @@ import controller.ExitActionListener;
 
 public class NoticeBoardSettingsScreen {
 
+	JFrame settings_frame = new JFrame();
+	
+	public NoticeBoardSettingsScreen(JFrame noticeboard_frame) {
+		settings_frame = noticeboard_frame;
+	}
+
 	public void init_SettingsScreen(){
+		
+		settings_frame.getContentPane().removeAll();
 		
 		// The images for the buttons
 		java.net.URL homePNG = NoticeBoardNotesScreen.class.getResource(
@@ -37,11 +45,10 @@ public class NoticeBoardSettingsScreen {
 		ImageIcon note_icon = new ImageIcon(stickyPNG);
 		
 		// settings screen frame
-		JFrame settings_frame = new JFrame();
-		GraphicsDevice device = settings_frame.getGraphicsConfiguration().getDevice();
+		/*GraphicsDevice device = settings_frame.getGraphicsConfiguration().getDevice();
 		settings_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		settings_frame.setUndecorated(true);
-		settings_frame.setVisible(true);
+		settings_frame.setVisible(true);*/
 		
 		// testing border layout
 		BorderLayout frame_layout = new BorderLayout();
@@ -123,7 +130,7 @@ public class NoticeBoardSettingsScreen {
 		settings_frame.add(settings_panel, BorderLayout.CENTER);
 		
 		// Set program as full screen
-		device.setFullScreenWindow(settings_frame);
+		//device.setFullScreenWindow(settings_frame);
 		
 	}
 	

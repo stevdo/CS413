@@ -22,9 +22,17 @@ import controller.ExitActionListener;
 import controller.ButtonListener;
 
 public class NoticeBoardNotesScreen {
+	
+	JFrame notes_frame;
 
+	public NoticeBoardNotesScreen(JFrame noticeboard_frame){
+		notes_frame = noticeboard_frame;
+	}
+	
 	// rename this, not sure why i called everything settings?
-	public void init_SettingsScreen(){
+	public void init_NotesScreen(){
+		
+		notes_frame.getContentPane().removeAll();
 		
 		// images
 		java.net.URL homePNG = NoticeBoardNotesScreen.class.getResource(
@@ -38,11 +46,11 @@ public class NoticeBoardNotesScreen {
 		ImageIcon warning_icon = new ImageIcon(warningPNG);
 		
 		// settings screen frame
-		JFrame notes_frame = new JFrame();
+		/*JFrame notes_frame = new JFrame();
 		GraphicsDevice device = notes_frame.getGraphicsConfiguration().getDevice();
 		notes_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		notes_frame.setUndecorated(true);
-		notes_frame.setVisible(true);		
+		notes_frame.setVisible(true);*/		
 		
 		
 		/*
@@ -127,8 +135,9 @@ public class NoticeBoardNotesScreen {
 		notes_frame.add(notes_panel);	
 		
 		// Set program as full screen
-		device.setFullScreenWindow(notes_frame);
+		//device.setFullScreenWindow(notes_frame);
 		
+		//notes_frame.validate();			
 	}
 	
 }

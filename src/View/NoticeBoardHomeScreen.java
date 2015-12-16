@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GridBagConstraints;
@@ -18,9 +19,17 @@ import javax.swing.JPanel;
 import controller.ExitActionListener;
 import controller.ButtonListener;
 
-public class NoticeBoardHomeScreen {	
+public class NoticeBoardHomeScreen {
+	
+	JFrame main_frame;
+	
+	public NoticeBoardHomeScreen(JFrame noticeboard_frame){
+		main_frame = noticeboard_frame;
+	}
 	
 	public void init_HomeScreen(){
+				
+		main_frame.getContentPane().removeAll();
 		
 		java.net.URL stickyPNG = NoticeBoardHomeScreen.class.getResource(
                  "/home_images/sticky_note.png");
@@ -33,13 +42,13 @@ public class NoticeBoardHomeScreen {
 		ImageIcon warning_icon = new ImageIcon(warningPNG);
 		
 		// create the main frame for the notice board
-		JFrame main_frame = new JFrame();
-		GraphicsDevice device = main_frame.getGraphicsConfiguration().getDevice();
-		main_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		main_frame.setUndecorated(true);
-		main_frame.setTitle("CS413 NoticeBoard");
-		main_frame.setVisible(true);
-		main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//GraphicsDevice device = main_frame.getGraphicsConfiguration().getDevice();
+		//main_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		//main_frame.setUndecorated(true);
+		//main_frame.setTitle("CS413 NoticeBoard");
+		//main_frame.setVisible(true);
+		//main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
 		// create panel to sit on top of frame
 		JPanel main_panel = new JPanel();
@@ -95,9 +104,9 @@ public class NoticeBoardHomeScreen {
 		main_panel.add(exit);
 		
 		// adds panel to the frame
-		main_frame.add(main_panel);		
-		
+		main_frame.add(main_panel);	
+					
 		//Set program as full screen
-		device.setFullScreenWindow(main_frame);
+		//device.setFullScreenWindow(main_frame);		
 	}	
 }

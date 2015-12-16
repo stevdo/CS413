@@ -23,7 +23,15 @@ import controller.ExitActionListener;
 
 public class NoticeBoardWarningsScreen {
 	
+	JFrame warnings_frame = new JFrame();
+	
+	public NoticeBoardWarningsScreen(JFrame noticeboard_frame) {
+		warnings_frame = noticeboard_frame;
+	}
+
 	public void init_WarningsScreen(){
+		
+		warnings_frame.getContentPane().removeAll();
 		
 		// The images for the buttons
 		java.net.URL homePNG = NoticeBoardNotesScreen.class.getResource(
@@ -37,11 +45,10 @@ public class NoticeBoardWarningsScreen {
 		ImageIcon note_icon = new ImageIcon(stickyPNG);
 		
 		// Frame for the window
-		JFrame warnings_frame = new JFrame();
-		GraphicsDevice device = warnings_frame.getGraphicsConfiguration().getDevice();
+		/*GraphicsDevice device = warnings_frame.getGraphicsConfiguration().getDevice();
 		warnings_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		warnings_frame.setUndecorated(true);
-		warnings_frame.setVisible(true);
+		warnings_frame.setVisible(true);*/
 		
 		// border layout
 		BorderLayout frame_layout = new BorderLayout();
@@ -121,8 +128,7 @@ public class NoticeBoardWarningsScreen {
 		warnings_frame.add(warnings_panel, BorderLayout.CENTER);
 		
 		// Set program as full screen
-		device.setFullScreenWindow(warnings_frame);
-		
+		//device.setFullScreenWindow(warnings_frame);		
 	}
 
 }
