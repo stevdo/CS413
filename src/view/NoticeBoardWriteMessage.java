@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import controller.ButtonListener;
 import controller.ExitActionListener;
@@ -62,15 +64,7 @@ public class NoticeBoardWriteMessage {
 		lower_panel.setLayout(new GridBagLayout());
 
 		// dimensions for components on the screen
-		//int write_width = (int) (write_frame.getWidth() - (0.12 * write_frame.getWidth()));
 		int options_width = (int) (write_frame.getWidth() - (0.88 * write_frame.getWidth()));
-		int title_height = (int) (write_frame.getHeight() - 0.9 * write_frame.getHeight());
-		int text_height = (int) (write_frame.getHeight() - 0.7 * write_frame.getHeight());
-		int text_area_width = (int) (write_frame.getWidth() - 0.25 * write_frame.getWidth());
-		int title_y = (int) (write_frame.getWidth() - 0.9375 * write_frame.getWidth());
-		int text_y = (int) (write_frame.getHeight() - 0.425 * write_frame.getWidth());
-		int text_area_x = (int) (write_frame.getWidth() - 0.9 * write_frame.getWidth());
-		int add_note_x = (int) (write_frame.getWidth() - 0.5 * write_frame.getWidth()) - 150;
 
 		JPanel options_panel = new JPanel();
 		options_panel.setPreferredSize(new Dimension(options_width, write_frame.getHeight()));
@@ -83,11 +77,13 @@ public class NoticeBoardWriteMessage {
 
 		JTextField textField = new JTextField();
 		textField.setColumns(15);
+		textField.setBackground(new Color(240, 230, 80));
 		
 		JTextArea textArea2 = new JTextArea();
 		textArea2.setColumns(60);
 		textArea2.setRows(5);
-
+		textArea2.setBackground(new Color(240, 230, 80));
+		
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
 		ActionListener button_listener = new ButtonListener();
@@ -99,7 +95,6 @@ public class NoticeBoardWriteMessage {
 		JButton warnings = new JButton(warning_icon);
 
 		JButton add_note = new JButton("Add Note");
-		add_note.setBounds(add_note_x, 0, 150, 100);
 		add_note.setBackground(Color.red);
 
 		// set the action commands for the buttons
