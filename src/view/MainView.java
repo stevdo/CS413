@@ -4,8 +4,6 @@ import java.awt.GraphicsDevice;
 
 import javax.swing.JFrame;
 
-import view.NoticeBoardNotesScreen;
-
 public class MainView {		
 
 	private static JFrame noticeboard_frame = new JFrame();
@@ -31,6 +29,10 @@ public class MainView {
 			NoticeBoardHomeScreen home_view = new NoticeBoardHomeScreen(noticeboard_frame);
 			home_view.init_HomeScreen();
 		}
+		else if(screen.equals("Write")){
+			NoticeBoardWriteMessage write_view = new NoticeBoardWriteMessage(noticeboard_frame);
+			write_view.init_WriteScreen();
+		}
 		else{
 			System.out.println("Error: Screen not recognised.");
 		}
@@ -49,11 +51,12 @@ public class MainView {
 		// may need to add the code to make this frame the device		
 		noticeboard_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		noticeboard_frame.setUndecorated(true);
-		noticeboard_frame.setVisible(true);
+		
 	}
 	
 	public void update(){
 		noticeboard_frame.validate();
 		noticeboard_frame.repaint();
+		noticeboard_frame.setVisible(true);
 	}
 }

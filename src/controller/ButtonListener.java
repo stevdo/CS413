@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import view.MainView;
 import view.NoticeBoardNotesScreen;
+import view.NoticeBoardWriteMessage;
 
 
 public class ButtonListener implements ActionListener {
@@ -42,6 +43,11 @@ public class ButtonListener implements ActionListener {
 			mv.updateWindow("home");
 			mv.update();
 			//System.exit(0);			
+			break;
+		case 4:
+			System.out.println("Write pressed");
+			mv.updateWindow("Write");
+			mv.update();
 			break;
 		}		
 	}	
