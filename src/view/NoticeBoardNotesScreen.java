@@ -130,9 +130,21 @@ public class NoticeBoardNotesScreen {
 		exit.setBounds(200, 200, 150, 100);
 		exit.addActionListener(exitActionListener);
 		
+		/*
+		 * This button is made to allow the user to put new messages
+		 * on the database. Need to include it... if it works
+		 */
+		JButton write = new JButton("Write Message");
+		write.setPreferredSize(new Dimension(300, 100));
+		write.setFont(new Font("Serif", Font.BOLD, (int)(0.02 * notes_frame.getWidth())));
+		write.setBackground(new Color(240, 230, 80));
+		write.setActionCommand("4");
+		write.addActionListener(button_listener);
+		
 		// add components to the panel
 		notes_panel.add(title);
 		notes_panel.add(exit);
+		notes_panel.add(write);
 		options_panel.add(verticalBox, c);
 		
 		// add the panels to the frame
