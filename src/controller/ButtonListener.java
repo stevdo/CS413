@@ -4,8 +4,8 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import View.MainView;
-import View.NoticeBoardNotesScreen;
+import view.MainView;
+import view.NoticeBoardNotesScreen;
 
 
 public class ButtonListener implements ActionListener {

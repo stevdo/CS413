@@ -1,11 +1,11 @@
 package controller;
 
 import model.NoticeboardImages;
-import View.MainView;
-import View.NoticeBoardNotesScreen;
-import View.NoticeBoardHomeScreen;
-import View.NoticeBoardSettingsScreen;
-import View.NoticeBoardWarningsScreen;
+import view.MainView;
+import view.NoticeBoardHomeScreen;
+import view.NoticeBoardNotesScreen;
+import view.NoticeBoardSettingsScreen;
+import view.NoticeBoardWarningsScreen;
 
 public class Main {
 	public static void main(String[] args) {
@@ -28,5 +28,18 @@ public class Main {
 		MainView mv = new MainView();
 		mv.init_NoticeboardFrame();
 		mv.updateWindow("home");
+		
+		// after set amount of time?
+		
+		//		m.updateNotes();
+		//		NoteList newNoteList = m.getNoteList();
+		//		if (!(newNoteList.equals(MainView.getNoteList()))) { 
+		//			view.updateNoteList(newNoteList);
+		//		}
+		
+		// or do regardless of equality (does it matter? try both ways?)
+		
+		//		m.updateNotes();
+		//		MainView.updateNoteList(m.getNoteList());
 	}
 }

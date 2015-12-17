@@ -1,4 +1,4 @@
-package View;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -18,69 +18,65 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controller.ExitActionListener;
 import controller.ButtonListener;
+import controller.ExitActionListener;
 import controller.ImageCollect;
 
-public class NoticeBoardNotesScreen {
+public class NoticeBoardWarningsScreen {
 	
-	JFrame notes_frame;
-
-	public NoticeBoardNotesScreen(JFrame noticeboard_frame){
-		notes_frame = noticeboard_frame;
+	JFrame warnings_frame = new JFrame();
+	
+	public NoticeBoardWarningsScreen(JFrame noticeboard_frame) {
+		warnings_frame = noticeboard_frame;
 	}
-	
-	// rename this, not sure why i called everything settings?
-	public void init_NotesScreen(){
+
+	public void init_WarningsScreen(){
 		
-		notes_frame.getContentPane().removeAll();
+		warnings_frame.getContentPane().removeAll();
 		
-		// images
+		// The images for the buttons
 		/*java.net.URL homePNG = NoticeBoardNotesScreen.class.getResource(
 				"/side_images/home.png");
 		ImageIcon home_icon = new ImageIcon(homePNG);
 		java.net.URL settingsPNG = NoticeBoardHomeScreen.class.getResource(
                 "/side_images/settings.png");
 		ImageIcon settings_icon = new ImageIcon(settingsPNG);
-		java.net.URL warningPNG = NoticeBoardHomeScreen.class.getResource(
-                "/side_images/warning.png");
-		ImageIcon warning_icon = new ImageIcon(warningPNG);*/
+		java.net.URL stickyPNG = NoticeBoardHomeScreen.class.getResource(
+                "/side_images/sticky_note.png");
+		ImageIcon note_icon = new ImageIcon(stickyPNG);*/
 		
 		ImageIcon home_icon = ImageCollect.getSideImageHomeIcon();
+		ImageIcon note_icon = ImageCollect.getSideImageNoteIcon();
 		ImageIcon settings_icon = ImageCollect.getSideImageSettingsIcon();
-		ImageIcon warning_icon = ImageCollect.getSideImageWarningIcon();
 		
-		// settings screen frame
-		/*JFrame notes_frame = new JFrame();
-		GraphicsDevice device = notes_frame.getGraphicsConfiguration().getDevice();
-		notes_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		notes_frame.setUndecorated(true);
-		notes_frame.setVisible(true);*/		
+		// Frame for the window
+		/*GraphicsDevice device = warnings_frame.getGraphicsConfiguration().getDevice();
+		warnings_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		warnings_frame.setUndecorated(true);
+		warnings_frame.setVisible(true);*/
 		
+		// border layout
+		BorderLayout frame_layout = new BorderLayout();
+		warnings_frame.setLayout(frame_layout);
 		
-		/*
-		 * need int for settings panel, exact size needs to be 
-		 * experimented with
-		 */
-		int settings_width = (int) (notes_frame.getWidth() -
-				(0.12 * notes_frame.getWidth()));
-		int options_width = (int) (notes_frame.getWidth() -
-				(0.88 * notes_frame.getWidth()));
-		
-		int title_font_size = (int) (0.05 * notes_frame.getWidth());
-		
-		// JLabel for the title of the current screen
-		JLabel title = new JLabel("Notice Board");
-		//title.setPreferredSize(new Dimension (title_width, title_height));
+		// The dimensions to be used for settings sizes
+		int warnings_width = (int) (warnings_frame.getWidth() -
+				(0.12 * warnings_frame.getWidth()));
+		int options_width = (int) (warnings_frame.getWidth() - 
+				(0.88 * warnings_frame.getWidth()));
+		int title_font_size = (int) (0.05 * warnings_frame.getWidth());
+				
+		// Label for the title
+		JLabel title = new JLabel("Warnings");
 		title.setFont(new Font("Serif", Font.BOLD, title_font_size));
 		
-		JPanel notes_panel = new JPanel();		
-		notes_panel.setSize(settings_width, notes_frame.getHeight());
-		notes_panel.setBackground(new Color(64, 220, 79));
+		// 2 Panels
+		JPanel warnings_panel = new JPanel();
+		warnings_panel.setSize(warnings_width, warnings_frame.getHeight());
+		warnings_panel.setBackground(new Color(64, 220, 79));
 		
-		// options panel allows user to navigate between screens
 		JPanel options_panel = new JPanel();
-		options_panel.setPreferredSize(new Dimension(options_width, notes_frame.getHeight()));
+		options_panel.setPreferredSize(new Dimension(options_width, warnings_frame.getHeight()));
 		options_panel.getPreferredSize();
 		options_panel.setBackground(new Color(153, 76, 0));
 		options_panel.setLayout(new GridBagLayout());
@@ -92,57 +88,52 @@ public class NoticeBoardNotesScreen {
 		ActionListener exitActionListener = new ExitActionListener();
 		ActionListener button_listener = new ButtonListener();
 		
-		// create 3 Buttons for the notes screen
+		// 3 buttons for the screen
 		JButton home = new JButton(home_icon);
 		JButton settings = new JButton(settings_icon);
-		JButton warnings = new JButton(warning_icon);
+		JButton notes = new JButton(note_icon);
 		
-		/*
-		 * Need to add the action command 
-		 */
-		settings.setActionCommand("1");
-		warnings.setActionCommand("2");
 		home.setActionCommand("3");
+		notes.setActionCommand("0");
+		settings.setActionCommand("1");
 		
 		//Create container for buttons
 		Box verticalBox = Box.createVerticalBox();
 		verticalBox.add(home);
 		verticalBox.add(Box.createRigidArea(new Dimension(0, 80))); //Adds space between buttons
-		verticalBox.add(settings);
+		verticalBox.add(notes);
 		verticalBox.add(Box.createRigidArea(new Dimension(0, 80))); //Adds space between buttons
-		verticalBox.add(warnings);
+		verticalBox.add(settings);
 		
-		// temporary
 		home.setBorder(BorderFactory.createEmptyBorder());
 		home.setContentAreaFilled(false);
 		home.addActionListener(button_listener);
+		
+		notes.setBorder(BorderFactory.createEmptyBorder());
+		notes.setContentAreaFilled(false);
+		notes.addActionListener(button_listener);
 		
 		settings.setBorder(BorderFactory.createEmptyBorder());
 		settings.setContentAreaFilled(false);
 		settings.addActionListener(button_listener);
 		
-		warnings.setBorder(BorderFactory.createEmptyBorder());
-		warnings.setContentAreaFilled(false);
-		warnings.addActionListener(button_listener);
-		
-		// temporary close button
+		// temporary exit button
 		JButton exit = new JButton("Exit System");
+		// set bounds probably has no effect anymore?
 		exit.setBounds(200, 200, 150, 100);
 		exit.addActionListener(exitActionListener);
 		
-		// add components to the panel
-		notes_panel.add(title);
-		notes_panel.add(exit);
+		// add the components to the panels
+		warnings_panel.add(title);
+		warnings_panel.add(exit);
 		options_panel.add(verticalBox, c);
 		
 		// add the panels to the frame
-		notes_frame.add(options_panel, BorderLayout.LINE_START);
-		notes_frame.add(notes_panel);	
+		warnings_frame.add(options_panel, BorderLayout.LINE_START);
+		warnings_frame.add(warnings_panel, BorderLayout.CENTER);
 		
 		// Set program as full screen
-		//device.setFullScreenWindow(notes_frame);
-		
-		//notes_frame.validate();			
+		//device.setFullScreenWindow(warnings_frame);		
 	}
-	
+
 }

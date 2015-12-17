@@ -2,8 +2,8 @@ package model;
 
 import javax.swing.ImageIcon;
 
-import View.NoticeBoardHomeScreen;
-import View.NoticeBoardNotesScreen;
+import view.NoticeBoardHomeScreen;
+import view.NoticeBoardNotesScreen;
 
 public class NoticeboardImages {
 

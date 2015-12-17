@@ -1,10 +1,10 @@
-package View;
+package view;
 
 import java.awt.GraphicsDevice;
 
 import javax.swing.JFrame;
 
-import View.NoticeBoardNotesScreen;
+import view.NoticeBoardNotesScreen;
 
 public class MainView {		
 
