@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.ButtonListener;
+import controller.ColourCollect;
 import controller.ExitActionListener;
 import controller.ImageCollect;
 
@@ -34,26 +35,13 @@ public class NoticeBoardSettingsScreen {
 		
 		settings_frame.getContentPane().removeAll();
 		
-		// The images for the buttons
-		/*java.net.URL homePNG = NoticeBoardNotesScreen.class.getResource(
-				"/side_images/home.png");
-		ImageIcon home_icon = new ImageIcon(homePNG);
-		java.net.URL warningPNG = NoticeBoardHomeScreen.class.getResource(
-                "/side_images/warning.png");
-		ImageIcon warning_icon = new ImageIcon(warningPNG);
-		java.net.URL stickyPNG = NoticeBoardHomeScreen.class.getResource(
-                "/side_images/sticky_note.png");
-		ImageIcon note_icon = new ImageIcon(stickyPNG);*/
-		
+		// get the imaged needed
 		ImageIcon home_icon = ImageCollect.getSideImageHomeIcon();
 		ImageIcon note_icon = ImageCollect.getSideImageNoteIcon();
 		ImageIcon warning_icon = ImageCollect.getSideImageWarningIcon();
-		
-		// settings screen frame
-		/*GraphicsDevice device = settings_frame.getGraphicsConfiguration().getDevice();
-		settings_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		settings_frame.setUndecorated(true);
-		settings_frame.setVisible(true);*/
+
+		// get the colour for the noticeboard
+		Color colour = ColourCollect.getCurrentColour();
 		
 		// testing border layout
 		BorderLayout frame_layout = new BorderLayout();
@@ -76,7 +64,7 @@ public class NoticeBoardSettingsScreen {
 		// create the two panels needed for the screen
 		JPanel settings_panel = new JPanel();
 		settings_panel.setSize(settings_width, settings_frame.getHeight());
-		settings_panel.setBackground(new Color(64, 220, 79));
+		settings_panel.setBackground(colour);
 		
 		JPanel options_panel = new JPanel();
 		options_panel.setPreferredSize(new Dimension(options_width, settings_frame.getHeight()));

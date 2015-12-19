@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.ButtonListener;
+import controller.ColourCollect;
 import controller.ExitActionListener;
 import controller.ImageCollect;
 
@@ -34,20 +35,13 @@ public class NoticeBoardWarningsScreen {
 		
 		warnings_frame.getContentPane().removeAll();
 		
-		// The images for the buttons
-		/*java.net.URL homePNG = NoticeBoardNotesScreen.class.getResource(
-				"/side_images/home.png");
-		ImageIcon home_icon = new ImageIcon(homePNG);
-		java.net.URL settingsPNG = NoticeBoardHomeScreen.class.getResource(
-                "/side_images/settings.png");
-		ImageIcon settings_icon = new ImageIcon(settingsPNG);
-		java.net.URL stickyPNG = NoticeBoardHomeScreen.class.getResource(
-                "/side_images/sticky_note.png");
-		ImageIcon note_icon = new ImageIcon(stickyPNG);*/
-		
+		// get the images needed		
 		ImageIcon home_icon = ImageCollect.getSideImageHomeIcon();
 		ImageIcon note_icon = ImageCollect.getSideImageNoteIcon();
 		ImageIcon settings_icon = ImageCollect.getSideImageSettingsIcon();
+		
+		// get the colour for the noticeboard
+		Color colour = ColourCollect.getCurrentColour();
 		
 		// Frame for the window
 		/*GraphicsDevice device = warnings_frame.getGraphicsConfiguration().getDevice();
@@ -73,7 +67,7 @@ public class NoticeBoardWarningsScreen {
 		// 2 Panels
 		JPanel warnings_panel = new JPanel();
 		warnings_panel.setSize(warnings_width, warnings_frame.getHeight());
-		warnings_panel.setBackground(new Color(64, 220, 79));
+		warnings_panel.setBackground(colour);
 		
 		JPanel options_panel = new JPanel();
 		options_panel.setPreferredSize(new Dimension(options_width, warnings_frame.getHeight()));

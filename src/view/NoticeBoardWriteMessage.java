@@ -22,6 +22,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import controller.ButtonListener;
+import controller.ColourCollect;
 import controller.ExitActionListener;
 import controller.KeyboardListener;
 import controller.ImageCollect;
@@ -35,12 +36,11 @@ public class NoticeBoardWriteMessage {
 	}
 
 	public void init_WriteScreen() {
-		/*
-		 * don't want to void the noticeboard screen? want to pass it in an put
-		 * a layer over the top of it?
-		 */
-
+		
 		write_frame.getContentPane().removeAll();
+		
+		// get the colour for the noticeboard
+		Color colour = ColourCollect.getCurrentColour();
 
 		BorderLayout border_layout = new BorderLayout();
 		write_frame.setLayout(border_layout);
@@ -52,15 +52,15 @@ public class NoticeBoardWriteMessage {
 		
 		// 2 panels for the screen
 		JPanel write_panel = new JPanel();
-		write_panel.setBackground(new Color(64, 220, 79));
+		write_panel.setBackground(colour);
 		write_panel.setLayout(new GridLayout(2, 0, 0, 0));
 
 		// 2 panels to go within write_panel
 		JPanel top_panel = new JPanel();
 		JPanel lower_panel = new JPanel();
-		top_panel.setBackground(new Color(64, 220, 79));
+		top_panel.setBackground(colour);
 		top_panel.setLayout(new GridBagLayout());
-		lower_panel.setBackground(new Color(64, 220, 79));
+		lower_panel.setBackground(colour);
 		lower_panel.setLayout(new GridBagLayout());
 
 		// dimensions for components on the screen

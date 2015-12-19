@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.ColourCollect;
 import controller.ExitActionListener;
 import controller.ButtonListener;
 import controller.ImageCollect;
@@ -30,32 +31,17 @@ public class NoticeBoardNotesScreen {
 		notes_frame = noticeboard_frame;
 	}
 	
-	// rename this, not sure why i called everything settings?
 	public void init_NotesScreen(){
 		
 		notes_frame.getContentPane().removeAll();
 		
-		// images
-		/*java.net.URL homePNG = NoticeBoardNotesScreen.class.getResource(
-				"/side_images/home.png");
-		ImageIcon home_icon = new ImageIcon(homePNG);
-		java.net.URL settingsPNG = NoticeBoardHomeScreen.class.getResource(
-                "/side_images/settings.png");
-		ImageIcon settings_icon = new ImageIcon(settingsPNG);
-		java.net.URL warningPNG = NoticeBoardHomeScreen.class.getResource(
-                "/side_images/warning.png");
-		ImageIcon warning_icon = new ImageIcon(warningPNG);*/
-		
+		// get the needed images
 		ImageIcon home_icon = ImageCollect.getSideImageHomeIcon();
 		ImageIcon settings_icon = ImageCollect.getSideImageSettingsIcon();
 		ImageIcon warning_icon = ImageCollect.getSideImageWarningIcon();
 		
-		// settings screen frame
-		/*JFrame notes_frame = new JFrame();
-		GraphicsDevice device = notes_frame.getGraphicsConfiguration().getDevice();
-		notes_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		notes_frame.setUndecorated(true);
-		notes_frame.setVisible(true);*/		
+		// get the colour for the noticeboard
+		Color colour = ColourCollect.getCurrentColour();
 		
 		
 		/*
@@ -76,7 +62,7 @@ public class NoticeBoardNotesScreen {
 		
 		JPanel notes_panel = new JPanel();		
 		notes_panel.setSize(settings_width, notes_frame.getHeight());
-		notes_panel.setBackground(new Color(64, 220, 79));
+		notes_panel.setBackground(colour);
 		
 		// options panel allows user to navigate between screens
 		JPanel options_panel = new JPanel();

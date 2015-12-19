@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controller.ColourCollect;
 import controller.ExitActionListener;
 import controller.ButtonListener;
 import controller.ImageCollect;
@@ -31,33 +32,18 @@ public class NoticeBoardHomeScreen {
 	public void init_HomeScreen(){
 				
 		main_frame.getContentPane().removeAll();
-		
-		/*java.net.URL stickyPNG = NoticeBoardHomeScreen.class.getResource(
-                 "/home_images/sticky_note.png");
-		ImageIcon note_icon = new ImageIcon(stickyPNG);
-		java.net.URL settingsPNG = NoticeBoardHomeScreen.class.getResource(
-                 "/home_images/settings.png");
-		ImageIcon settings_icon = new ImageIcon(settingsPNG);
-		java.net.URL warningPNG = NoticeBoardHomeScreen.class.getResource(
-                 "/home_images/warning.png");
-		ImageIcon warning_icon = new ImageIcon(warningPNG);*/
+				
 		ImageIcon note_icon = ImageCollect.getHomeImageNoteIcon();
 		ImageIcon settings_icon = ImageCollect.getHomeImageSettingsIcon();
 		ImageIcon warning_icon = ImageCollect.getHomeImageWarningIcon();
 		
-		// create the main frame for the notice board
-		
-		//GraphicsDevice device = main_frame.getGraphicsConfiguration().getDevice();
-		//main_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		//main_frame.setUndecorated(true);
-		//main_frame.setTitle("CS413 NoticeBoard");
-		//main_frame.setVisible(true);
-		//main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				
+		// get the colour for the noticeboard
+		Color colour = ColourCollect.getCurrentColour();
+						
 		// create panel to sit on top of frame
 		JPanel main_panel = new JPanel();
 		main_panel.setSize(main_frame.getWidth(), main_frame.getHeight());
-		main_panel.setBackground(new Color(64, 220, 79));
+		main_panel.setBackground(colour);
 		main_panel.setVisible(true);	
 		main_panel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
