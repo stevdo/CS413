@@ -88,6 +88,28 @@ public class NoticeBoardSettingsScreen {
 		notes.setActionCommand("0");
 		warnings.setActionCommand("2");
 		
+		
+		// these buttons have been made to change colour, will need style added though
+		JButton red = new JButton("Red");
+		JButton blue = new JButton("Blue");
+		JButton orange = new JButton("Orange");
+		
+		/* will eventually add some more colours, this is
+		 * just a test range of colours currently
+		 */
+		/*red.setBounds(300, 300, 150, 50);
+		blue.setBounds(450, 300, 150, 50);
+		orange.setBounds(600, 300, 150, 50);*/
+		
+		red.setForeground(new Color(233, 63, 63));
+		blue.setForeground(new Color(86, 200, 249));
+		orange.setForeground(new Color(246, 130, 41));
+		
+		// may want to change these to colour names and make new action listener
+		red.setActionCommand("5");
+		blue.setActionCommand("6");
+		orange.setActionCommand("7");
+		
 		//Create container for buttons
 		Box verticalBox = Box.createVerticalBox();
 		verticalBox.add(home);
@@ -108,6 +130,10 @@ public class NoticeBoardSettingsScreen {
 		warnings.setContentAreaFilled(false);
 		warnings.addActionListener(button_listener);
 		
+		red.addActionListener(button_listener);
+		blue.addActionListener(button_listener);
+		orange.addActionListener(button_listener);
+		
 		//temporary exit button
 		JButton exit = new JButton("Exit System"); 
 		exit.setBounds(200, 200, 150, 100);
@@ -116,6 +142,9 @@ public class NoticeBoardSettingsScreen {
 		// add to the panels
 		settings_panel.add(title);
 		settings_panel.add(exit);
+		settings_panel.add(red);
+		settings_panel.add(blue);
+		settings_panel.add(orange);
 		options_panel.add(verticalBox, c);
 		
 		// add to the frame	

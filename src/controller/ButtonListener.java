@@ -4,6 +4,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import model.NoticeboardColours;
 import view.MainView;
 import view.NoticeBoardNotesScreen;
 import view.NoticeBoardWriteMessage;
@@ -14,6 +15,7 @@ public class ButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		MainView mv = new MainView();
+		NoticeboardColours nc = new NoticeboardColours();
 		int buttonPress = Integer.parseInt(e.getActionCommand());
 		switch(buttonPress){
 		case 0:
@@ -48,6 +50,18 @@ public class ButtonListener implements ActionListener {
 			System.out.println("Write pressed");
 			mv.updateWindow("Write");
 			mv.update();
+			break;
+		case 5:
+			System.out.println("Red pressed");
+			nc.setNoticeboardColour("red");
+			break;
+		case 6:
+			System.out.println("Blue pressed");
+			nc.setNoticeboardColour("blue");
+			break;
+		case 7:
+			System.out.println("Orange pressed");
+			nc.setNoticeboardColour("orange");
 			break;
 		}		
 	}	
