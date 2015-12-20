@@ -7,6 +7,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
@@ -15,11 +16,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 import controller.ButtonListener;
 import controller.ColourCollect;
@@ -50,18 +48,28 @@ public class NoticeBoardWriteMessage {
 		ImageIcon settings_icon = ImageCollect.getSideImageSettingsIcon();
 		ImageIcon warning_icon = ImageCollect.getSideImageWarningIcon();
 		
+		// Hidden Panel
+		final JPanel hidden_panel = new JPanel();
+		hidden_panel.setBackground(colour);
+		hidden_panel.setLayout(new GridBagLayout());
+		
 		// 2 panels for the screen
-		JPanel write_panel = new JPanel();
+		final JPanel write_panel = new JPanel();
 		write_panel.setBackground(colour);
 		write_panel.setLayout(new GridLayout(2, 0, 0, 0));
 
 		// 2 panels to go within write_panel
-		JPanel top_panel = new JPanel();
-		JPanel lower_panel = new JPanel();
+		final JPanel top_panel = new JPanel();
+		final JPanel lower_panel = new JPanel();
 		top_panel.setBackground(colour);
 		top_panel.setLayout(new GridBagLayout());
 		lower_panel.setBackground(colour);
 		lower_panel.setLayout(new GridBagLayout());
+		
+		// Panel for switching
+		final JPanel top_panel_clone = new JPanel();
+		top_panel_clone.setBackground(colour);
+		top_panel_clone.setLayout(new GridBagLayout());
 
 		// dimensions for components on the screen
 		int options_width = (int) (write_frame.getWidth() - (0.88 * write_frame.getWidth()));
@@ -79,9 +87,18 @@ public class NoticeBoardWriteMessage {
 		textField.setColumns(15);
 		textField.setBackground(new Color(240, 230, 80));
 		
-		JTextArea textArea2 = new JTextArea();
+		JTextField textField2 = new JTextField();
+		textField2.setColumns(15);
+		textField2.setBackground(new Color(240, 230, 80));
+		
+		final JTextArea textArea = new JTextArea();
+		textArea.setColumns(60);
+		textArea.setRows(5);
+		textArea.setBackground(new Color(240, 230, 80));
+		
+		final JTextArea textArea2 = new JTextArea();
 		textArea2.setColumns(60);
-		textArea2.setRows(5);
+		textArea2.setRows(10);
 		textArea2.setBackground(new Color(240, 230, 80));
 		
 		// ActionListener's
@@ -89,13 +106,36 @@ public class NoticeBoardWriteMessage {
 		ActionListener button_listener = new ButtonListener();
 		ActionListener keyboard_listener = new KeyboardListener();
 
-		// 4 buttons needed
+		// Buttons
 		JButton home = new JButton(home_icon);
 		JButton settings = new JButton(settings_icon);
 		JButton warnings = new JButton(warning_icon);
 
 		JButton add_note = new JButton("Add Note");
 		add_note.setBackground(Color.red);
+		
+		JButton add_note2 = new JButton("Add Note");
+		add_note2.setBackground(Color.red);
+		
+		JButton toggle_keyboard = new JButton("Toggle Keyboard");
+		toggle_keyboard.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	hidden_panel.remove(write_panel);
+            	hidden_panel.add(top_panel_clone);
+            	hidden_panel.revalidate();
+            	hidden_panel.repaint();
+            }
+		});
+		
+		JButton toggle_keyboard2 = new JButton("Toggle Keyboard");
+		toggle_keyboard2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	hidden_panel.remove(top_panel_clone);
+            	hidden_panel.add(write_panel);
+            	hidden_panel.revalidate();
+            	hidden_panel.repaint();
+            }
+		});
 
 		// set the action commands for the buttons
 		settings.setActionCommand("1");
@@ -125,8 +165,11 @@ public class NoticeBoardWriteMessage {
 
 		// temporary exit button
 		JButton exit = new JButton("Exit System");
+		JButton exit2 = new JButton("Exit System");
 		exit.setBounds(0, 0, 150, 100);
 		exit.addActionListener(exitActionListener);
+		exit2.setBounds(0, 0, 150, 100);
+		exit2.addActionListener(exitActionListener);
 
 		// Touch Keyboard
 		JPanel keyboard = new JPanel(new GridLayout(0, 1));
@@ -154,15 +197,26 @@ public class NoticeBoardWriteMessage {
 
 		// add to the panel
 		top_panel.add(textField, c);
-		top_panel.add(textArea2, c);
+		top_panel.add(textArea, c);
 		top_panel.add(exit);
 		top_panel.add(add_note);
+		top_panel.add(toggle_keyboard);
+		
+		top_panel_clone.add(textField2, c);
+		top_panel_clone.add(textArea2, c);
+		top_panel_clone.add(exit2);
+		top_panel_clone.add(add_note2);
+		top_panel_clone.add(toggle_keyboard2);
+		
+		hidden_panel.add(top_panel_clone);
+		
 		write_panel.add(top_panel);
 		write_panel.add(lower_panel);
+		
 		options_panel.add(verticalBox, c);
 
 		// add to the frame
 		write_frame.add(options_panel, BorderLayout.LINE_START);
-		write_frame.add(write_panel, BorderLayout.CENTER);
+		write_frame.add(hidden_panel, BorderLayout.CENTER);
 	}
 }
