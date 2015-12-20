@@ -83,11 +83,11 @@ public class NoticeBoardWriteMessage {
 		c.gridwidth = GridBagConstraints.REMAINDER; // adding c makes the content take up the entire row
 		c.insets = new Insets(10, 0, 10, 0); // padding
 
-		JTextField textField = new JTextField();
+		final JTextField textField = new JTextField();
 		textField.setColumns(15);
 		textField.setBackground(new Color(240, 230, 80));
 		
-		JTextField textField2 = new JTextField();
+		final JTextField textField2 = new JTextField();
 		textField2.setColumns(15);
 		textField2.setBackground(new Color(240, 230, 80));
 		
@@ -120,6 +120,10 @@ public class NoticeBoardWriteMessage {
 		JButton toggle_keyboard = new JButton("Toggle Keyboard");
 		toggle_keyboard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	String t = textArea.getText();
+            	textArea2.setText(t);
+            	String t2 = textField.getText();
+            	textField2.setText(t2);
             	hidden_panel.remove(write_panel);
             	hidden_panel.add(top_panel_clone);
             	hidden_panel.revalidate();
@@ -130,6 +134,10 @@ public class NoticeBoardWriteMessage {
 		JButton toggle_keyboard2 = new JButton("Toggle Keyboard");
 		toggle_keyboard2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	String t = textArea2.getText();
+            	textArea.setText(t);
+            	String t2 = textField2.getText();
+            	textField.setText(t2);
             	hidden_panel.remove(top_panel_clone);
             	hidden_panel.add(write_panel);
             	hidden_panel.revalidate();
