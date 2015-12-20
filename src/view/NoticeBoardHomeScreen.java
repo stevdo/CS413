@@ -30,7 +30,7 @@ public class NoticeBoardHomeScreen {
 	}
 	
 	public void init_HomeScreen(){
-				
+			
 		main_frame.getContentPane().removeAll();
 				
 		ImageIcon note_icon = ImageCollect.getHomeImageNoteIcon();
@@ -39,6 +39,7 @@ public class NoticeBoardHomeScreen {
 		
 		// get the colour for the noticeboard
 		Color colour = ColourCollect.getCurrentColour();
+		System.out.println(colour);
 						
 		// create panel to sit on top of frame
 		JPanel main_panel = new JPanel();

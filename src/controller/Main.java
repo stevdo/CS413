@@ -1,5 +1,6 @@
 package controller;
 
+import model.NoticeboardColours;
 import model.NoticeboardImages;
 import view.MainView;
 import view.NoticeBoardHomeScreen;
@@ -25,6 +26,7 @@ public class Main {
 		warnings_view.init_WarningsScreen();*/
 		NoticeboardImages.setSideImages();
 		NoticeboardImages.setHomeImages();
+		//NoticeboardColours.setNoticeboardColour("red");
 		MainView mv = new MainView();
 		mv.init_NoticeboardFrame();
 		mv.updateWindow("home");
