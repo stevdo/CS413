@@ -1,27 +1,10 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GraphicsDevice;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionListener;
-
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import controller.ButtonListener;
-import controller.ColourCollect;
-import controller.ExitActionListener;
-import controller.ImageCollect;
+import java.awt.*;
+import java.awt.event.*;
+import java.net.*;
+import javax.swing.*;
+import controller.*;
 
 public class NoticeBoardSettingsScreen {
 
@@ -65,6 +48,7 @@ public class NoticeBoardSettingsScreen {
 		JPanel settings_panel = new JPanel();
 		settings_panel.setSize(settings_width, settings_frame.getHeight());
 		settings_panel.setBackground(colour);
+		settings_panel.setLayout(new GridBagLayout());
 		
 		JPanel options_panel = new JPanel();
 		options_panel.setPreferredSize(new Dimension(options_width, settings_frame.getHeight()));
@@ -88,6 +72,36 @@ public class NoticeBoardSettingsScreen {
 		notes.setActionCommand("0");
 		warnings.setActionCommand("2");
 		
+		//Testing for connection
+		final JLabel connectedLabel1 = new JLabel("You are connected to the internet.");
+		final JLabel connectedLabel2 = new JLabel("You are not connected to the internet.");
+		connectedLabel1.setVisible(false);
+		connectedLabel2.setVisible(false);
+		
+		JLabel pressLabel = new JLabel("Press button to test connection to internet:");
+		JButton testConnection = new JButton("Test connection");
+		testConnection.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	Socket socket = new Socket();
+            	//Tests connection by checking if www.cs413noticeboard.co.uk can be accessed with port 80
+            	InetSocketAddress url = new InetSocketAddress("www.cs413noticeboard.co.uk", 80);
+            	try {
+            		//set timeout to 1000ms
+            		socket.connect(url, 1000);
+            		//if connection is successful it will print "You are connected"
+            		connectedLabel2.setVisible(false);
+            		connectedLabel1.setVisible(true);
+            	} catch(Exception ex) {
+            		//if connection is not successful it will print "You are not connected"
+            		connectedLabel1.setVisible(false);
+            		connectedLabel2.setVisible(true);
+            	} finally {
+            		//Close the socket
+            		try {socket.close();}
+            		catch (Exception ex) {}
+            	}
+            }
+		});
 		
 		// these buttons have been made to change colour, will need style added though
 		JButton red = new JButton("Red");
@@ -118,6 +132,20 @@ public class NoticeBoardSettingsScreen {
 		verticalBox.add(Box.createRigidArea(new Dimension(0, 80))); //Adds space between buttons
 		verticalBox.add(warnings);
 		
+		//Container for colour buttons
+		Box horizontalBox = Box.createHorizontalBox();
+		horizontalBox.add(red);
+		horizontalBox.add(Box.createRigidArea(new Dimension(10, 0)));
+		horizontalBox.add(blue);
+		horizontalBox.add(Box.createRigidArea(new Dimension(10, 0)));
+		horizontalBox.add(orange);
+		
+		Box horizontalBox2 = Box.createHorizontalBox();
+		horizontalBox2.add(pressLabel);
+		horizontalBox2.add(Box.createRigidArea(new Dimension(10, 0)));
+		horizontalBox2.add(testConnection);
+		horizontalBox2.add(Box.createRigidArea(new Dimension(10, 0)));
+		
 		home.setBorder(BorderFactory.createEmptyBorder());
 		home.setContentAreaFilled(false);
 		home.addActionListener(button_listener);
@@ -140,11 +168,12 @@ public class NoticeBoardSettingsScreen {
 		exit.addActionListener(exitActionListener);
 		
 		// add to the panels
-		settings_panel.add(title);
-		settings_panel.add(exit);
-		settings_panel.add(red);
-		settings_panel.add(blue);
-		settings_panel.add(orange);
+		settings_panel.add(title, c);
+		settings_panel.add(exit, c);
+		settings_panel.add(horizontalBox, c);
+		settings_panel.add(horizontalBox2, c);
+		settings_panel.add(connectedLabel1);
+		settings_panel.add(connectedLabel2);
 		options_panel.add(verticalBox, c);
 		
 		// add to the frame	
