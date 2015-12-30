@@ -3,6 +3,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import model.NoticeboardColours;
 import view.MainView;
@@ -62,6 +63,15 @@ public class ButtonListener implements ActionListener {
 		case 7:
 			System.out.println("Orange pressed");
 			nc.setNoticeboardColour("orange");
+			break;
+		case 8:
+		    	try {
+					Runtime.getRuntime().exec("sudo shutdown -h now");
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			    System.exit(0);
 			break;
 		}		
 	}	

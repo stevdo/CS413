@@ -68,6 +68,11 @@ public class NoticeBoardSettingsScreen {
 		JButton notes = new JButton(note_icon);
 		JButton warnings = new JButton(warning_icon);
 		
+		//Shut down button
+		JButton shutdown = new JButton("Shut Down");
+		shutdown.setActionCommand("8");
+		shutdown.addActionListener(button_listener);
+		
 		home.setActionCommand("3");
 		notes.setActionCommand("0");
 		warnings.setActionCommand("2");
@@ -172,8 +177,9 @@ public class NoticeBoardSettingsScreen {
 		settings_panel.add(exit, c);
 		settings_panel.add(horizontalBox, c);
 		settings_panel.add(horizontalBox2, c);
-		settings_panel.add(connectedLabel1);
-		settings_panel.add(connectedLabel2);
+		settings_panel.add(connectedLabel1, c);
+		settings_panel.add(connectedLabel2, c);
+		settings_panel.add(shutdown);
 		options_panel.add(verticalBox, c);
 		
 		// add to the frame	
