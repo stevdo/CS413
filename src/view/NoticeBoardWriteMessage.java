@@ -191,7 +191,7 @@ public class NoticeBoardWriteMessage {
 		panel_array = new JPanel[5];
 		for (int across = 0; across < keys_array.length; across++) {
 			panel_array[across] = new JPanel();
-			panel_array[across].setBackground(new Color(64, 220, 79));
+			panel_array[across].setBackground(colour);
 			keys = new JButton[20][20];
 			for (int vertical = 0; vertical < keys_array[across].length; vertical++) {
 				keys[across][vertical] = new JButton(keys_array[across][vertical]);
