@@ -1,5 +1,6 @@
 package controller;
 
+import model.Cipher;
 import model.NoticeboardColours;
 import model.NoticeboardImages;
 import view.MainView;
@@ -24,12 +25,18 @@ public class Main {
 		
 		/*NoticeBoardWarningsScreen warnings_view = new NoticeBoardWarningsScreen();
 		warnings_view.init_WarningsScreen();*/
+		
+		
 		NoticeboardImages.setSideImages();
 		NoticeboardImages.setHomeImages();
 		//NoticeboardColours.setNoticeboardColour("red");
 		MainView mv = new MainView();
 		mv.init_NoticeboardFrame();
 		mv.updateWindow("home");
+		
+		/*
+		Cipher.simpleEncrypt("Hello... testing the encryption");
+		*/
 		
 		// after set amount of time?
 		
@@ -43,5 +50,6 @@ public class Main {
 		
 		//		m.updateNotes();
 		//		MainView.updateNoteList(m.getNoteList());
+		
 	}
 }
