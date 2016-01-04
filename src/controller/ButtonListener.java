@@ -4,11 +4,14 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 
 import model.NoticeboardColours;
 import view.MainView;
 import view.NoticeBoardNotesScreen;
 import view.NoticeBoardWriteMessage;
+import view.NoticeBoardSettingsScreen;
 
 
 public class ButtonListener implements ActionListener {
@@ -72,6 +75,26 @@ public class ButtonListener implements ActionListener {
 					e1.printStackTrace();
 				}
 			    System.exit(0);
+			break;
+		case 9:
+			Socket socket = new Socket();
+        	//Tests connection by checking if www.cs413noticeboard.co.uk can be accessed with port 80
+        	InetSocketAddress url = new InetSocketAddress("www.cs413noticeboard.co.uk", 80);
+        	try {
+        		//set timeout to 1000ms
+        		socket.connect(url, 1000);
+        		//if connection is successful it will print "You are connected"
+        		NoticeBoardSettingsScreen.connectedLabel2.setVisible(false);
+        		NoticeBoardSettingsScreen.connectedLabel1.setVisible(true);
+        	} catch(Exception ex) {
+        		//if connection is not successful it will print "You are not connected"
+        		NoticeBoardSettingsScreen.connectedLabel1.setVisible(false);
+        		NoticeBoardSettingsScreen.connectedLabel2.setVisible(true);
+        	} finally {
+        		//Close the socket
+        		try {socket.close();}
+        		catch (Exception ex) {}
+        	}
 			break;
 		}		
 	}	

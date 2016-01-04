@@ -26,17 +26,17 @@ public class Main {
 		/*NoticeBoardWarningsScreen warnings_view = new NoticeBoardWarningsScreen();
 		warnings_view.init_WarningsScreen();*/
 		
-		/*
+		
 		NoticeboardImages.setSideImages();
 		NoticeboardImages.setHomeImages();
 		//NoticeboardColours.setNoticeboardColour("red");
 		MainView mv = new MainView();
 		mv.init_NoticeboardFrame();
 		mv.updateWindow("home");
-		*/
 		
-		Cipher.simpleEncrypt("A B C D E F G");
-		Cipher.simpleDecrypt("K L M N O P Q");
+		
+		//Cipher.simpleEncrypt("A B C D E F G");
+		//Cipher.simpleDecrypt("K L M N O P Q");
 		
 		// after set amount of time?
 		

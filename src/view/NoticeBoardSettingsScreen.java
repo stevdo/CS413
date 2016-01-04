@@ -8,6 +8,9 @@ import controller.*;
 
 public class NoticeBoardSettingsScreen {
 
+	public final static JLabel connectedLabel1 = new JLabel("You are connected to the internet.");
+	public final static JLabel connectedLabel2 = new JLabel("You are not connected to the internet.");
+	
 	JFrame settings_frame = new JFrame();
 	
 	public NoticeBoardSettingsScreen(JFrame noticeboard_frame) {
@@ -78,35 +81,13 @@ public class NoticeBoardSettingsScreen {
 		warnings.setActionCommand("2");
 		
 		//Testing for connection
-		final JLabel connectedLabel1 = new JLabel("You are connected to the internet.");
-		final JLabel connectedLabel2 = new JLabel("You are not connected to the internet.");
 		connectedLabel1.setVisible(false);
 		connectedLabel2.setVisible(false);
 		
 		JLabel pressLabel = new JLabel("Press button to test connection to internet:");
 		JButton testConnection = new JButton("Test connection");
-		testConnection.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	Socket socket = new Socket();
-            	//Tests connection by checking if www.cs413noticeboard.co.uk can be accessed with port 80
-            	InetSocketAddress url = new InetSocketAddress("www.cs413noticeboard.co.uk", 80);
-            	try {
-            		//set timeout to 1000ms
-            		socket.connect(url, 1000);
-            		//if connection is successful it will print "You are connected"
-            		connectedLabel2.setVisible(false);
-            		connectedLabel1.setVisible(true);
-            	} catch(Exception ex) {
-            		//if connection is not successful it will print "You are not connected"
-            		connectedLabel1.setVisible(false);
-            		connectedLabel2.setVisible(true);
-            	} finally {
-            		//Close the socket
-            		try {socket.close();}
-            		catch (Exception ex) {}
-            	}
-            }
-		});
+		testConnection.addActionListener(button_listener);
+		testConnection.setActionCommand("9");
 		
 		// these buttons have been made to change colour, will need style added though
 		JButton red = new JButton("Red");
