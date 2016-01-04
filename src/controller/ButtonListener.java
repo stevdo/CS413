@@ -69,7 +69,7 @@ public class ButtonListener implements ActionListener {
 			break;
 		case 8:
 		    	try {
-					Runtime.getRuntime().exec("sudo shutdown -h now");
+					Runtime.getRuntime().exec("shutdown -h now");
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -77,6 +77,15 @@ public class ButtonListener implements ActionListener {
 			    System.exit(0);
 			break;
 		case 9:
+			try {
+				Runtime.getRuntime().exec("reboot");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		    System.exit(0);
+			break;
+		case 10:
 			Socket socket = new Socket();
         	//Tests connection by checking if www.cs413noticeboard.co.uk can be accessed with port 80
         	InetSocketAddress url = new InetSocketAddress("www.cs413noticeboard.co.uk", 80);

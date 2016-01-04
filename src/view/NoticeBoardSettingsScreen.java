@@ -71,6 +71,11 @@ public class NoticeBoardSettingsScreen {
 		JButton notes = new JButton(note_icon);
 		JButton warnings = new JButton(warning_icon);
 		
+		//Reboot button
+		JButton reboot = new JButton("Reboot");
+		reboot.setActionCommand("9");
+		reboot.addActionListener(button_listener);
+		
 		//Shut down button
 		JButton shutdown = new JButton("Shut Down");
 		shutdown.setActionCommand("8");
@@ -87,7 +92,7 @@ public class NoticeBoardSettingsScreen {
 		JLabel pressLabel = new JLabel("Press button to test connection to internet:");
 		JButton testConnection = new JButton("Test connection");
 		testConnection.addActionListener(button_listener);
-		testConnection.setActionCommand("9");
+		testConnection.setActionCommand("10");
 		
 		// these buttons have been made to change colour, will need style added though
 		JButton red = new JButton("Red");
@@ -130,7 +135,11 @@ public class NoticeBoardSettingsScreen {
 		horizontalBox2.add(pressLabel);
 		horizontalBox2.add(Box.createRigidArea(new Dimension(10, 0)));
 		horizontalBox2.add(testConnection);
-		horizontalBox2.add(Box.createRigidArea(new Dimension(10, 0)));
+		
+		Box horiBox = Box.createHorizontalBox();
+		horiBox.add(reboot);
+		horiBox.add(Box.createRigidArea(new Dimension(10, 0)));
+		horiBox.add(shutdown);
 		
 		home.setBorder(BorderFactory.createEmptyBorder());
 		home.setContentAreaFilled(false);
@@ -160,7 +169,7 @@ public class NoticeBoardSettingsScreen {
 		settings_panel.add(horizontalBox2, c);
 		settings_panel.add(connectedLabel1, c);
 		settings_panel.add(connectedLabel2, c);
-		settings_panel.add(shutdown);
+		settings_panel.add(horiBox);
 		options_panel.add(verticalBox, c);
 		
 		// add to the frame	

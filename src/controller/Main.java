@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.IOException;
+
 import model.Cipher;
 import model.NoticeboardColours;
 import model.NoticeboardImages;
