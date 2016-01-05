@@ -58,14 +58,20 @@ public class ButtonListener implements ActionListener {
 		case 5:
 			System.out.println("Red pressed");
 			nc.setNoticeboardColour("red");
+			mv.updateWindow("settings");
+			mv.update();
 			break;
 		case 6:
 			System.out.println("Blue pressed");
 			nc.setNoticeboardColour("blue");
+			mv.updateWindow("settings");
+			mv.update();
 			break;
 		case 7:
 			System.out.println("Orange pressed");
 			nc.setNoticeboardColour("orange");
+			mv.updateWindow("settings");
+			mv.update();
 			break;
 		case 8:
 		    	try {
