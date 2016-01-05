@@ -47,6 +47,7 @@ public class KeyboardListener implements ActionListener {
 				NoticeBoardWriteMessage.textField.setText(NoticeBoardWriteMessage.textField.getText() + " ");
 			}
 		} else {
+			//CAL1UM W4S HeR3 !!!!11!1!
 			// Needs to print to selected JTextField
 			//System.out.println("Key pressed: " + buttonPressed.getClientProperty("buttonPressed"));			
 			System.out.println(component_to_update);
