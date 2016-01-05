@@ -11,7 +11,7 @@ public class NoticeBoardSettingsScreen {
 	public final static JLabel connectedLabel1 = new JLabel("You are connected to the internet.");
 	public final static JLabel connectedLabel2 = new JLabel("You are not connected to the internet.");
 	public static JComboBox colourList;
-	public static String[] colours = new String[]{"Green", "Red", "Blue", "Orange"};
+	public static String[] colours = new String[]{"Select...", "Green", "Red", "Blue", "Orange"};
 	
 	JFrame settings_frame = new JFrame();
 	
@@ -76,12 +76,12 @@ public class NoticeBoardSettingsScreen {
 		
 		//Reboot button
 		JButton reboot = new JButton("Reboot");
-		reboot.setActionCommand("9");
+		reboot.setActionCommand("7");
 		reboot.addActionListener(button_listener);
 		
 		//Shut down button
 		JButton shutdown = new JButton("Shut Down");
-		shutdown.setActionCommand("8");
+		shutdown.setActionCommand("6");
 		shutdown.addActionListener(button_listener);
 		
 		home.setActionCommand("3");
@@ -95,34 +95,18 @@ public class NoticeBoardSettingsScreen {
 		JLabel pressLabel = new JLabel("Press button to test connection to internet:");
 		JButton testConnection = new JButton("Test connection");
 		testConnection.addActionListener(button_listener);
-		testConnection.setActionCommand("10");
+		testConnection.setActionCommand("8");
 		
-		// these buttons have been made to change colour, will need style added though
-		JButton red = new JButton("Red");
-		JButton blue = new JButton("Blue");
-		JButton orange = new JButton("Orange");
-		
-		//Selection of colours
+		//Colour chooser
+		JLabel label1 = new JLabel("Choose a background colour:");
+		JButton chooseColour = new JButton("Choose!");
+
 		colourList = new JComboBox(colours);
 		colourList.setSelectedIndex(0);
 		colourList.setEditable(false);
 		colourList.addActionListener(comboListener);
 		
-		/* will eventually add some more colours, this is
-		 * just a test range of colours currently
-		 */
-		/*red.setBounds(300, 300, 150, 50);
-		blue.setBounds(450, 300, 150, 50);
-		orange.setBounds(600, 300, 150, 50);*/
-		
-		red.setForeground(new Color(233, 63, 63));
-		blue.setForeground(new Color(86, 200, 249));
-		orange.setForeground(new Color(246, 130, 41));
-		
-		// may want to change these to colour names and make new action listener
-		red.setActionCommand("5");
-		blue.setActionCommand("6");
-		orange.setActionCommand("7");
+		chooseColour.setActionCommand("5");
 		
 		//Create container for buttons
 		Box verticalBox = Box.createVerticalBox();
@@ -134,11 +118,11 @@ public class NoticeBoardSettingsScreen {
 		
 		//Container for colour buttons
 		Box horizontalBox = Box.createHorizontalBox();
-		horizontalBox.add(red);
+		horizontalBox.add(label1);
 		horizontalBox.add(Box.createRigidArea(new Dimension(10, 0)));
-		horizontalBox.add(blue);
+		horizontalBox.add(colourList);
 		horizontalBox.add(Box.createRigidArea(new Dimension(10, 0)));
-		horizontalBox.add(orange);
+		horizontalBox.add(chooseColour);
 		
 		Box horizontalBox2 = Box.createHorizontalBox();
 		horizontalBox2.add(pressLabel);
@@ -162,9 +146,7 @@ public class NoticeBoardSettingsScreen {
 		warnings.setContentAreaFilled(false);
 		warnings.addActionListener(button_listener);
 		
-		red.addActionListener(button_listener);
-		blue.addActionListener(button_listener);
-		orange.addActionListener(button_listener);
+		chooseColour.addActionListener(button_listener);
 		
 		//temporary exit button
 		JButton exit = new JButton("Exit System"); 
@@ -179,15 +161,11 @@ public class NoticeBoardSettingsScreen {
 		settings_panel.add(connectedLabel1, c);
 		settings_panel.add(connectedLabel2, c);
 		settings_panel.add(horiBox, c);
-		settings_panel.add(colourList);
 		options_panel.add(verticalBox, c);
 		
 		// add to the frame	
 		settings_frame.add(options_panel, BorderLayout.LINE_START);
 		settings_frame.add(settings_panel, BorderLayout.CENTER);
-		
-		// Set program as full screen
-		//device.setFullScreenWindow(settings_frame);
 		
 	}
 	

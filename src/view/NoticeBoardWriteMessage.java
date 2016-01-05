@@ -19,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -97,6 +98,11 @@ public class NoticeBoardWriteMessage {
 		
 		textField2.setColumns(15);
 		textField2.setBackground(new Color(240, 230, 80));
+		
+		JScrollPane scroll = new JScrollPane (textArea);
+	    scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+	    JScrollPane scroll2 = new JScrollPane (textArea2);
+	    scroll2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
 		textArea.setColumns(60);
 		textArea.setRows(5);
@@ -217,13 +223,13 @@ public class NoticeBoardWriteMessage {
 
 		// add to the panel
 		top_panel.add(textField, c);
-		top_panel.add(textArea, c);
+		top_panel.add(scroll, c);
 		top_panel.add(exit);
 		top_panel.add(add_note);
 		top_panel.add(toggle_keyboard);
 		
 		top_panel_clone.add(textField2, c);
-		top_panel_clone.add(textArea2, c);
+		top_panel_clone.add(scroll2, c);
 		top_panel_clone.add(exit2);
 		top_panel_clone.add(add_note2);
 		top_panel_clone.add(toggle_keyboard2);

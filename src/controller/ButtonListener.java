@@ -7,11 +7,14 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
+import javax.swing.JComboBox;
+
 import model.NoticeboardColours;
 import view.MainView;
 import view.NoticeBoardNotesScreen;
 import view.NoticeBoardWriteMessage;
 import view.NoticeBoardSettingsScreen;
+import controller.ComboListener;
 
 
 public class ButtonListener implements ActionListener {
@@ -56,42 +59,47 @@ public class ButtonListener implements ActionListener {
 			mv.update();
 			break;
 		case 5:
-			System.out.println("Red pressed");
-			nc.setNoticeboardColour("red");
-			mv.updateWindow("settings");
-			mv.update();
+			String selectedColour = new String("");
+			selectedColour = ComboListener.editString();
+		        System.out.println("Button listener colour is: " + selectedColour);
+		        if(selectedColour == "Green") {
+		        	nc.setNoticeboardColour("green");
+		        	mv.updateWindow("settings");
+		        	mv.update();
+		        }
+		        else if (selectedColour == "Red"){
+		        	nc.setNoticeboardColour("red");
+					mv.updateWindow("settings");
+					mv.update();
+		        } else if (selectedColour == "Blue"){
+		        	nc.setNoticeboardColour("blue");
+					mv.updateWindow("settings");
+					mv.update();
+		        } else if (selectedColour == "Orange"){
+		        	nc.setNoticeboardColour("orange");
+					mv.updateWindow("settings");
+					mv.update();
+		        }
 			break;
 		case 6:
-			System.out.println("Blue pressed");
-			nc.setNoticeboardColour("blue");
-			mv.updateWindow("settings");
-			mv.update();
-			break;
-		case 7:
-			System.out.println("Orange pressed");
-			nc.setNoticeboardColour("orange");
-			mv.updateWindow("settings");
-			mv.update();
-			break;
-		case 8:
 		    	try {
-					Runtime.getRuntime().exec("shutdown -h now");
+					Runtime.getRuntime().exec("systemctl poweroff");
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			    System.exit(0);
 			break;
-		case 9:
+		case 7:
 			try {
-				Runtime.getRuntime().exec("reboot");
+				Runtime.getRuntime().exec("systemctl reboot");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		    System.exit(0);
 			break;
-		case 10:
+		case 8:
 			Socket socket = new Socket();
         	//Tests connection by checking if www.cs413noticeboard.co.uk can be accessed with port 80
         	InetSocketAddress url = new InetSocketAddress("www.cs413noticeboard.co.uk", 80);
