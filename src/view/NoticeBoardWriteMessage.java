@@ -111,9 +111,7 @@ public class NoticeBoardWriteMessage {
 		textField.addMouseListener(focus);
 		textArea.addMouseListener(focus);
 		textField.setName("text field");
-		textArea.setName("text area");
-		
-		
+		textArea.setName("text area");		
 		
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
