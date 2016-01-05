@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import view.NoticeBoardWriteMessage;
+
 public class KeyboardListener implements ActionListener {
 
 	@Override
@@ -25,7 +27,20 @@ public class KeyboardListener implements ActionListener {
 			System.out.println("Key pressed: spc");
 		} else {
 			// Needs to print to selected JTextField
-			System.out.println("Key pressed: " + buttonPressed.getClientProperty("buttonPressed"));
+			//System.out.println("Key pressed: " + buttonPressed.getClientProperty("buttonPressed"));
+			String component_to_update = CurrentTextComponent.getCurrentComponent();
+			System.out.println(component_to_update);
+			if(component_to_update.equals("text area")){
+				System.out.println("Updating text area");
+				//System.out.println("Current Text Area contents: " + NoticeBoardWriteMessage.textArea2.getText());
+				NoticeBoardWriteMessage.textArea.setText(NoticeBoardWriteMessage.textArea.getText() +
+						(String) buttonPressed.getClientProperty("buttonPressed"));
+			}
+			else if(component_to_update.equals("text field")){
+				System.out.println("Updating text field");
+				NoticeBoardWriteMessage.textField.setText(NoticeBoardWriteMessage.textField.getText() + 
+						(String) buttonPressed.getClientProperty("buttonPressed"));
+			}
 		}
 	}
 }

@@ -26,6 +26,8 @@ public class Cipher {
 			if(current_char >= 65 && current_char <= 90){
 				 if(current_char + rot <= 90){
 					 encrypted_char = (char) (current_char + rot);
+					 /*int code = (int)(encrypted_char);
+					 System.out.println(code);*/
 					 //System.out.println("Encrypted: " + encrypted_char);
 					 to_encrypt[i] = encrypted_char;
 				 }
@@ -67,17 +69,22 @@ public class Cipher {
 		char decrypted_char = 0;
 		for(int i = 0; i < to_decrypt.length; i++){
 			char current_char = to_decrypt[i];
+			System.out.println(current_char);
+			//int code = (int)(current_char);
+			//System.out.println(code);
 			if(current_char >= 65 && current_char <= 90){
 				if(current_char - rot >= 65){
-					decrypted_char = (char)(decrypted_char - rot);
+					decrypted_char = (char)(decrypted_char + rot);
+					/*int code2 = (int)(decrypted_char);
+					System.out.println(code2);*/
 					System.out.println(decrypted_char);
 				}
 				else{
-					decrypted_char = (char)(decrypted_char - rot + 26);
+					decrypted_char = (char)(decrypted_char  + rot - 26);
 					System.out.println(decrypted_char);
 				}
 			}
-			if(current_char >= 97 && current_char <= 122){
+		    if(current_char >= 97 && current_char <= 122){
 				if(current_char - rot >= 97){
 					decrypted_char = (char) (decrypted_char - rot);
 					System.out.println(decrypted_char);

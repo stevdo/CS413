@@ -9,6 +9,9 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseListener;
+import java.util.EventListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -24,10 +27,15 @@ import controller.ColourCollect;
 import controller.ExitActionListener;
 import controller.KeyboardListener;
 import controller.ImageCollect;
+import controller.TextFocusListener;
 
 public class NoticeBoardWriteMessage {
 
 	JFrame write_frame = new JFrame();
+	public final static JTextField textField = new JTextField();
+	public final static JTextField textField2 = new JTextField();
+	public final static JTextArea textArea = new JTextArea();
+	public final static JTextArea textArea2 = new JTextArea();
 
 	public NoticeBoardWriteMessage(JFrame notes_frame) {
 		write_frame = notes_frame;
@@ -83,23 +91,29 @@ public class NoticeBoardWriteMessage {
 		c.gridwidth = GridBagConstraints.REMAINDER; // adding c makes the content take up the entire row
 		c.insets = new Insets(10, 0, 10, 0); // padding
 
-		final JTextField textField = new JTextField();
+		
 		textField.setColumns(15);
 		textField.setBackground(new Color(240, 230, 80));
 		
-		final JTextField textField2 = new JTextField();
 		textField2.setColumns(15);
 		textField2.setBackground(new Color(240, 230, 80));
 		
-		final JTextArea textArea = new JTextArea();
 		textArea.setColumns(60);
 		textArea.setRows(5);
 		textArea.setBackground(new Color(240, 230, 80));
 		
-		final JTextArea textArea2 = new JTextArea();
 		textArea2.setColumns(60);
 		textArea2.setRows(10);
 		textArea2.setBackground(new Color(240, 230, 80));
+		
+		// adding focus listeners for the text field and text area
+		MouseListener focus = new TextFocusListener();
+		textField.addMouseListener(focus);
+		textArea.addMouseListener(focus);
+		textField.setName("text field");
+		textArea.setName("text area");
+		
+		
 		
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
