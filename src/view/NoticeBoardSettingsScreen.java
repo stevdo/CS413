@@ -10,6 +10,8 @@ public class NoticeBoardSettingsScreen {
 
 	public final static JLabel connectedLabel1 = new JLabel("You are connected to the internet.");
 	public final static JLabel connectedLabel2 = new JLabel("You are not connected to the internet.");
+	public static JComboBox colourList;
+	public static String[] colours = new String[]{"Green", "Red", "Blue", "Orange"};
 	
 	JFrame settings_frame = new JFrame();
 	
@@ -65,6 +67,7 @@ public class NoticeBoardSettingsScreen {
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
 		ActionListener button_listener = new ButtonListener();
+		ActionListener comboListener = new ComboListener();
 		
 		// 3 buttons for the screen
 		JButton home = new JButton(home_icon);
@@ -98,6 +101,12 @@ public class NoticeBoardSettingsScreen {
 		JButton red = new JButton("Red");
 		JButton blue = new JButton("Blue");
 		JButton orange = new JButton("Orange");
+		
+		//Selection of colours
+		colourList = new JComboBox(colours);
+		colourList.setSelectedIndex(0);
+		colourList.setEditable(false);
+		colourList.addActionListener(comboListener);
 		
 		/* will eventually add some more colours, this is
 		 * just a test range of colours currently
@@ -169,7 +178,8 @@ public class NoticeBoardSettingsScreen {
 		settings_panel.add(horizontalBox2, c);
 		settings_panel.add(connectedLabel1, c);
 		settings_panel.add(connectedLabel2, c);
-		settings_panel.add(horiBox);
+		settings_panel.add(horiBox, c);
+		settings_panel.add(colourList);
 		options_panel.add(verticalBox, c);
 		
 		// add to the frame	
