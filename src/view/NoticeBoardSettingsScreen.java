@@ -11,7 +11,7 @@ public class NoticeBoardSettingsScreen {
 	public final static JLabel connectedLabel1 = new JLabel("You are connected to the internet.");
 	public final static JLabel connectedLabel2 = new JLabel("You are not connected to the internet.");
 	public static JComboBox colourList;
-	public static String[] colours = new String[]{"Select...", "Green", "Red", "Blue", "Orange"};
+	public static String[] colours = new String[]{"Select...", "Green", "Red", "Blue", "Orange", "Purple", "Pink"};
 	
 	JFrame settings_frame = new JFrame();
 	

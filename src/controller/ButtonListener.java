@@ -66,8 +66,7 @@ public class ButtonListener implements ActionListener {
 		        	nc.setNoticeboardColour("green");
 		        	mv.updateWindow("settings");
 		        	mv.update();
-		        }
-		        else if (selectedColour == "Red"){
+		        } else if (selectedColour == "Red"){
 		        	nc.setNoticeboardColour("red");
 					mv.updateWindow("settings");
 					mv.update();
@@ -79,6 +78,14 @@ public class ButtonListener implements ActionListener {
 		        	nc.setNoticeboardColour("orange");
 					mv.updateWindow("settings");
 					mv.update();
+		        } else if (selectedColour == "Purple"){
+		        	nc.setNoticeboardColour("purple");
+		        	mv.updateWindow("settings");
+		        	mv.update();
+		        } else if (selectedColour == "Pink"){
+		        	nc.setNoticeboardColour("pink");
+		        	mv.updateWindow("settings");
+		        	mv.update();
 		        }
 			break;
 		case 6:

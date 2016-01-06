@@ -24,6 +24,8 @@ public class NoticeboardColours {
 		colour_from_String.put("blue", new Color(86, 200, 249));
 		colour_from_String.put("orange", new Color(246, 130, 41));
 		colour_from_String.put("green", new Color(64, 220, 79));
+		colour_from_String.put("purple", new Color(196, 43, 235));
+		colour_from_String.put("pink", new Color(255, 6, 164));
 	}
 	
 	/*
