@@ -26,6 +26,8 @@ import controller.ImageCollect;
 public class NoticeBoardWarningsScreen {
 	
 	JFrame warnings_frame = new JFrame();
+	public static JButton windows_on = new JButton("ON");
+	public static JButton windows_off = new JButton("OFF");
 	
 	public NoticeBoardWarningsScreen(JFrame noticeboard_frame) {
 		warnings_frame = noticeboard_frame;
@@ -59,6 +61,7 @@ public class NoticeBoardWarningsScreen {
 		int options_width = (int) (warnings_frame.getWidth() - 
 				(0.88 * warnings_frame.getWidth()));
 		int title_font_size = (int) (0.05 * warnings_frame.getWidth());
+		int warning_font = (int) (0.02 * warnings_frame.getWidth());
 				
 		// Label for the title
 		JLabel title = new JLabel("Warnings");
@@ -68,6 +71,7 @@ public class NoticeBoardWarningsScreen {
 		JPanel warnings_panel = new JPanel();
 		warnings_panel.setSize(warnings_width, warnings_frame.getHeight());
 		warnings_panel.setBackground(colour);
+		warnings_panel.setLayout(new GridBagLayout());
 		
 		JPanel options_panel = new JPanel();
 		options_panel.setPreferredSize(new Dimension(options_width, warnings_frame.getHeight()));
@@ -117,12 +121,48 @@ public class NoticeBoardWarningsScreen {
 		exit.setBounds(200, 200, 150, 100);
 		exit.addActionListener(exitActionListener);
 		
+		
+		// JLabels for the warnings
+		JLabel windows_warning = new JLabel();
+		windows_warning.setText("Windows have been opened");
+		windows_warning.setFont(new Font("Serif", Font.BOLD, warning_font));
+				
+		JLabel washing_warning = new JLabel();
+		washing_warning.setText("Washing has been put outside");
+		washing_warning.setFont(new Font("Serif", Font.BOLD, warning_font));
+				
+		// JButtons for switching on and off
+		JButton washing_on = new JButton("ON");
+		washing_on.setBackground(new Color(204, 0, 0));
+		
+		JButton washing_off = new JButton("OFF");
+		washing_off.setBackground(new Color(51, 255, 51));
+		
+		
+		windows_on.setBackground(new Color(204, 0, 0));		
+		windows_off.setBackground(new Color(51, 255, 51));
+		
+		// action commands
+		windows_on.setActionCommand("9");
+		windows_off.setActionCommand("10");
+		
+		// add action listeners
+		windows_on.addActionListener(button_listener);
+		windows_off.addActionListener(button_listener);
+		
 		// add the components to the panels
-		warnings_panel.add(title);
-		warnings_panel.add(exit);
+		warnings_panel.add(title);		
+		warnings_panel.add(exit, c);
+		warnings_panel.add(windows_warning);
+		warnings_panel.add(windows_on);
+		warnings_panel.add(windows_off, c);
+		warnings_panel.add(washing_warning);
+		warnings_panel.add(washing_on);
+		warnings_panel.add(washing_off, c);
 		options_panel.add(verticalBox, c);
 		
 		// add the panels to the frame
+		
 		warnings_frame.add(options_panel, BorderLayout.LINE_START);
 		warnings_frame.add(warnings_panel, BorderLayout.CENTER);
 		

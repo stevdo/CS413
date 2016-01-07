@@ -40,6 +40,10 @@ public class Main {
 		//Cipher.simpleEncrypt("A B C D E F G");
 		//Cipher.simpleDecrypt("K L M N O P Q");
 		
+		/*Cipher.test();
+		Cipher.messageEncrypt("Get some milk Maw");
+		Cipher.messageDecrypt("Qod cywo wsvu Wkg");*/
+		
 		// after set amount of time?
 		
 		//		m.updateNotes();

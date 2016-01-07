@@ -1,6 +1,7 @@
 package controller;
 
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import javax.swing.JComboBox;
 import model.NoticeboardColours;
 import view.MainView;
 import view.NoticeBoardNotesScreen;
+import view.NoticeBoardWarningsScreen;
 import view.NoticeBoardWriteMessage;
 import view.NoticeBoardSettingsScreen;
 import controller.ComboListener;
@@ -125,6 +127,20 @@ public class ButtonListener implements ActionListener {
         		try {socket.close();}
         		catch (Exception ex) {}
         	}
+			break;
+		case 9:
+			System.out.println("windows on Button clicked");
+			// put code here to set the warning in the model
+			NoticeBoardWarningsScreen.windows_on.setBackground(new Color(51, 255, 51));
+			NoticeBoardWarningsScreen.windows_off.setBackground(new Color(204, 0, 0));
+			mv.update();
+			break;
+		case 10:
+			System.out.println("windows off button clicked");
+			// put code here to unset the warning in the model
+			NoticeBoardWarningsScreen.windows_off.setBackground(new Color(51, 255, 51));
+			NoticeBoardWarningsScreen.windows_on.setBackground(new Color(204, 0, 0));
+			mv.update();
 			break;
 		}		
 	}	
