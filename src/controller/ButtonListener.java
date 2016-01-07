@@ -133,14 +133,27 @@ public class ButtonListener implements ActionListener {
 			// put code here to set the warning in the model
 			NoticeBoardWarningsScreen.windows_on.setBackground(new Color(51, 255, 51));
 			NoticeBoardWarningsScreen.windows_off.setBackground(new Color(204, 0, 0));
-			mv.update();
+			//mv.update();
 			break;
 		case 10:
 			System.out.println("windows off button clicked");
 			// put code here to unset the warning in the model
 			NoticeBoardWarningsScreen.windows_off.setBackground(new Color(51, 255, 51));
 			NoticeBoardWarningsScreen.windows_on.setBackground(new Color(204, 0, 0));
-			mv.update();
+			//mv.update();
+			break;
+		case 11:
+			System.out.println("washing on button clicked");
+			// put code her to set the warning in the model
+			NoticeBoardWarningsScreen.washing_on.setBackground(new Color(51, 255, 51));
+			NoticeBoardWarningsScreen.washing_off.setBackground(new Color(204, 0, 0));
+			//mv.update();
+			break;
+		case 12:
+			System.out.println("washing off button clickd");
+			// put code here to unset the warning in the model
+			NoticeBoardWarningsScreen.washing_off.setBackground(new Color(51, 255, 51));
+			NoticeBoardWarningsScreen.washing_on.setBackground(new Color(204, 0, 0));
 			break;
 		}		
 	}	

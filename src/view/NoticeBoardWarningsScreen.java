@@ -28,6 +28,8 @@ public class NoticeBoardWarningsScreen {
 	JFrame warnings_frame = new JFrame();
 	public static JButton windows_on = new JButton("ON");
 	public static JButton windows_off = new JButton("OFF");
+	public static JButton washing_on = new JButton("ON");
+	public static JButton washing_off = new JButton("OFF");
 	
 	public NoticeBoardWarningsScreen(JFrame noticeboard_frame) {
 		warnings_frame = noticeboard_frame;
@@ -131,24 +133,23 @@ public class NoticeBoardWarningsScreen {
 		washing_warning.setText("Washing has been put outside");
 		washing_warning.setFont(new Font("Serif", Font.BOLD, warning_font));
 				
-		// JButtons for switching on and off
-		JButton washing_on = new JButton("ON");
-		washing_on.setBackground(new Color(204, 0, 0));
-		
-		JButton washing_off = new JButton("OFF");
-		washing_off.setBackground(new Color(51, 255, 51));
-		
-		
+		// JButtons for switching on and off		
+		washing_on.setBackground(new Color(204, 0, 0));		
+		washing_off.setBackground(new Color(51, 255, 51));		
 		windows_on.setBackground(new Color(204, 0, 0));		
 		windows_off.setBackground(new Color(51, 255, 51));
 		
 		// action commands
 		windows_on.setActionCommand("9");
 		windows_off.setActionCommand("10");
+		washing_on.setActionCommand("11");
+		washing_off.setActionCommand("12");
 		
 		// add action listeners
 		windows_on.addActionListener(button_listener);
 		windows_off.addActionListener(button_listener);
+		washing_on.addActionListener(button_listener);
+		washing_off.addActionListener(button_listener);
 		
 		// add the components to the panels
 		warnings_panel.add(title);		
