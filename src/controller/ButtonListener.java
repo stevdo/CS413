@@ -11,6 +11,7 @@ import java.net.Socket;
 import javax.swing.JComboBox;
 
 import model.NoticeboardColours;
+import model.Warnings;
 import view.MainView;
 import view.NoticeBoardNotesScreen;
 import view.NoticeBoardWarningsScreen;
@@ -131,27 +132,28 @@ public class ButtonListener implements ActionListener {
 		case 9:
 			System.out.println("windows on Button clicked");
 			// put code here to set the warning in the model
+			Warnings.toogleWindowWarningOn();
 			NoticeBoardWarningsScreen.windows_on.setBackground(new Color(51, 255, 51));
 			NoticeBoardWarningsScreen.windows_off.setBackground(new Color(204, 0, 0));
-			//mv.update();
 			break;
 		case 10:
 			System.out.println("windows off button clicked");
 			// put code here to unset the warning in the model
+			Warnings.toogleWindowWarningOff();
 			NoticeBoardWarningsScreen.windows_off.setBackground(new Color(51, 255, 51));
 			NoticeBoardWarningsScreen.windows_on.setBackground(new Color(204, 0, 0));
-			//mv.update();
 			break;
 		case 11:
 			System.out.println("washing on button clicked");
 			// put code her to set the warning in the model
+			Warnings.toogleWashingWarningOn();
 			NoticeBoardWarningsScreen.washing_on.setBackground(new Color(51, 255, 51));
 			NoticeBoardWarningsScreen.washing_off.setBackground(new Color(204, 0, 0));
-			//mv.update();
 			break;
 		case 12:
 			System.out.println("washing off button clickd");
 			// put code here to unset the warning in the model
+			Warnings.toogleWashingWarningOff();
 			NoticeBoardWarningsScreen.washing_off.setBackground(new Color(51, 255, 51));
 			NoticeBoardWarningsScreen.washing_on.setBackground(new Color(204, 0, 0));
 			break;
