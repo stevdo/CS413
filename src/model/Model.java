@@ -29,6 +29,9 @@ public class Model {
 		} catch (SQLException e) {
 			System.err.println("SQLException in Model");
 			e.printStackTrace();
+		} catch (NullPointerException npe) {
+			System.err.println("NullPointerException in Model");
+			npe.printStackTrace();
 		}
 	}
 

@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 
 import model.Cipher;
+import model.Model;
 import model.NoticeboardColours;
 import model.NoticeboardImages;
 import view.MainView;
@@ -28,6 +29,9 @@ public class Main {
 		/*NoticeBoardWarningsScreen warnings_view = new NoticeBoardWarningsScreen();
 		warnings_view.init_WarningsScreen();*/
 		
+		 //1 = default deviceId
+		Model m = new Model(1);
+		m.updateNotes();
 		
 		NoticeboardImages.setSideImages();
 		NoticeboardImages.setHomeImages();
