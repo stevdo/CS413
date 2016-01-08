@@ -33,12 +33,12 @@ public class Main {
 		Model m = new Model(1);
 		m.updateNotes();
 		
-		NoticeboardImages.setSideImages();
-		NoticeboardImages.setHomeImages();
-		//NoticeboardColours.setNoticeboardColour("red");
-		MainView mv = new MainView();
-		mv.init_NoticeboardFrame();
-		mv.updateWindow("home");
+//		NoticeboardImages.setSideImages();
+//		NoticeboardImages.setHomeImages();
+//		//NoticeboardColours.setNoticeboardColour("red");
+//		MainView mv = new MainView();
+//		mv.init_NoticeboardFrame();
+//		mv.updateWindow("home");
 		
 		
 		//Cipher.simpleEncrypt("A B C D E F G");
