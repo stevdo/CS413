@@ -19,14 +19,8 @@ public class SQLEnquirer {
 			Connection conn = DriverManager.getConnection("jdbc:mysql://devweb2015.cis.strath.ac.uk/rmb12174",
 					"rmb12174", "bareproo");
 			Statement query = conn.createStatement();
-			ResultSet result = query.executeQuery("SELECT * FROM Notes");
-			// ResultSet result = query
-			// .executeQuery("SELECT * FROM Notes WHERE D_id =" + deviceId);
-			// change U_id in Notes to D_id as makes more sense
-			while (result.next()) {
-				String N_id = result.getString("N_id");
-				System.out.println(N_id);
-			}
+			ResultSet result = query.executeQuery("SELECT * FROM Notes WHERE D_id = " + deviceId);
+			System.out.println("Notes retrieved from database.");
 			return result;
 		} catch (SQLException se) {
 			System.err.println("SQLException in SQLEnquirer; Error connecting to database.");

@@ -15,15 +15,16 @@ public class Model {
 
 	public void updateNotes() {
 		ResultSet result = new SQLEnquirer(deviceId).getRows();
-		System.out.println("Notes retrieved from database.");
+		String user;
 		String messageTitle;
 		String messageBody;
 		try {
 			while (result.next()) {
 				messageTitle = result.getString("title");
 				messageBody = result.getString("text");
+				user = result.getString("user");
 				// change text in Notes to body as makes more sense
-				noteList.add(new Note(messageTitle, messageBody));
+				noteList.add(new Note(messageTitle, messageBody, user));
 				// can also add N_id to Note class if needed
 			}
 		} catch (SQLException e) {
