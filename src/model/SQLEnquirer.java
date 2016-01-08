@@ -13,7 +13,7 @@ public class SQLEnquirer {
 	public SQLEnquirer(int deviceId) {
 		this.deviceId = deviceId;
 	}
-
+ 
 	public ResultSet getRows() {
 		try {
 			Connection conn = DriverManager.getConnection(
