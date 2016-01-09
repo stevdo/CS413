@@ -16,8 +16,8 @@ public class SQLEnquirer {
 
 	public ResultSet getRows() {
 		try {
-			Connection conn = DriverManager.getConnection("jdbc:mysql://devweb2015.cis.strath.ac.uk/rmb12174",
-					"rmb12174", "bareproo");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://cs413noticeboard.co.uk/cs413pro_db",
+					"cs413pro_db", "n0t1c3b04rd");
 			Statement query = conn.createStatement();
 			ResultSet result = query.executeQuery("SELECT * FROM Notes WHERE D_id = " + deviceId);
 			System.out.println("Notes retrieved from database.");
