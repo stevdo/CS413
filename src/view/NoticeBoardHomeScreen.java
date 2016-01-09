@@ -1,9 +1,7 @@
 package view;
 
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GraphicsDevice;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -16,17 +14,19 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controller.ButtonListener;
 import controller.ColourCollect;
 import controller.ExitActionListener;
-import controller.ButtonListener;
 import controller.ImageCollect;
 
 public class NoticeBoardHomeScreen {
 	
 	JFrame main_frame;
+	MainView mv;
 	
-	public NoticeBoardHomeScreen(JFrame noticeboard_frame){
+	public NoticeBoardHomeScreen(JFrame noticeboard_frame, MainView mv){
 		main_frame = noticeboard_frame;
+		this.mv = mv;
 	}
 	
 	public void init_HomeScreen(){
@@ -54,7 +54,7 @@ public class NoticeBoardHomeScreen {
 		//ActionListener's
 		ActionListener exitActionListener;
 		exitActionListener = new ExitActionListener();
-		ActionListener hmb = new ButtonListener();
+		ActionListener hmb = new ButtonListener(mv);
 		
 		// create 3 Buttons for the home_screen
 		JButton notes = new JButton(note_icon);

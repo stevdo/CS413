@@ -4,59 +4,70 @@ import java.awt.GraphicsDevice;
 
 import javax.swing.JFrame;
 
-public class MainView {		
+import model.NoteList;
+
+public class MainView {
 
 	private static JFrame noticeboard_frame = new JFrame();
-	GraphicsDevice device = noticeboard_frame.getGraphicsConfiguration().getDevice();
-	
-	public void updateWindow(String screen){
-		
-		//noticeboard_frame.removeAll();
-		
-		if(screen.equals("notes")){
-			NoticeBoardNotesScreen notes_view = new NoticeBoardNotesScreen(noticeboard_frame);
-			notes_view.init_NotesScreen();			
-		}
-		else if(screen.equals("settings")){
-			NoticeBoardSettingsScreen settings_view = new NoticeBoardSettingsScreen(noticeboard_frame);
+	GraphicsDevice device = noticeboard_frame.getGraphicsConfiguration()
+			.getDevice();
+	private NoteList noteList;
+
+	public void updateWindow(String screen) {
+
+		// noticeboard_frame.removeAll();
+
+		if (screen.equals("notes")) {
+			NoticeBoardNotesScreen notes_view = new NoticeBoardNotesScreen(
+					noticeboard_frame, this);
+			notes_view.setNotes(noteList);
+			notes_view.init_NotesScreen();
+		} else if (screen.equals("settings")) {
+			NoticeBoardSettingsScreen settings_view = new NoticeBoardSettingsScreen(
+					noticeboard_frame, this);
 			settings_view.init_SettingsScreen();
-		}
-		else if(screen.equals("warnings")){
-			NoticeBoardWarningsScreen warning_view = new NoticeBoardWarningsScreen(noticeboard_frame);
+		} else if (screen.equals("warnings")) {
+			NoticeBoardWarningsScreen warning_view = new NoticeBoardWarningsScreen(
+					noticeboard_frame, this);
 			warning_view.init_WarningsScreen();
-		}
-		else if(screen.equals("home")){
-			NoticeBoardHomeScreen home_view = new NoticeBoardHomeScreen(noticeboard_frame);
+		} else if (screen.equals("home")) {
+			NoticeBoardHomeScreen home_view = new NoticeBoardHomeScreen(
+					noticeboard_frame, this);
 			home_view.init_HomeScreen();
-		}
-		else if(screen.equals("Write")){
-			NoticeBoardWriteMessage write_view = new NoticeBoardWriteMessage(noticeboard_frame);
+		} else if (screen.equals("Write")) {
+			NoticeBoardWriteMessage write_view = new NoticeBoardWriteMessage(
+					noticeboard_frame, this);
 			write_view.init_WriteScreen();
-		}
-		else{
+		} else {
 			System.out.println("Error: Screen not recognised.");
 		}
-		
-		//Set program as full screen
+
+		// Set program as full screen
 		device.setFullScreenWindow(noticeboard_frame);
-		
+
 	}
-	
-	public static JFrame getMainFrame(){
+
+	public static JFrame getMainFrame() {
 		return noticeboard_frame;
 	}
-	
-	public void init_NoticeboardFrame(){
-		 //JFrame noticeboard_frame = new JFrame();
-		// may need to add the code to make this frame the device		
+
+	public void init_NoticeboardFrame() {
+		// JFrame noticeboard_frame = new JFrame();
+		// may need to add the code to make this frame the device
 		noticeboard_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		noticeboard_frame.setUndecorated(true);
-		
+
 	}
-	
-	public void update(){
+
+	public void setNotes(NoteList noteList) {
+		this.noteList = noteList;
+		System.out.println("View; Notes retrieved.");
+	}
+
+	public void update() {
 		noticeboard_frame.validate();
 		noticeboard_frame.repaint();
 		noticeboard_frame.setVisible(true);
 	}
+
 }

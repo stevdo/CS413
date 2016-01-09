@@ -17,4 +17,8 @@ public class NoteList {
 	public Note get(int i) {
 		return noteList.get(i);
 	}
+	
+	public int size() {
+		return noteList.size();
+	}
 }

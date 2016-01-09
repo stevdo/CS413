@@ -8,23 +8,21 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
-import javax.swing.JComboBox;
-
 import model.NoticeboardColours;
 import model.Warnings;
 import view.MainView;
-import view.NoticeBoardNotesScreen;
-import view.NoticeBoardWarningsScreen;
-import view.NoticeBoardWriteMessage;
 import view.NoticeBoardSettingsScreen;
-import controller.ComboListener;
+import view.NoticeBoardWarningsScreen;
 
 
 public class ButtonListener implements ActionListener {
 
+	private MainView mv;
+	public ButtonListener(MainView mv) {
+		this.mv = mv;
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		MainView mv = new MainView();
 		NoticeboardColours nc = new NoticeboardColours();
 		int buttonPress = Integer.parseInt(e.getActionCommand());
 		switch(buttonPress){

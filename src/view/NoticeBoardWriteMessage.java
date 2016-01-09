@@ -9,9 +9,7 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusListener;
 import java.awt.event.MouseListener;
-import java.util.EventListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -26,20 +24,22 @@ import javax.swing.JTextField;
 import controller.ButtonListener;
 import controller.ColourCollect;
 import controller.ExitActionListener;
-import controller.KeyboardListener;
 import controller.ImageCollect;
+import controller.KeyboardListener;
 import controller.TextFocusListener;
 
 public class NoticeBoardWriteMessage {
 
-	JFrame write_frame = new JFrame();
+	private JFrame write_frame = new JFrame();
+	private MainView mv;
 	public final static JTextField textField = new JTextField();
 	public final static JTextField textField2 = new JTextField();
 	public final static JTextArea textArea = new JTextArea();
 	public final static JTextArea textArea2 = new JTextArea();
 
-	public NoticeBoardWriteMessage(JFrame notes_frame) {
+	public NoticeBoardWriteMessage(JFrame notes_frame, MainView mv) {
 		write_frame = notes_frame;
+		this.mv = mv;
 	}
 
 	public void init_WriteScreen() {
@@ -121,7 +121,7 @@ public class NoticeBoardWriteMessage {
 		
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
-		ActionListener button_listener = new ButtonListener();
+		ActionListener button_listener = new ButtonListener(mv);
 		ActionListener keyboard_listener = new KeyboardListener();
 
 		// Buttons

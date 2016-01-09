@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GraphicsDevice;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -18,20 +17,45 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.Note;
+import model.NoteList;
+import controller.ButtonListener;
 import controller.ColourCollect;
 import controller.ExitActionListener;
-import controller.ButtonListener;
 import controller.ImageCollect;
 
 public class NoticeBoardNotesScreen {
 	
-	JFrame notes_frame;
+	private JFrame notes_frame;
+	private NoteList noteList;
+	private MainView mv;
 
-	public NoticeBoardNotesScreen(JFrame noticeboard_frame){
+	public NoticeBoardNotesScreen(JFrame noticeboard_frame, MainView mv){
 		notes_frame = noticeboard_frame;
+		this.mv = mv;
+	}
+	
+	public void setNotes(NoteList noteList) {
+		this.noteList = noteList;
+		System.out.println("Notes Screen; Notes retrieved.");
 	}
 	
 	public void init_NotesScreen(){
+		
+		String messageTitle;
+		String messageBody;
+		String user;
+		for (int i = 0; i < this.noteList.size(); i++) {
+			Note n = this.noteList.get(i);
+			messageTitle = n.getTitle();
+			messageBody = n.getBody();
+			user = n.getUser();
+			// display on screen rather than console
+			System.out.println("list index: " + i);
+			System.out.println(messageTitle);
+			System.out.println(messageBody);
+			System.out.println(user);
+		}
 		
 		notes_frame.getContentPane().removeAll();
 		
@@ -76,7 +100,7 @@ public class NoticeBoardNotesScreen {
 		
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
-		ActionListener button_listener = new ButtonListener();
+		ActionListener button_listener = new ButtonListener(mv);
 		
 		// create 3 Buttons for the notes screen
 		JButton home = new JButton(home_icon);

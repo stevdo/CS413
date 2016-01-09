@@ -1,16 +1,8 @@
 package controller;
 
-import java.io.IOException;
-
-import model.Cipher;
 import model.Model;
-import model.NoticeboardColours;
 import model.NoticeboardImages;
 import view.MainView;
-import view.NoticeBoardHomeScreen;
-import view.NoticeBoardNotesScreen;
-import view.NoticeBoardSettingsScreen;
-import view.NoticeBoardWarningsScreen;
 
 public class Main {
 	public static void main(String[] args) {
@@ -33,12 +25,14 @@ public class Main {
 		Model m = new Model(1);
 		m.updateNotes();
 		
-//		NoticeboardImages.setSideImages();
-//		NoticeboardImages.setHomeImages();
-//		//NoticeboardColours.setNoticeboardColour("red");
-//		MainView mv = new MainView();
-//		mv.init_NoticeboardFrame();
-//		mv.updateWindow("home");
+		
+		NoticeboardImages.setSideImages();
+		NoticeboardImages.setHomeImages();
+		//NoticeboardColours.setNoticeboardColour("red");
+		MainView mv = new MainView();
+		mv.setNotes(m.getNotes());
+		mv.init_NoticeboardFrame();
+		mv.updateWindow("home");
 		
 		
 		//Cipher.simpleEncrypt("A B C D E F G");

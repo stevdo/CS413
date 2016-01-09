@@ -1,10 +1,28 @@
 package view;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.net.*;
-import javax.swing.*;
-import controller.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import controller.ButtonListener;
+import controller.ColourCollect;
+import controller.ComboListener;
+import controller.ExitActionListener;
+import controller.ImageCollect;
 
 public class NoticeBoardSettingsScreen {
 
@@ -13,10 +31,12 @@ public class NoticeBoardSettingsScreen {
 	public static JComboBox colourList;
 	public static String[] colours = new String[]{"Select...", "Green", "Red", "Blue", "Orange", "Purple", "Pink"};
 	
-	JFrame settings_frame = new JFrame();
+	private JFrame settings_frame = new JFrame();
+	private MainView mv;
 	
-	public NoticeBoardSettingsScreen(JFrame noticeboard_frame) {
+	public NoticeBoardSettingsScreen(JFrame noticeboard_frame, MainView mv) {
 		settings_frame = noticeboard_frame;
+		this.mv = mv;
 	}
 
 	public void init_SettingsScreen(){
@@ -66,7 +86,7 @@ public class NoticeBoardSettingsScreen {
 		
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
-		ActionListener button_listener = new ButtonListener();
+		ActionListener button_listener = new ButtonListener(mv);
 		ActionListener comboListener = new ComboListener();
 		
 		// 3 buttons for the screen

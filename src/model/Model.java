@@ -10,6 +10,7 @@ public class Model {
 
 	public Model(int deviceId) {
 		this.deviceId = deviceId;
+		noteList = new NoteList();
 		System.out.println("Model initialised.");
 	}
 
@@ -23,17 +24,17 @@ public class Model {
 				messageTitle = result.getString("title");
 				messageBody = result.getString("text");
 				user = result.getString("user");
-				// change text in Notes to body as makes more sense
 				noteList.add(new Note(messageTitle, messageBody, user));
-				// can also add N_id to Note class if needed
 			}
+			System.out.println("Model; Notes retrieved");
 		} catch (SQLException e) {
-			System.err.println("SQLException in Model");
+			System.err
+					.println("SQLException in Model; Error reading from SQL result");
 			e.printStackTrace();
-			
-		}
-		 catch (NullPointerException npe) {
-			 System.out.println("Note retrieval finished");
+		} catch (NullPointerException npe) {
+			System.err
+					.println("NullPointerException in Model; Error reading from SQL result");
+			npe.printStackTrace();
 		}
 	}
 

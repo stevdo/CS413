@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GraphicsDevice;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -25,14 +24,16 @@ import controller.ImageCollect;
 
 public class NoticeBoardWarningsScreen {
 	
-	JFrame warnings_frame = new JFrame();
+	private JFrame warnings_frame = new JFrame();
+	private MainView mv;
 	public static JButton windows_on = new JButton("ON");
 	public static JButton windows_off = new JButton("OFF");
 	public static JButton washing_on = new JButton("ON");
 	public static JButton washing_off = new JButton("OFF");
 	
-	public NoticeBoardWarningsScreen(JFrame noticeboard_frame) {
+	public NoticeBoardWarningsScreen(JFrame noticeboard_frame, MainView mv) {
 		warnings_frame = noticeboard_frame;
+		this.mv = mv;
 	}
 
 	public void init_WarningsScreen(){
@@ -86,7 +87,7 @@ public class NoticeBoardWarningsScreen {
 		
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
-		ActionListener button_listener = new ButtonListener();
+		ActionListener button_listener = new ButtonListener(mv);
 		
 		// 3 buttons for the screen
 		JButton home = new JButton(home_icon);
