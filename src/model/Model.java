@@ -32,10 +32,9 @@ public class Model {
 			e.printStackTrace();
 			
 		}
-//		} catch (NullPointerException npe) {
-//			System.err.println("NullPointerException in Model");
-//			npe.printStackTrace();
-//		}
+		 catch (NullPointerException npe) {
+			 System.out.println("Note retrieval finished");
+		}
 	}
 
 	public NoteList getNotes() {
