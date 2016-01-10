@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.event.ActionListener;
+
 import model.Model;
 import model.NoticeboardImages;
 import view.MainView;
@@ -25,11 +27,20 @@ public class Main {
 		Model m = new Model(1);
 		m.updateNotes();
 		
-		
 		NoticeboardImages.setSideImages();
 		NoticeboardImages.setHomeImages();
 		//NoticeboardColours.setNoticeboardColour("red");
+		
 		MainView mv = new MainView();
+		
+		//construct listeners
+		ActionListener button_listener = new ButtonListener(mv, m);
+		ActionListener keyboard_listener = new KeyboardListener(m);
+		
+		//add listeners to view
+		mv.addButtonListener(button_listener);
+		mv.addKeyboardListener(keyboard_listener);
+		
 		mv.setNotes(m.getNotes());
 		mv.init_NoticeboardFrame();
 		mv.updateWindow("home");

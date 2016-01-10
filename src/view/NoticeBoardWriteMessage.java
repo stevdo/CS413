@@ -21,27 +21,35 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import controller.ButtonListener;
 import controller.ColourCollect;
 import controller.ExitActionListener;
 import controller.ImageCollect;
-import controller.KeyboardListener;
 import controller.TextFocusListener;
 
 public class NoticeBoardWriteMessage {
 
 	private JFrame write_frame = new JFrame();
-	private MainView mv;
+	private ActionListener button_listener;
+	private ActionListener keyboard_listener;
 	public final static JTextField textField = new JTextField();
 	public final static JTextField textField2 = new JTextField();
 	public final static JTextArea textArea = new JTextArea();
 	public final static JTextArea textArea2 = new JTextArea();
 
-	public NoticeBoardWriteMessage(JFrame notes_frame, MainView mv) {
+	public NoticeBoardWriteMessage(JFrame notes_frame) {
 		write_frame = notes_frame;
-		this.mv = mv;
 	}
 
+	public void addButtonListener(ActionListener button_listener) {
+		this.button_listener = button_listener;
+		System.out.println("Write screen; button listener added");
+	}
+	
+	public void addKeyboardListener(ActionListener keyboard_listener) {
+		this.keyboard_listener = keyboard_listener;
+		System.out.println("Write screen; keyboard listener added");
+	}
+	
 	public void init_WriteScreen() {
 		
 		write_frame.getContentPane().removeAll();
@@ -121,8 +129,8 @@ public class NoticeBoardWriteMessage {
 		
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
-		ActionListener button_listener = new ButtonListener(mv);
-		ActionListener keyboard_listener = new KeyboardListener();
+//		ActionListener button_listener = new ButtonListener(mv);
+//		ActionListener keyboard_listener = new KeyboardListener();
 
 		// Buttons
 		JButton home = new JButton(home_icon);
@@ -163,10 +171,11 @@ public class NoticeBoardWriteMessage {
             }
 		});
 
-		// set the action commands for the buttons
 		settings.setActionCommand("1");
 		warnings.setActionCommand("2");
 		home.setActionCommand("3");
+		add_note.setActionCommand("13");
+		add_note2.setActionCommand("13");
 
 		// Create container for buttons
 		Box verticalBox = Box.createVerticalBox();
@@ -176,17 +185,23 @@ public class NoticeBoardWriteMessage {
 		verticalBox.add(Box.createRigidArea(new Dimension(0, 80))); // Adds space between buttons
 		verticalBox.add(warnings);
 
+		add_note.addActionListener(button_listener);
+		add_note2.addActionListener(button_listener);
+		
 		// temporary
 		home.setBorder(BorderFactory.createEmptyBorder());
 		home.setContentAreaFilled(false);
+//		home.addActionListener(button_listener);
 		home.addActionListener(button_listener);
-
+		
 		settings.setBorder(BorderFactory.createEmptyBorder());
 		settings.setContentAreaFilled(false);
+//		settings.addActionListener(button_listener);
 		settings.addActionListener(button_listener);
 
 		warnings.setBorder(BorderFactory.createEmptyBorder());
 		warnings.setContentAreaFilled(false);
+//		warnings.addActionListener(button_listener);
 		warnings.addActionListener(button_listener);
 
 		// temporary exit button

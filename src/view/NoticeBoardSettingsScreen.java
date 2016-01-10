@@ -32,11 +32,15 @@ public class NoticeBoardSettingsScreen {
 	public static String[] colours = new String[]{"Select...", "Green", "Red", "Blue", "Orange", "Purple", "Pink"};
 	
 	private JFrame settings_frame = new JFrame();
-	private MainView mv;
+	private ActionListener button_listener;
 	
-	public NoticeBoardSettingsScreen(JFrame noticeboard_frame, MainView mv) {
+	public NoticeBoardSettingsScreen(JFrame noticeboard_frame) {
 		settings_frame = noticeboard_frame;
-		this.mv = mv;
+	}
+	
+	public void addButtonListener(ActionListener button_listener) {
+		this.button_listener = button_listener;
+		System.out.println("Settings screen; listener added");
 	}
 
 	public void init_SettingsScreen(){
@@ -86,7 +90,7 @@ public class NoticeBoardSettingsScreen {
 		
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
-		ActionListener button_listener = new ButtonListener(mv);
+//		ActionListener button_listener = new ButtonListener(mv);
 		ActionListener comboListener = new ComboListener();
 		
 		// 3 buttons for the screen
@@ -97,12 +101,15 @@ public class NoticeBoardSettingsScreen {
 		//Reboot button
 		JButton reboot = new JButton("Reboot");
 		reboot.setActionCommand("7");
+//		reboot.addActionListener(button_listener);
 		reboot.addActionListener(button_listener);
 		
 		//Shut down button
 		JButton shutdown = new JButton("Shut Down");
 		shutdown.setActionCommand("6");
+//		shutdown.addActionListener(button_listener);
 		shutdown.addActionListener(button_listener);
+		
 		
 		home.setActionCommand("3");
 		notes.setActionCommand("0");
@@ -114,6 +121,7 @@ public class NoticeBoardSettingsScreen {
 		
 		JLabel pressLabel = new JLabel("Press button to test connection to internet:");
 		JButton testConnection = new JButton("Test connection");
+//		testConnection.addActionListener(button_listener);
 		testConnection.addActionListener(button_listener);
 		testConnection.setActionCommand("8");
 		
@@ -156,16 +164,20 @@ public class NoticeBoardSettingsScreen {
 		
 		home.setBorder(BorderFactory.createEmptyBorder());
 		home.setContentAreaFilled(false);
+//		home.addActionListener(button_listener);
 		home.addActionListener(button_listener);
 		
 		notes.setBorder(BorderFactory.createEmptyBorder());
 		notes.setContentAreaFilled(false);
+//		notes.addActionListener(button_listener);
 		notes.addActionListener(button_listener);
 		
 		warnings.setBorder(BorderFactory.createEmptyBorder());
 		warnings.setContentAreaFilled(false);
+//		warnings.addActionListener(button_listener);
 		warnings.addActionListener(button_listener);
 		
+//		chooseColour.addActionListener(button_listener);
 		chooseColour.addActionListener(button_listener);
 		
 		//temporary exit button

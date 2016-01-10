@@ -14,21 +14,23 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import controller.ButtonListener;
 import controller.ColourCollect;
 import controller.ExitActionListener;
 import controller.ImageCollect;
 
 public class NoticeBoardHomeScreen {
 	
-	JFrame main_frame;
-	MainView mv;
+	private JFrame main_frame;
+	private ActionListener button_listener;
 	
-	public NoticeBoardHomeScreen(JFrame noticeboard_frame, MainView mv){
+	public NoticeBoardHomeScreen(JFrame noticeboard_frame){
 		main_frame = noticeboard_frame;
-		this.mv = mv;
 	}
 	
+	public void addButtonListener(ActionListener button_listener) {
+		this.button_listener = button_listener;
+		System.out.println("Home screen; listener added");
+	}
 	public void init_HomeScreen(){
 			
 		main_frame.getContentPane().removeAll();
@@ -54,7 +56,7 @@ public class NoticeBoardHomeScreen {
 		//ActionListener's
 		ActionListener exitActionListener;
 		exitActionListener = new ExitActionListener();
-		ActionListener hmb = new ButtonListener(mv);
+//		ActionListener hmb = new ButtonListener(mv);
 		
 		// create 3 Buttons for the home_screen
 		JButton notes = new JButton(note_icon);
@@ -68,15 +70,18 @@ public class NoticeBoardHomeScreen {
 		// size and location of the buttons
 		notes.setBorder(BorderFactory.createEmptyBorder());
 		notes.setContentAreaFilled(false);
-		notes.addActionListener(hmb);
+//		notes.addActionListener(hmb);
+		notes.addActionListener(button_listener);
 						
 		settings.setBorder(BorderFactory.createEmptyBorder());
 		settings.setContentAreaFilled(false);
-		settings.addActionListener(hmb);
+//		settings.addActionListener(hmb);
+		settings.addActionListener(button_listener);
 		
 		warnings.setBorder(BorderFactory.createEmptyBorder());
 		warnings.setContentAreaFilled(false);
-		warnings.addActionListener(hmb);
+//		warnings.addActionListener(hmb);
+		warnings.addActionListener(button_listener);
 		
 		//Exit system button for test purposes		
 		JButton exit = new JButton("Exit System");

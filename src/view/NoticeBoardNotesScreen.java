@@ -19,7 +19,6 @@ import javax.swing.JPanel;
 
 import model.Note;
 import model.NoteList;
-import controller.ButtonListener;
 import controller.ColourCollect;
 import controller.ExitActionListener;
 import controller.ImageCollect;
@@ -28,11 +27,15 @@ public class NoticeBoardNotesScreen {
 	
 	private JFrame notes_frame;
 	private NoteList noteList;
-	private MainView mv;
+	private ActionListener button_listener;
 
-	public NoticeBoardNotesScreen(JFrame noticeboard_frame, MainView mv){
+	public NoticeBoardNotesScreen(JFrame noticeboard_frame){
 		notes_frame = noticeboard_frame;
-		this.mv = mv;
+	}
+	
+	public void addButtonListener(ActionListener button_listener) {
+		this.button_listener = button_listener;
+		System.out.println("Notes screen; listener added");
 	}
 	
 	public void setNotes(NoteList noteList) {
@@ -51,10 +54,10 @@ public class NoticeBoardNotesScreen {
 			messageBody = n.getBody();
 			user = n.getUser();
 			// display on screen rather than console
-			System.out.println("list index: " + i);
-			System.out.println(messageTitle);
-			System.out.println(messageBody);
-			System.out.println(user);
+//			System.out.println("list index: " + i);
+//			System.out.println(messageTitle);
+//			System.out.println(messageBody);
+//			System.out.println(user);
 		}
 		
 		notes_frame.getContentPane().removeAll();
@@ -100,7 +103,7 @@ public class NoticeBoardNotesScreen {
 		
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
-		ActionListener button_listener = new ButtonListener(mv);
+//		ActionListener button_listener = new ButtonListener(mv);
 		
 		// create 3 Buttons for the notes screen
 		JButton home = new JButton(home_icon);
@@ -125,14 +128,17 @@ public class NoticeBoardNotesScreen {
 		// temporary
 		home.setBorder(BorderFactory.createEmptyBorder());
 		home.setContentAreaFilled(false);
+//		home.addActionListener(button_listener);
 		home.addActionListener(button_listener);
 		
 		settings.setBorder(BorderFactory.createEmptyBorder());
 		settings.setContentAreaFilled(false);
+//		settings.addActionListener(button_listener);
 		settings.addActionListener(button_listener);
 		
 		warnings.setBorder(BorderFactory.createEmptyBorder());
 		warnings.setContentAreaFilled(false);
+//		warnings.addActionListener(button_listener);
 		warnings.addActionListener(button_listener);
 		
 		// temporary close button
@@ -149,6 +155,7 @@ public class NoticeBoardNotesScreen {
 		write.setFont(new Font("Serif", Font.BOLD, (int)(0.02 * notes_frame.getWidth())));
 		write.setBackground(new Color(240, 230, 80));
 		write.setActionCommand("4");
+//		write.addActionListener(button_listener);
 		write.addActionListener(button_listener);
 		
 		// add components to the panel
