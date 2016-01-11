@@ -175,12 +175,6 @@ public class NoticeBoardNotesScreen {
 		previous_notes.addActionListener(button_listener);
 		previous_notes.setActionCommand("15");
 		
-		JTextArea note_area = new JTextArea();
-		note_area.setEditable(false);
-		System.out.println("current index is: " +current_index);
-		Note n = this.noteList.get(current_index);
-		note_area.setText(n.getTitle() + "\n\n" + n.getBody() + "\n\n" + n.getUser());
-		
 		Box horizontalBox = Box.createHorizontalBox();
 		horizontalBox.add(previous_notes);
 		horizontalBox.add(Box.createRigidArea(new Dimension(20,0))); //Adds space between buttons
@@ -188,10 +182,32 @@ public class NoticeBoardNotesScreen {
 		horizontalBox.add(Box.createRigidArea(new Dimension(20,0))); //Adds space between buttons
 		horizontalBox.add(next_notes);
 		
+		Box horizBox2 = Box.createHorizontalBox();
+		
+		for(int i = 0; i < 3; i++) {
+			if(current_index-i >= 0){
+			JTextArea note_area = new JTextArea();
+			note_area.setBackground(new Color(240, 230, 80));
+			note_area.setEditable(false);
+			note_area.setPreferredSize(new Dimension((int)(notes_frame.getWidth() * 0.2), (int)(notes_frame.getHeight() * 0.4)));
+			System.out.println("current index is: " +(current_index-i));
+			Note n = this.noteList.get(current_index-i);
+			note_area.setText(n.getTitle() + "\n\n" + n.getBody() + "\n\n" + n.getUser());
+			horizBox2.add(note_area);
+			if(i < 2){
+				horizBox2.add(Box.createRigidArea(new Dimension(30,0))); //Adds space between buttons
+			}
+			}
+			else {
+				System.out.println("not adding the note bitch");
+			}
+		}
+		
+		
 		// add components to the panel
 		notes_panel.add(title, c);
 		notes_panel.add(exit, c);
-		notes_panel.add(note_area, c);
+		notes_panel.add(horizBox2, c);
 		notes_panel.add(horizontalBox);
 		options_panel.add(verticalBox, c);
 		

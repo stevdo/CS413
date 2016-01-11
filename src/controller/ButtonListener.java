@@ -176,19 +176,23 @@ public class ButtonListener implements ActionListener {
 		case 13:
 			System.out.println("Add note button pressed");
 			m.postNote();
+			m.updateNotes();
+			mv.setNotes(m.getNotes());
+			mv.updateWindow("notes");
+			mv.update();
 			break;
 		case 14:
-			if(NoticeBoardNotesScreen.current_index > 0) {
+			if((NoticeBoardNotesScreen.current_index-3) >= 0) {
 				System.out.println("happenig");
-				NoticeBoardNotesScreen.current_index -= 1;
+				NoticeBoardNotesScreen.current_index -= 3;
 				mv.updateWindow("notes");
 				mv.update();
 			}
 			break;
 		case 15:
-			if(NoticeBoardNotesScreen.current_index < NoticeBoardNotesScreen.max_index) {
+			if((NoticeBoardNotesScreen.current_index + 3) <= NoticeBoardNotesScreen.max_index) {
 				System.out.println("happeniNg");
-				NoticeBoardNotesScreen.current_index += 1;
+				NoticeBoardNotesScreen.current_index += 3;
 				mv.updateWindow("notes");
 				mv.update();
 			}
