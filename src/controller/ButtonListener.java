@@ -173,7 +173,6 @@ public class ButtonListener implements ActionListener {
 			NoticeBoardNotesScreen.updateCurrentIndex(-1);
 			mv.setIndex(m.getNotes().size() - 1);
 			mv.setNotes(m.getNotes());
-
 			mv.updateWindow("notes");
 			mv.update();
 			break;
@@ -182,7 +181,7 @@ public class ButtonListener implements ActionListener {
 				System.out.println("happenig");
 				System.out.println("Max index of view: " + NoticeBoardNotesScreen.max_index);
 				m.setIndex((m.getIndex()) - 3);
-				NoticeBoardNotesScreen.updateCurrentIndex(m.getIndex() - 3);
+				NoticeBoardNotesScreen.updateCurrentIndex(m.getIndex());
 				mv.updateWindow("notes");
 				mv.update();
 			}
@@ -191,7 +190,7 @@ public class ButtonListener implements ActionListener {
 			if ((NoticeBoardNotesScreen.current_index + 3) <= NoticeBoardNotesScreen.max_index) {
 				System.out.println("happeniNg");
 				m.setIndex((m.getIndex()) + 3);
-				NoticeBoardNotesScreen.updateCurrentIndex(m.getIndex() + 3);
+				NoticeBoardNotesScreen.updateCurrentIndex(m.getIndex());
 				mv.updateWindow("notes");
 				mv.update();
 			}

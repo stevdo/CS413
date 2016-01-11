@@ -40,6 +40,7 @@ public class Model {
 					.println("NullPointerException in Model; Error reading from SQL result");
 			npe.printStackTrace();
 		}
+		System.out.println("Note List size in model: " + noteList.size());
 	}
 
 	public void postNote() {

@@ -21,7 +21,7 @@ public class Main {
 
 	private static int deviceId = 1;
 	private static int devicePin = 1;
-	private static String filePath = "/Users/adam/Desktop/Device/pin.txt";
+	private static String filePath = "/Users/Chris/Desktop/Device/pin.txt";
 
 	// //
 
@@ -96,7 +96,8 @@ public class Main {
 		// add listeners to view
 		mv.addButtonListener(button_listener);
 		mv.addKeyboardListener(keyboard_listener);
-
+		m.setIndex();
+		mv.setIndex(m.getNotes().size()-1);
 		mv.setNotes(m.getNotes());
 		mv.init_NoticeboardFrame();
 		mv.updateWindow("home");

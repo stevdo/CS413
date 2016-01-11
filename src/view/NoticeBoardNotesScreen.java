@@ -191,7 +191,7 @@ public class NoticeBoardNotesScreen {
 		horizontalBox.add(next_notes);
 		
 		Box horizBox2 = Box.createHorizontalBox();
-		
+		System.out.println("Current Index before adding notes: " + current_index);
 		for(int i = 0; i < 3; i++) {
 			if(current_index-i >= 0){
 			JTextArea note_area = new JTextArea();
@@ -207,7 +207,7 @@ public class NoticeBoardNotesScreen {
 			}
 			}
 			else {
-				System.out.println("not adding the note bitch");
+				System.out.println("not adding the note");
 			}
 		}
 		
