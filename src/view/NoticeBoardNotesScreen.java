@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import model.Note;
 import model.NoteList;
@@ -53,7 +54,7 @@ public class NoticeBoardNotesScreen {
 			messageTitle = n.getTitle();
 			messageBody = n.getBody();
 			user = n.getUser();
-			// display on screen rather than console
+			//display on screen rather than console
 //			System.out.println("list index: " + i);
 //			System.out.println(messageTitle);
 //			System.out.println(messageBody);
@@ -164,6 +165,14 @@ public class NoticeBoardNotesScreen {
 		notes_panel.add(write);
 		options_panel.add(verticalBox, c);
 		
+		
+		for(int i = 0; i < noteList.size(); i++){
+			Note n = this.noteList.get(i);
+			JTextArea note_area = new JTextArea();
+			note_area.setText(n.getTitle() + "\n\n" + n.getBody() + "\n\n" + n.getUser());
+			notes_panel.add(note_area);			
+		}
+		
 		// add the panels to the frame
 		notes_frame.add(options_panel, BorderLayout.LINE_START);
 		notes_frame.add(notes_panel);	
@@ -171,7 +180,8 @@ public class NoticeBoardNotesScreen {
 		// Set program as full screen
 		//device.setFullScreenWindow(notes_frame);
 		
-		//notes_frame.validate();			
+		//notes_frame.validate();	
+		
 	}
 	
 }
