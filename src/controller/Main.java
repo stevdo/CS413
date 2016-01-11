@@ -7,6 +7,10 @@ import model.NoticeboardImages;
 import view.MainView;
 
 public class Main {
+	
+	private static int deviceId = 1;
+	private int devicePin;
+	
 	public static void main(String[] args) {
 		
 		// open the system on the HomeScreen page
@@ -23,8 +27,17 @@ public class Main {
 		/*NoticeBoardWarningsScreen warnings_view = new NoticeBoardWarningsScreen();
 		warnings_view.init_WarningsScreen();*/
 		
+//		if (!fileExists) {
+//			createFile();
+//		}
+		
+//		if (fileExists) {
+//			pin = getId(file);
+//			deviceId = new IdRetriever(file).retrieveId();
+//		}
+		
 		 //1 = default deviceId
-		Model m = new Model(1);
+		Model m = new Model(deviceId);
 		m.updateNotes();
 		
 		NoticeboardImages.setSideImages();

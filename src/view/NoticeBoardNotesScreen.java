@@ -29,6 +29,8 @@ public class NoticeBoardNotesScreen {
 	private JFrame notes_frame;
 	private NoteList noteList;
 	private ActionListener button_listener;
+	public static int current_index = -1 ;
+	public static int max_index = -1;
 
 	public NoticeBoardNotesScreen(JFrame noticeboard_frame){
 		notes_frame = noticeboard_frame;
@@ -49,6 +51,12 @@ public class NoticeBoardNotesScreen {
 		String messageTitle;
 		String messageBody;
 		String user;
+		if(current_index < 0){
+			current_index = this.noteList.size() - 1;
+		}
+		if(max_index < 0){
+			max_index = this.noteList.size() - 1;
+		}
 		for (int i = 0; i < this.noteList.size(); i++) {
 			Note n = this.noteList.get(i);
 			messageTitle = n.getTitle();
@@ -91,6 +99,7 @@ public class NoticeBoardNotesScreen {
 		JPanel notes_panel = new JPanel();		
 		notes_panel.setSize(settings_width, notes_frame.getHeight());
 		notes_panel.setBackground(colour);
+		notes_panel.setLayout(new GridBagLayout());
 		
 		// options panel allows user to navigate between screens
 		JPanel options_panel = new JPanel();
@@ -152,26 +161,39 @@ public class NoticeBoardNotesScreen {
 		 * on the database. Need to include it... if it works
 		 */
 		JButton write = new JButton("Write Message");
-		write.setPreferredSize(new Dimension(300, 100));
-		write.setFont(new Font("Serif", Font.BOLD, (int)(0.02 * notes_frame.getWidth())));
-		write.setBackground(new Color(240, 230, 80));
+//		write.setPreferredSize(new Dimension(300, 100));
+//		write.setFont(new Font("Serif", Font.BOLD, (int)(0.02 * notes_frame.getWidth())));
+//		write.setBackground(new Color(240, 230, 80));
 		write.setActionCommand("4");
-//		write.addActionListener(button_listener);
 		write.addActionListener(button_listener);
 		
+		JButton next_notes = new JButton("Next Note");
+		next_notes.addActionListener(button_listener);
+		next_notes.setActionCommand("14");
+		
+		JButton previous_notes = new JButton("Previous Note");
+		previous_notes.addActionListener(button_listener);
+		previous_notes.setActionCommand("15");
+		
+		JTextArea note_area = new JTextArea();
+		note_area.setEditable(false);
+		System.out.println("current index is: " +current_index);
+		Note n = this.noteList.get(current_index);
+		note_area.setText(n.getTitle() + "\n\n" + n.getBody() + "\n\n" + n.getUser());
+		
+		Box horizontalBox = Box.createHorizontalBox();
+		horizontalBox.add(previous_notes);
+		horizontalBox.add(Box.createRigidArea(new Dimension(20,0))); //Adds space between buttons
+		horizontalBox.add(write);
+		horizontalBox.add(Box.createRigidArea(new Dimension(20,0))); //Adds space between buttons
+		horizontalBox.add(next_notes);
+		
 		// add components to the panel
-		notes_panel.add(title);
-		notes_panel.add(exit);
-		notes_panel.add(write);
+		notes_panel.add(title, c);
+		notes_panel.add(exit, c);
+		notes_panel.add(note_area, c);
+		notes_panel.add(horizontalBox);
 		options_panel.add(verticalBox, c);
-		
-		
-		for(int i = 0; i < noteList.size(); i++){
-			Note n = this.noteList.get(i);
-			JTextArea note_area = new JTextArea();
-			note_area.setText(n.getTitle() + "\n\n" + n.getBody() + "\n\n" + n.getUser());
-			notes_panel.add(note_area);			
-		}
 		
 		// add the panels to the frame
 		notes_frame.add(options_panel, BorderLayout.LINE_START);
