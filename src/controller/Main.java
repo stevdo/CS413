@@ -2,7 +2,6 @@ package controller;
 
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,17 +9,21 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 
+import model.DeviceRegistrar;
+import model.FileWriterToo;
 import model.IDRetriever;
 import model.Model;
 import model.NoticeboardImages;
+import model.PinGenerator;
 import view.MainView;
 
 public class Main {
 
 	private static int deviceId = 1;
 	private static int devicePin = 1;
-//	private static File file = new File("/Users/adam/Documents/FolioTracker");
-	final File file = new File("/Users/adam/Documents/FolioTracker");
+	private static String filePath = "/Users/adam/Desktop/Device/pin.txt";
+
+	// //
 
 	public static void main(String[] args) {
 
@@ -47,20 +50,34 @@ public class Main {
 		 */
 
 		boolean fileExists = false;
-		
-//		if (file there) {
-//			fileExists = true;
-//		}
-		
-		if (!fileExists) {
-			createFile();
+
+		try {
+			InputStream fis = new FileInputStream(filePath);
+			fis.close();
 			fileExists = true;
+			System.out.println("Main; file present");
+		} catch (FileNotFoundException fnfe) {
+			System.out.println("FileNotFoundException in Main; line 57");
+		} catch (IOException ioe) {
+			System.out.println("IOException in Main; line 59");
+			ioe.printStackTrace();
 		}
 
-		 if (fileExists) {
-//		 devicePin = getPin(file);
-		 deviceId = new IDRetriever(devicePin).retrieveID();
-		 }
+		if (!fileExists) {
+			System.out.println("Main; file not present");
+			createFile();
+			fileExists = true;
+			System.out.println("Main; registering device");
+			devicePin = getPin(filePath);
+			new DeviceRegistrar(devicePin).registerDevice();
+		}
+
+		if (fileExists) {
+			System.out.println("Main; retrieving pin from file");
+			devicePin = getPin(filePath);
+			System.out.println("Main; retrieving D_id");
+			deviceId = new IDRetriever(devicePin).retrieveID();
+		}
 
 		// 1 = default deviceId
 		Model m = new Model(deviceId);
@@ -107,27 +124,29 @@ public class Main {
 
 	}
 
-	private static int getPin(File file) {
+	private static int getPin(String filePath) {
 		String line;
 		int pin = -1;
-		try (InputStream fis = new FileInputStream(file.getName());
+		try (InputStream fis = new FileInputStream(filePath);
 				InputStreamReader isr = new InputStreamReader(fis,
 						Charset.forName("UTF-8"));
 				BufferedReader br = new BufferedReader(isr);) {
-			while ((line = br.readLine()) != null) {
-				pin = Integer.parseInt(line);
-			}
-		} catch (FileNotFoundException e) {
-			System.err.println("FileNotFoundException in Main");
-			e.printStackTrace();
-		} catch (IOException e) {
-			System.err.println("IOException in Main");
-			e.printStackTrace();
+			line = br.readLine();
+			pin = Integer.parseInt(line);
+		} catch (FileNotFoundException fnfe) {
+			System.err.println("FileNotFoundException in Main; line 128");
+			fnfe.printStackTrace();
+		} catch (IOException ioe) {
+			System.err.println("IOException in Main; line 131");
+			ioe.printStackTrace();
 		}
+		System.out.println("Main; pin retrieved from file");
 		return pin;
 	}
-	
+
 	private static void createFile() {
-		
+		System.out.println("Main; creating file");
+		new FileWriterToo(filePath, Integer.toString(new PinGenerator()
+				.generatePin())).write();
 	}
 }
