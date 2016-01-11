@@ -116,8 +116,7 @@ public class ButtonListener implements ActionListener {
 			Socket socket = new Socket();
 			// Tests connection by checking if www.cs413noticeboard.co.uk can be
 			// accessed with port 80
-			InetSocketAddress url = new InetSocketAddress(
-					"www.cs413noticeboard.co.uk", 80);
+			InetSocketAddress url = new InetSocketAddress("www.cs413noticeboard.co.uk", 80);
 			try {
 				// set timeout to 1000ms
 				socket.connect(url, 1000);
@@ -141,58 +140,58 @@ public class ButtonListener implements ActionListener {
 			System.out.println("windows on Button clicked");
 			// put code here to set the warning in the model
 			Warnings.toogleWindowWarningOn();
-			NoticeBoardWarningsScreen.windows_on.setBackground(new Color(51,
-					255, 51));
-			NoticeBoardWarningsScreen.windows_off.setBackground(new Color(204,
-					0, 0));
+			NoticeBoardWarningsScreen.windows_on.setBackground(new Color(51, 255, 51));
+			NoticeBoardWarningsScreen.windows_off.setBackground(new Color(204, 0, 0));
 			break;
 		case 10:
 			System.out.println("windows off button clicked");
 			// put code here to unset the warning in the model
 			Warnings.toogleWindowWarningOff();
-			NoticeBoardWarningsScreen.windows_off.setBackground(new Color(51,
-					255, 51));
-			NoticeBoardWarningsScreen.windows_on.setBackground(new Color(204,
-					0, 0));
+			NoticeBoardWarningsScreen.windows_off.setBackground(new Color(51, 255, 51));
+			NoticeBoardWarningsScreen.windows_on.setBackground(new Color(204, 0, 0));
 			break;
 		case 11:
 			System.out.println("washing on button clicked");
 			// put code her to set the warning in the model
 			Warnings.toogleWashingWarningOn();
-			NoticeBoardWarningsScreen.washing_on.setBackground(new Color(51,
-					255, 51));
-			NoticeBoardWarningsScreen.washing_off.setBackground(new Color(204,
-					0, 0));
+			NoticeBoardWarningsScreen.washing_on.setBackground(new Color(51, 255, 51));
+			NoticeBoardWarningsScreen.washing_off.setBackground(new Color(204, 0, 0));
 			break;
 		case 12:
 			System.out.println("washing off button clicked");
 			// put code here to unset the warning in the model
 			Warnings.toogleWashingWarningOff();
-			NoticeBoardWarningsScreen.washing_off.setBackground(new Color(51,
-					255, 51));
-			NoticeBoardWarningsScreen.washing_on.setBackground(new Color(204,
-					0, 0));
+			NoticeBoardWarningsScreen.washing_off.setBackground(new Color(51, 255, 51));
+			NoticeBoardWarningsScreen.washing_on.setBackground(new Color(204, 0, 0));
 			break;
 		case 13:
 			System.out.println("Add note button pressed");
 			m.postNote();
+			m.clearNotes();
 			m.updateNotes();
+			m.setIndex(m.getNotes().size() - 1);
+			NoticeBoardNotesScreen.updateCurrentIndex(-1);
+			mv.setIndex(m.getNotes().size() - 1);
 			mv.setNotes(m.getNotes());
+
 			mv.updateWindow("notes");
 			mv.update();
 			break;
 		case 14:
-			if((NoticeBoardNotesScreen.current_index-3) >= 0) {
+			if ((NoticeBoardNotesScreen.current_index - 3) >= 0) {
 				System.out.println("happenig");
-				NoticeBoardNotesScreen.current_index -= 3;
+				System.out.println("Max index of view: " + NoticeBoardNotesScreen.max_index);
+				m.setIndex((m.getIndex()) - 3);
+				NoticeBoardNotesScreen.updateCurrentIndex(m.getIndex() - 3);
 				mv.updateWindow("notes");
 				mv.update();
 			}
 			break;
 		case 15:
-			if((NoticeBoardNotesScreen.current_index + 3) <= NoticeBoardNotesScreen.max_index) {
+			if ((NoticeBoardNotesScreen.current_index + 3) <= NoticeBoardNotesScreen.max_index) {
 				System.out.println("happeniNg");
-				NoticeBoardNotesScreen.current_index += 3;
+				m.setIndex((m.getIndex()) + 3);
+				NoticeBoardNotesScreen.updateCurrentIndex(m.getIndex() + 3);
 				mv.updateWindow("notes");
 				mv.update();
 			}

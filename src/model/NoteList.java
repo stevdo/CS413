@@ -21,4 +21,8 @@ public class NoteList {
 	public int size() {
 		return noteList.size();
 	}
+	
+	public void clear(){
+		noteList.clear();
+	}
 }

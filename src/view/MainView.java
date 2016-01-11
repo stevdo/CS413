@@ -15,6 +15,7 @@ public class MainView {
 	private NoteList noteList;
 	private ActionListener button_listener;
 	private ActionListener keyboard_listener;
+	private int index;
 
 	public void updateWindow(String screen) {
 
@@ -25,6 +26,7 @@ public class MainView {
 					noticeboard_frame);
 			notes_view.addButtonListener(button_listener);
 			notes_view.setNotes(noteList);
+			notes_view.setIndex(index);
 			notes_view.init_NotesScreen();
 		} else if (screen.equals("settings")) {
 			NoticeBoardSettingsScreen settings_view = new NoticeBoardSettingsScreen(
@@ -83,6 +85,10 @@ public class MainView {
 		System.out.println("View; Listener added");
 	}
 
+	public void setIndex (int index) {
+		this.index = index;
+	}
+	
 	public void update() {
 		noticeboard_frame.validate();
 		noticeboard_frame.repaint();

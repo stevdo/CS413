@@ -46,17 +46,25 @@ public class NoticeBoardNotesScreen {
 		System.out.println("Notes Screen; Notes retrieved.");
 	}
 	
+	public void setIndex(int index) {
+		if(current_index < 0){
+			current_index = index;
+		}
+		max_index = index;
+		System.out.println("max index is now: " + max_index);
+	}
+	
+	public static void updateCurrentIndex(int index){
+		current_index = index;
+	}
+	
 	public void init_NotesScreen(){
 		
 		String messageTitle;
 		String messageBody;
 		String user;
-		if(current_index < 0){
-			current_index = this.noteList.size() - 1;
-		}
-		if(max_index < 0){
-			max_index = this.noteList.size() - 1;
-		}
+
+		System.out.println("recalled init. noteList size: " + noteList.size());
 		for (int i = 0; i < this.noteList.size(); i++) {
 			Note n = this.noteList.get(i);
 			messageTitle = n.getTitle();

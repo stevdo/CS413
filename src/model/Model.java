@@ -10,6 +10,7 @@ public class Model {
 	private String title = "";
 	private String text = "";
 	private String user = "posted on device";
+	private int index = 0;
 
 	public Model(int deviceId) {
 		this.deviceId = deviceId;
@@ -59,6 +60,22 @@ public class Model {
 	public void setText(String text) {
 		this.text = text;
 		System.out.println("Model; text set");
+	}
+	
+	public void setIndex(){
+		index = noteList.size()-1;
+	}
+	public void setIndex(int new_index){
+		index = new_index;
+	}
+	
+	public int getIndex(){
+		System.out.println("Model - the index is: " + index);
+		return index;
+	}
+	
+	public void clearNotes(){
+		noteList.clear();
 	}
 
 	public NoteList getNotes() {
