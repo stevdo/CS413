@@ -230,12 +230,14 @@ public class ButtonListener implements ActionListener {
 				m.clearNotes();
 				m.updateNotes();
 				m.setIndex(m.getNotes().size() - 1);
+				m.setNoteToBeDeleted(-1);
 				mv.setTitleValid();
 				mv.setTextValid();
 				mv.setIndex(m.getIndex());
 				mv.updateCurrentIndex(m.getIndex());
 				mv.setNotes(m.getNotes());
-				mv.updateWindow("home");
+				mv.updateWindow("notes");
+				mv.update();
 			}
 			else{
 				System.out.println("No note selected");
