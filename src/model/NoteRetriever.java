@@ -22,6 +22,7 @@ public class NoteRetriever {
 			Statement query = conn.createStatement();
 			ResultSet result = query.executeQuery("SELECT * FROM Notes WHERE D_id = " + deviceId);
 			System.out.println("NoteRetriever; Retrieving notes from database.");
+			//conn.close();
 			return result;
 		} catch (SQLException se) {
 			System.err.println("SQLException in NoteRetriever; Error connecting to database.");

@@ -38,6 +38,7 @@ public class NotePoster {
 					+ "'"
 					+ ")");
 			System.out.println("NotePoster; Posting note to database.");
+			conn.close();
 		} catch (SQLException se) {
 			System.err
 					.println("SQLException in NotePoster; Error connecting to database.");

@@ -22,7 +22,7 @@ public class Main {
 
 	private static int deviceId = 1;
 	private static int devicePin = 1;
-	private static String filePath = "/Users/Chris/Desktop/Device/pin.txt";
+	private static String filePath = "/Users/Neall/Desktop/Device/pin.txt";
 
 	// //
 
@@ -82,7 +82,21 @@ public class Main {
 		mv.setNotes(m.getNotes());
 		mv.init_NoticeboardFrame();
 		mv.updateWindow("home");
-		setTimer(m, mv);
+		
+		try {
+	        while (true) {
+	        	m.clearNotes();
+	        	m.updateNotes();
+	        	m.setIndex();
+	    		mv.setIndex(m.getNotes().size()-1);
+	    		mv.setNotes(m.getNotes());
+	    		System.out.println("Hi adam");
+	    		mv.update();
+	    		Thread.sleep(5 * 1000);
+	        }
+		} catch (InterruptedException e) {
+	        e.printStackTrace();
+	    }
 
 		// Cipher.simpleEncrypt("A B C D E F G");
 		// Cipher.simpleDecrypt("K L M N O P Q");
