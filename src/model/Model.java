@@ -23,12 +23,14 @@ public class Model {
 		String user;
 		String messageTitle;
 		String messageBody;
+		int noteId;
 		try {
 			while (result.next()) {
+				noteId = result.getInt("N_id");
 				messageTitle = result.getString("title");
 				messageBody = result.getString("text");
 				user = result.getString("user");
-				noteList.add(new Note(messageTitle, messageBody, user));
+				noteList.add(new Note(noteId, messageTitle, messageBody, user));
 			}
 			System.out.println("Model; Notes retrieved");
 		} catch (SQLException e) {
@@ -45,12 +47,8 @@ public class Model {
 
 	public void postNote() {
 		System.out.println("Model; note to be posted");
-		if (title != "" || text != "") {
-			new NotePoster(deviceId, new Note(title, text, user)).postNote();
-			System.out.println("Model; note posted");
-		} else {
-			System.out.println("Model; text and title fields empty");
-		}
+		new NotePoster(deviceId, new Note(-1, title, text, user)).postNote();
+		System.out.println("Model; note posted");
 	}
 
 	public void setTitle(String title) {
@@ -62,21 +60,36 @@ public class Model {
 		this.text = text;
 		System.out.println("Model; text set");
 	}
-	
-	public void setIndex(){
-		index = noteList.size()-1;
+
+	public void setIndex() {
+		index = noteList.size() - 1;
 	}
-	public void setIndex(int new_index){
+
+	public void setIndex(int new_index) {
 		index = new_index;
 	}
-	
-	public int getIndex(){
+
+	public void clearNotes() {
+		noteList.clear();
+	}
+
+	public int getIndex() {
 		System.out.println("Model - the index is: " + index);
 		return index;
 	}
-	
-	public void clearNotes(){
-		noteList.clear();
+
+	public Boolean titleValid() {
+		if (title.length() > 100) {
+			return false;
+		}
+		return true;
+	}
+
+	public Boolean textValid() {
+		if (text.length() > 1000) {
+			return false;
+		}
+		return true;
 	}
 
 	public NoteList getNotes() {

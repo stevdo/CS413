@@ -54,7 +54,7 @@ public class NoticeBoardNotesScreen {
 		System.out.println("max index is now: " + max_index);
 	}
 	
-	public static void updateCurrentIndex(int index){
+	public void updateCurrentIndex(int index){
 		current_index = index;
 	}
 	

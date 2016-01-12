@@ -16,6 +16,10 @@ public class MainView {
 	private ActionListener button_listener;
 	private ActionListener keyboard_listener;
 	private int index;
+	private boolean titleValid;
+	private boolean textValid;
+	private boolean set;
+	private boolean update;
 
 	public void updateWindow(String screen) {
 
@@ -26,7 +30,11 @@ public class MainView {
 					noticeboard_frame);
 			notes_view.addButtonListener(button_listener);
 			notes_view.setNotes(noteList);
-			notes_view.setIndex(index);
+			if (set) {
+				notes_view.setIndex(index);
+			} else if (update) {
+				notes_view.updateCurrentIndex(index);
+			}
 			notes_view.init_NotesScreen();
 		} else if (screen.equals("settings")) {
 			NoticeBoardSettingsScreen settings_view = new NoticeBoardSettingsScreen(
@@ -43,12 +51,24 @@ public class MainView {
 					noticeboard_frame);
 			home_view.addButtonListener(button_listener);
 			home_view.init_HomeScreen();
-		} else if (screen.equals("Write")) {
+		} else if (screen.equals("write")) {
 			NoticeBoardWriteMessage write_view = new NoticeBoardWriteMessage(
 					noticeboard_frame);
+			if (!titleValid) {
+				write_view.setTextInvalid();
+			} else {
+				write_view.setTextValid();
+			}
+			if (!textValid) {
+				write_view.setTextInvalid();
+			} else {
+				write_view.setTextValid();
+			}
 			write_view.addButtonListener(button_listener);
 			write_view.addKeyboardListener(keyboard_listener);
 			write_view.init_WriteScreen();
+			setTitleValid();
+			setTextValid();
 		} else {
 			System.out.println("Error: Screen not recognised.");
 		}
@@ -85,10 +105,34 @@ public class MainView {
 		System.out.println("View; Listener added");
 	}
 
-	public void setIndex (int index) {
+	public void setIndex(int index) {
 		this.index = index;
+		set = true;
+		update = false;
 	}
-	
+
+	public void updateCurrentIndex(int index) {
+		this.index = index;
+		set = false;
+		update = true;
+	}
+
+	public void setTitleInvalid() {
+		titleValid = false;
+	}
+
+	public void setTextInvalid() {
+		textValid = false;
+	}
+
+	public void setTitleValid() {
+		titleValid = true;
+	}
+
+	public void setTextValid() {
+		textValid = true;
+	}
+
 	public void update() {
 		noticeboard_frame.validate();
 		noticeboard_frame.repaint();

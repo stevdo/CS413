@@ -21,7 +21,7 @@ public class Main {
 
 	private static int deviceId = 1;
 	private static int devicePin = 1;
-	private static String filePath = "/Users/Chris/Desktop/Device/pin.txt";
+	private static String filePath = "/Users/adam/Desktop/Device/pin.txt";
 
 	// //
 
@@ -141,7 +141,7 @@ public class Main {
 			System.err.println("IOException in Main; line 131");
 			ioe.printStackTrace();
 		}
-		System.out.println("Main; pin retrieved from file");
+		System.out.println("Main; pin retrieved from file: " + pin);
 		return pin;
 	}
 

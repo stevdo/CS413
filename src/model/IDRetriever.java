@@ -31,7 +31,7 @@ public class IDRetriever {
 			if (result.next()) {
 				deviceId = result.getInt("D_id");
 			}
-			System.out.println("IDRetriever; D_id retrieved " + deviceId);
+			System.out.println("IDRetriever; D_id retrieved: " + deviceId);
 			return deviceId;
 		} catch (SQLException se) {
 			System.err
