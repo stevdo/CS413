@@ -224,6 +224,22 @@ public class ButtonListener implements ActionListener {
 			break;
 		case 16:
 			System.out.println("Delete note button pressed");
+			if(m.getNoteToDelete() >= 0){
+				System.out.println("Button Listener; note to delete " + m.getNoteToDelete());
+				m.deleteNote();
+				m.clearNotes();
+				m.updateNotes();
+				m.setIndex(m.getNotes().size() - 1);
+				mv.setTitleValid();
+				mv.setTextValid();
+				mv.setIndex(m.getIndex());
+				mv.updateCurrentIndex(m.getIndex());
+				mv.setNotes(m.getNotes());
+				mv.updateWindow("home");
+			}
+			else{
+				System.out.println("No note selected");
+			}
 		}
 	}
 }

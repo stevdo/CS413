@@ -1,6 +1,7 @@
 package controller;
 
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -21,7 +22,7 @@ public class Main {
 
 	private static int deviceId = 1;
 	private static int devicePin = 1;
-	private static String filePath = "/Users/adam/Desktop/Device/pin.txt";
+	private static String filePath = "/Users/Chris/Desktop/Device/pin.txt";
 
 	// //
 
@@ -80,7 +81,7 @@ public class Main {
 		}
 
 		// 1 = default deviceId
-		Model m = new Model(deviceId);
+		Model m = new Model(1);
 		m.updateNotes();
 
 		NoticeboardImages.setSideImages();
@@ -92,10 +93,12 @@ public class Main {
 		// construct listeners
 		ActionListener button_listener = new ButtonListener(mv, m);
 		ActionListener keyboard_listener = new KeyboardListener(m);
+		MouseListener notes_listener = new NotesListener(m);
 
 		// add listeners to view
 		mv.addButtonListener(button_listener);
 		mv.addKeyboardListener(keyboard_listener);
+		mv.addNotesListener(notes_listener);
 		m.setIndex();
 		mv.setIndex(m.getNotes().size()-1);
 		mv.setNotes(m.getNotes());

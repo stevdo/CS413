@@ -11,6 +11,7 @@ public class Model {
 	private String text = "";
 	private String user = "posted on device";
 	private int index = 0;
+	private int deleteID = -1;
 
 	public Model(int deviceId) {
 		this.deviceId = deviceId;
@@ -50,10 +51,21 @@ public class Model {
 		new NotePoster(deviceId, new Note(-1, title, text, user)).postNote();
 		System.out.println("Model; note posted");
 	}
+	
+	// hopefully this works
+	public void deleteNote(){
+		System.out.println("doing this");
+		NoteDeleter nd = new NoteDeleter(deleteID);
+		nd.postNote();
+	}
 
 	public void setTitle(String title) {
 		this.title = title;
 		System.out.println("Model; title set");
+	}
+	
+	public void setNoteToBeDeleted(int noteID){
+		deleteID = noteID;
 	}
 
 	public void setText(String text) {
@@ -76,6 +88,10 @@ public class Model {
 	public int getIndex() {
 		System.out.println("Model - the index is: " + index);
 		return index;
+	}
+	
+	public int getNoteToDelete(){
+		return deleteID;
 	}
 
 	public Boolean titleValid() {

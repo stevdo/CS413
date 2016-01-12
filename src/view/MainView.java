@@ -2,6 +2,7 @@ package view;
 
 import java.awt.GraphicsDevice;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 
@@ -15,6 +16,7 @@ public class MainView {
 	private NoteList noteList;
 	private ActionListener button_listener;
 	private ActionListener keyboard_listener;
+	private MouseListener notes_listener;
 	private int index;
 	private boolean titleValid;
 	private boolean textValid;
@@ -29,6 +31,7 @@ public class MainView {
 			NoticeBoardNotesScreen notes_view = new NoticeBoardNotesScreen(
 					noticeboard_frame);
 			notes_view.addButtonListener(button_listener);
+			notes_view.addNoteListener(notes_listener);
 			notes_view.setNotes(noteList);
 			if (set) {
 				notes_view.setIndex(index);
@@ -103,6 +106,11 @@ public class MainView {
 	public void addKeyboardListener(ActionListener keyboard_listener) {
 		this.keyboard_listener = keyboard_listener;
 		System.out.println("View; Listener added");
+	}
+	
+	public void addNotesListener(MouseListener notes_listener){
+		this.notes_listener = notes_listener;
+		System.out.println("this is happening");
 	}
 
 	public void setIndex(int index) {

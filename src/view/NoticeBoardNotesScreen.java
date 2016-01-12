@@ -8,6 +8,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -23,12 +24,14 @@ import model.NoteList;
 import controller.ColourCollect;
 import controller.ExitActionListener;
 import controller.ImageCollect;
+import controller.NotesListener;
 
 public class NoticeBoardNotesScreen {
 	
 	private JFrame notes_frame;
 	private NoteList noteList;
 	private ActionListener button_listener;
+	private MouseListener note_listener;
 	public static int current_index = -1 ;
 	public static int max_index = -1;
 
@@ -39,6 +42,10 @@ public class NoticeBoardNotesScreen {
 	public void addButtonListener(ActionListener button_listener) {
 		this.button_listener = button_listener;
 		System.out.println("Notes screen; listener added");
+	}
+	
+	public void addNoteListener(MouseListener notes_listener){
+		this.note_listener = notes_listener;
 	}
 	
 	public void setNotes(NoteList noteList) {
@@ -191,17 +198,19 @@ public class NoticeBoardNotesScreen {
 		horizontalBox.add(next_notes);
 		
 		Box horizBox2 = Box.createHorizontalBox();
-		System.out.println("Current Index before adding notes: " + current_index);
 		for(int i = 0; i < 3; i++) {
 			if(current_index-i >= 0){
 			JTextArea note_area = new JTextArea();
 			note_area.setBackground(new Color(240, 230, 80));
 			note_area.setEditable(false);
 			note_area.setPreferredSize(new Dimension((int)(notes_frame.getWidth() * 0.2), (int)(notes_frame.getHeight() * 0.4)));
-			System.out.println("current index is: " +(current_index-i));
 			Note n = this.noteList.get(current_index-i);
 			note_area.setText(n.getTitle() + "\n\n" + n.getBody() + "\n\n" + n.getUser());
+			int noteID = n.getNoteID();
+			String s = Integer.toString(noteID);
+			note_area.setName(s);
 			horizBox2.add(note_area);
+			note_area.addMouseListener(note_listener);
 			if(i < 2){
 				horizBox2.add(Box.createRigidArea(new Dimension(30,0))); //Adds space between buttons
 			}
@@ -213,11 +222,18 @@ public class NoticeBoardNotesScreen {
 		
 		
 		// add components to the panel
+		JButton delete_note = new JButton("delete");
+		delete_note.addActionListener(button_listener);
+		delete_note.setActionCommand("16");
+		
+		
 		notes_panel.add(title, c);
 		notes_panel.add(exit, c);
 		notes_panel.add(horizBox2, c);
-		notes_panel.add(horizontalBox);
+		notes_panel.add(horizontalBox, c);
+		notes_panel.add(delete_note);
 		options_panel.add(verticalBox, c);
+		
 		
 		// add the panels to the frame
 		notes_frame.add(options_panel, BorderLayout.LINE_START);
