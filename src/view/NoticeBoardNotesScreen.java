@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import model.Note;
@@ -210,8 +211,12 @@ public class NoticeBoardNotesScreen {
 				int noteID = n.getNoteID();
 				String s = Integer.toString(noteID);
 				note_area.setName(s);
-				horizBox2.add(note_area);
+				
+				note_area.setLineWrap(true);
+				note_area.setWrapStyleWord(true);
+				
 				note_area.addMouseListener(note_listener);
+				horizBox2.add(note_area);
 				if(i < 2){
 					horizBox2.add(Box.createRigidArea(new Dimension(30,0))); //Adds space between buttons
 				}
