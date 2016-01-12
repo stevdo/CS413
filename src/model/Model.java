@@ -51,7 +51,6 @@ public class Model {
 		System.out.println("Model; note posted");
 	}
 
-	// hopefully this works
 	public void deleteNote() {
 		System.out.println("doing this");
 		NoteDeleter nd = new NoteDeleter(deleteID);

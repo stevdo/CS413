@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 
 import model.DeviceRegistrar;
-import model.FileWriterToo;
+import model.PinWriter;
 import model.IDRetriever;
 import model.Model;
 import model.NoticeboardImages;
@@ -20,9 +20,10 @@ import view.MainView;
 
 public class Main {
 
-	private static int deviceId = 1;
-	private static int devicePin = 1;
+	private static int deviceId = -1;
+	private static int devicePin = -1;
 	private static int oldSize = -1;
+	private static String colour = null;
 	private static String filePath = "/Users/adam/Desktop/Device/pin.txt";
 
 	public static void main(String[] args) {
@@ -57,14 +58,17 @@ public class Main {
 			deviceId = new IDRetriever(devicePin).retrieveID();
 		}
 
-		// 1 = default deviceId
+		if (colour != null) {
+			System.out.println("Main; setting colour: " + colour);
+			ColourCollect.setCurrentColour(colour);
+		}
+
 		Model m = new Model(deviceId);
 		m.setPath(filePath);
 		m.updateNotes();
 
 		NoticeboardImages.setSideImages();
 		NoticeboardImages.setHomeImages();
-		// NoticeboardColours.setNoticeboardColour("red");
 
 		MainView mv = new MainView();
 
@@ -93,14 +97,12 @@ public class Main {
 		 * Cipher.messageDecrypt("Qod cywo wsvu Wkg");
 		 */
 
-		// or do regardless of equality (does it matter? try both ways?)
-
 	}
 
 	private static void update(Model m, MainView mv) {
 		try {
 			while (true) {
-				System.out.println("updating notes..");
+				System.out.println("Main; updating notes..");
 				int old = m.getNotes().size();
 				m.clearNotes();
 				m.updateNotes();
@@ -108,7 +110,8 @@ public class Main {
 				mv.setIndex(m.getNotes().size() - 1);
 				if (m.getNotes().size() == 0 && oldSize > 0) {
 					Thread.sleep(10 * 1000);
-					System.out.println("error updating notes; re-trying..");
+					System.out
+							.println("Error updating notes in Main; re-trying..");
 					update(m, mv);
 				} else {
 					oldSize = old;
@@ -119,17 +122,17 @@ public class Main {
 						mv.updateWindow("notes");
 						mv.update();
 					}
-					System.out.println("notes updated");
-					Thread.sleep(20 * 1000);
+					System.out.println("Main; notes updated");
+					Thread.sleep(60 * 1000);
 				}
 			}
 		} catch (InterruptedException e) {
-			System.out.println("InterruptedException in Model; line 125");
+			System.out.println("InterruptedException in Main; line 125");
 		}
 	}
 
 	private static int getPin(String filePath) {
-		String line;
+		String line = "";
 		int pin = -1;
 		try (InputStream fis = new FileInputStream(filePath);
 				InputStreamReader isr = new InputStreamReader(fis,
@@ -137,6 +140,10 @@ public class Main {
 				BufferedReader br = new BufferedReader(isr);) {
 			line = br.readLine();
 			pin = Integer.parseInt(line);
+			line = br.readLine();
+			if (line != null) {
+				setColour(line);
+			}
 		} catch (FileNotFoundException fnfe) {
 			System.err.println("FileNotFoundException in Main; line 128");
 			fnfe.printStackTrace();
@@ -145,13 +152,18 @@ public class Main {
 			ioe.printStackTrace();
 		}
 		System.out.println("Main; pin retrieved from file: " + pin);
+		System.out.println("Main; colour retrieved from file: " + line);
 		return pin;
 	}
 
 	private static void createFile() {
 		System.out.println("Main; creating file");
-		new FileWriterToo(filePath, Integer.toString(new PinGenerator()
+		new PinWriter(filePath, Integer.toString(new PinGenerator()
 				.generatePin())).write();
+	}
+
+	private static void setColour(String new_colour) {
+		colour = new_colour;
 	}
 
 }

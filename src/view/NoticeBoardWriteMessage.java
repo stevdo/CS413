@@ -156,11 +156,6 @@ public class NoticeBoardWriteMessage {
 		textField.setName("text field");
 		textArea.setName("text area");
 
-		// ActionListener's
-		ActionListener exitActionListener = new ExitActionListener();
-		// ActionListener button_listener = new ButtonListener(mv);
-		// ActionListener keyboard_listener = new KeyboardListener();
-
 		// Buttons
 		JButton home = new JButton(home_icon);
 		JButton settings = new JButton(settings_icon);
@@ -221,20 +216,16 @@ public class NoticeBoardWriteMessage {
 		add_note.addActionListener(button_listener);
 		add_note2.addActionListener(button_listener);
 
-		// temporary
 		home.setBorder(BorderFactory.createEmptyBorder());
 		home.setContentAreaFilled(false);
-		// home.addActionListener(button_listener);
 		home.addActionListener(button_listener);
 
 		settings.setBorder(BorderFactory.createEmptyBorder());
 		settings.setContentAreaFilled(false);
-		// settings.addActionListener(button_listener);
 		settings.addActionListener(button_listener);
 
 		warnings.setBorder(BorderFactory.createEmptyBorder());
 		warnings.setContentAreaFilled(false);
-		// warnings.addActionListener(button_listener);
 		warnings.addActionListener(button_listener);
 
 		// temporary exit button

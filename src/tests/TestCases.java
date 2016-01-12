@@ -4,13 +4,12 @@ import static org.junit.Assert.*;
 
 import java.awt.Color;
 
+import org.junit.Test;
+
 import model.Model;
 import model.Note;
 import model.NoteList;
 import model.NoticeboardColours;
-
-import org.junit.Test;
-
 import view.MainView;
 
 public class TestCases {

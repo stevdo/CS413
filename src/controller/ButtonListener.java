@@ -31,32 +31,24 @@ public class ButtonListener implements ActionListener {
 		int buttonPress = Integer.parseInt(e.getActionCommand());
 		switch (buttonPress) {
 		case 0:
-			// need to change the functionality here
 			System.out.println("Notes pressed");
 			mv.updateWindow("notes");
 			mv.update();
-			// System.exit(0);
 			break;
 		case 1:
-			// need to change the functionality here
 			System.out.println("Settings pressed");
 			mv.updateWindow("settings");
 			mv.update();
-			// System.exit(0);
 			break;
 		case 2:
-			// need to change the functionality here
 			System.out.println("Warnings pressed");
 			mv.updateWindow("warnings");
 			mv.update();
-			// System.exit(0);
 			break;
 		case 3:
-			// need to change the functionality here
 			System.out.println("Home pressed");
 			mv.updateWindow("home");
 			mv.update();
-			// System.exit(0);
 			break;
 		case 4:
 			System.out.println("Write pressed");
@@ -98,8 +90,7 @@ public class ButtonListener implements ActionListener {
 			try {
 				Runtime.getRuntime().exec("systemctl poweroff");
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				System.out.println("IOException systemctl poweroff");
 			}
 			System.exit(0);
 			break;
@@ -107,8 +98,7 @@ public class ButtonListener implements ActionListener {
 			try {
 				Runtime.getRuntime().exec("systemctl reboot");
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				System.out.println("IOException systemctl reboot");
 			}
 			System.exit(0);
 			break;
@@ -139,7 +129,7 @@ public class ButtonListener implements ActionListener {
 			break;
 		case 9:
 			System.out.println("windows on Button clicked");
-			// put code here to set the warning in the model
+			// set the warning in the model
 			Warnings.toogleWindowWarningOn();
 			NoticeBoardWarningsScreen.windows_on.setBackground(new Color(51,
 					255, 51));
@@ -148,7 +138,7 @@ public class ButtonListener implements ActionListener {
 			break;
 		case 10:
 			System.out.println("windows off button clicked");
-			// put code here to unset the warning in the model
+			// unset the warning in the model
 			Warnings.toogleWindowWarningOff();
 			NoticeBoardWarningsScreen.windows_off.setBackground(new Color(51,
 					255, 51));
@@ -157,7 +147,7 @@ public class ButtonListener implements ActionListener {
 			break;
 		case 11:
 			System.out.println("washing on button clicked");
-			// put code her to set the warning in the model
+			// set the warning in the model
 			Warnings.toogleWashingWarningOn();
 			NoticeBoardWarningsScreen.washing_on.setBackground(new Color(51,
 					255, 51));
@@ -166,7 +156,7 @@ public class ButtonListener implements ActionListener {
 			break;
 		case 12:
 			System.out.println("washing off button clicked");
-			// put code here to unset the warning in the model
+			// unset the warning in the model
 			Warnings.toogleWashingWarningOff();
 			NoticeBoardWarningsScreen.washing_off.setBackground(new Color(51,
 					255, 51));
@@ -175,7 +165,6 @@ public class ButtonListener implements ActionListener {
 			break;
 		case 13:
 			System.out.println("Add note button pressed");
-			// assertion?
 			boolean titleValid = m.titleValid();
 			boolean textValid = m.textValid();
 			if (titleValid && textValid) {
@@ -205,7 +194,6 @@ public class ButtonListener implements ActionListener {
 			break;
 		case 14:
 			if ((NoticeBoardNotesScreen.current_index - 3) >= 0) {
-				System.out.println("happenig");
 				System.out.println("Max index of view: "
 						+ NoticeBoardNotesScreen.max_index);
 				m.setIndex((m.getIndex()) - 3);
@@ -216,7 +204,6 @@ public class ButtonListener implements ActionListener {
 			break;
 		case 15:
 			if ((NoticeBoardNotesScreen.current_index + 3) <= NoticeBoardNotesScreen.max_index) {
-				System.out.println("happeniNg");
 				m.setIndex((m.getIndex()) + 3);
 				mv.updateCurrentIndex(m.getIndex());
 				mv.updateWindow("notes");
@@ -225,8 +212,9 @@ public class ButtonListener implements ActionListener {
 			break;
 		case 16:
 			System.out.println("Delete note button pressed");
-			if(m.getNoteToDelete() >= 0){
-				System.out.println("Button Listener; note to delete " + m.getNoteToDelete());
+			if (m.getNoteToDelete() >= 0) {
+				System.out.println("Button Listener; note to delete "
+						+ m.getNoteToDelete());
 				m.deleteNote();
 				m.clearNotes();
 				m.updateNotes();
@@ -239,8 +227,7 @@ public class ButtonListener implements ActionListener {
 				mv.setNotes(m.getNotes());
 				mv.updateWindow("notes");
 				mv.update();
-			}
-			else{
+			} else {
 				System.out.println("No note selected");
 			}
 			break;

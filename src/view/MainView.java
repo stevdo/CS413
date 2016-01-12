@@ -92,8 +92,6 @@ public class MainView {
 	}
 
 	public void init_NoticeboardFrame() {
-		// JFrame noticeboard_frame = new JFrame();
-		// may need to add the code to make this frame the device
 		noticeboard_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		noticeboard_frame.setUndecorated(true);
 
@@ -113,10 +111,9 @@ public class MainView {
 		this.keyboard_listener = keyboard_listener;
 		System.out.println("View; Listener added");
 	}
-	
-	public void addNotesListener(MouseListener notes_listener){
+
+	public void addNotesListener(MouseListener notes_listener) {
 		this.notes_listener = notes_listener;
-		System.out.println("this is happening");
 	}
 
 	public void setIndex(int index) {
@@ -144,12 +141,12 @@ public class MainView {
 	public void setTextValid() {
 		textValid = true;
 	}
-	
-	public String getWindow(){
+
+	public String getWindow() {
 		return window;
 	}
-	
-	public void setPin(int device_pin){
+
+	public void setPin(int device_pin) {
 		System.out.println("MainView; pin set: " + device_pin);
 		this.device_pin = device_pin;
 	}

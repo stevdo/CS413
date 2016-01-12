@@ -6,8 +6,6 @@ import model.NoticeboardImages;
 
 public class ImageCollect {
 
-	// not sure if this class is needed here/ how it should be done
-	
 	public static ImageIcon getSideImageHomeIcon(){
 		ImageIcon home_icon = NoticeboardImages.getSideImageHomeIcon();
 		return home_icon;

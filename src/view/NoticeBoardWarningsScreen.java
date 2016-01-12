@@ -17,7 +17,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controller.ButtonListener;
 import controller.ColourCollect;
 import controller.ExitActionListener;
 import controller.ImageCollect;
@@ -51,14 +50,6 @@ public class NoticeBoardWarningsScreen {
 
 		// get the colour for the noticeboard
 		Color colour = ColourCollect.getCurrentColour();
-
-		// Frame for the window
-		/*
-		 * GraphicsDevice device =
-		 * warnings_frame.getGraphicsConfiguration().getDevice();
-		 * warnings_frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		 * warnings_frame.setUndecorated(true); warnings_frame.setVisible(true);
-		 */
 
 		// border layout
 		BorderLayout frame_layout = new BorderLayout();
@@ -96,7 +87,6 @@ public class NoticeBoardWarningsScreen {
 
 		// ActionListener's
 		ActionListener exitActionListener = new ExitActionListener();
-//		ActionListener button_listener = new ButtonListener(mv);
 
 		// 3 buttons for the screen
 		JButton home = new JButton(home_icon);
@@ -123,17 +113,14 @@ public class NoticeBoardWarningsScreen {
 
 		home.setBorder(BorderFactory.createEmptyBorder());
 		home.setContentAreaFilled(false);
-//		home.addActionListener(button_listener);
 		home.addActionListener(button_listener);
 
 		notes.setBorder(BorderFactory.createEmptyBorder());
 		notes.setContentAreaFilled(false);
-//		notes.addActionListener(button_listener);
 		notes.addActionListener(button_listener);
 
 		settings.setBorder(BorderFactory.createEmptyBorder());
 		settings.setContentAreaFilled(false);
-//		settings.addActionListener(button_listener);
 		settings.addActionListener(button_listener);
 
 		// JLabels for the warnings
@@ -157,17 +144,11 @@ public class NoticeBoardWarningsScreen {
 		washing_on.setActionCommand("11");
 		washing_off.setActionCommand("12");
 
-		// add action listeners
-//		windows_on.addActionListener(button_listener);
-//		windows_off.addActionListener(button_listener);
-//		washing_on.addActionListener(button_listener);
-//		washing_off.addActionListener(button_listener);
-
 		windows_on.addActionListener(button_listener);
 		windows_off.addActionListener(button_listener);
 		washing_on.addActionListener(button_listener);
 		washing_off.addActionListener(button_listener);
-		
+
 		// add the components to the panels
 		warnings_panel.add(title, c);
 		warnings_panel.add(windows_warning);
@@ -183,8 +164,6 @@ public class NoticeBoardWarningsScreen {
 		warnings_frame.add(options_panel, BorderLayout.LINE_START);
 		warnings_frame.add(warnings_panel, BorderLayout.CENTER);
 
-		// Set program as full screen
-		// device.setFullScreenWindow(warnings_frame);
 	}
 
 }

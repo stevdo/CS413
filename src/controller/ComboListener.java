@@ -5,9 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
 
-import view.NoticeBoardSettingsScreen;
-import controller.ButtonListener;
-
 public class ComboListener implements ActionListener {
 	
 	public static String colour = new String();

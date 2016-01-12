@@ -4,12 +4,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class FileWriterToo {
+public class PinWriter {
 
 	private String filePath;
 	private String pin;
 
-	public FileWriterToo(String filePath, String pin) {
+	public PinWriter(String filePath, String pin) {
 		this.filePath = filePath;
 		this.pin = pin;
 	}

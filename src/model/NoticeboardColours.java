@@ -19,7 +19,6 @@ public class NoticeboardColours {
 	private static HashMap<String, Color> colour_from_String = new HashMap<String, Color>();
 	
 	public NoticeboardColours(){
-		//current_colour = new Color(64, 220, 79);
 		colour_from_String.put("red", new Color(233, 63, 63));
 		colour_from_String.put("blue", new Color(86, 200, 249));
 		colour_from_String.put("orange", new Color(246, 130, 41));

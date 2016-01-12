@@ -21,7 +21,7 @@ public class KeyboardListener implements ActionListener {
 		String component_to_update = CurrentTextComponent.getCurrentComponent();
 
 		if (buttonPressed.getText() == "Return") {
-			// Needs to print to selected JTextField
+			// print to selected JTextField
 			System.out.println("Key pressed: rtn");
 			if (component_to_update.equals("text area")) {
 				System.out.println();
@@ -29,7 +29,7 @@ public class KeyboardListener implements ActionListener {
 				m.setText(NoticeBoardWriteMessage.textArea.getText());
 			}
 		} else if (buttonPressed.getText() == "Backspace") {
-			// Needs to print to selected JTextField
+			// print to selected JTextField
 			System.out.println("Key pressed: bsp");
 			if (component_to_update.equals("text area")) {
 				String text_area_content = NoticeBoardWriteMessage.textArea
@@ -45,10 +45,9 @@ public class KeyboardListener implements ActionListener {
 				m.setTitle(NoticeBoardWriteMessage.textField.getText());
 			}
 		} else if (buttonPressed.getText() == "Shift") {
-			// Needs to print to selected JTextField
 			System.out.println("Key pressed: sft");
 		} else if (buttonPressed.getText() == "Space") {
-			// Needs to print to selected JTextField
+			// print to selected JTextField
 			System.out.println("Key pressed: spc");
 			if (component_to_update.equals("text area")) {
 				NoticeBoardWriteMessage.textArea.append(" ");
@@ -61,28 +60,25 @@ public class KeyboardListener implements ActionListener {
 			}
 		} else {
 			// CAL1UM W4S HeR3 !!!!11!1!
-			// Needs to print to selected JTextField
-			// System.out.println("Key pressed: " +
-			// buttonPressed.getClientProperty("buttonPressed"));
+			// print to selected JTextField
 			System.out.println(component_to_update);
-			try{
-			if (component_to_update.equals("text area")) {
-				System.out.println("Updating text area");
-				// System.out.println("Current Text Area contents: " +
-				// NoticeBoardWriteMessage.textArea2.getText());
-				NoticeBoardWriteMessage.textArea
-						.setText(NoticeBoardWriteMessage.textArea.getText()
-								+ (String) buttonPressed
-										.getClientProperty("buttonPressed"));
-				m.setText(NoticeBoardWriteMessage.textArea.getText());
-			} else if (component_to_update.equals("text field")) {
-				System.out.println("Updating text field");
-				NoticeBoardWriteMessage.textField
-						.setText(NoticeBoardWriteMessage.textField.getText()
-								+ (String) buttonPressed
-										.getClientProperty("buttonPressed"));
-				m.setTitle(NoticeBoardWriteMessage.textField.getText());
-			}
+			try {
+				if (component_to_update.equals("text area")) {
+					System.out.println("Updating text area");
+					NoticeBoardWriteMessage.textArea
+							.setText(NoticeBoardWriteMessage.textArea.getText()
+									+ (String) buttonPressed
+											.getClientProperty("buttonPressed"));
+					m.setText(NoticeBoardWriteMessage.textArea.getText());
+				} else if (component_to_update.equals("text field")) {
+					System.out.println("Updating text field");
+					NoticeBoardWriteMessage.textField
+							.setText(NoticeBoardWriteMessage.textField
+									.getText()
+									+ (String) buttonPressed
+											.getClientProperty("buttonPressed"));
+					m.setTitle(NoticeBoardWriteMessage.textField.getText());
+				}
 			} catch (NullPointerException npe) {
 				System.out.println("ButtonListener; No text area selected");
 			}
