@@ -25,8 +25,7 @@ public class NoteRetriever {
 			//conn.close();
 			return result;
 		} catch (SQLException se) {
-			System.err.println("SQLException in NoteRetriever; Error connecting to database.");
-			se.printStackTrace();
+			System.out.println("SQLException in NoteRetriever; Error connecting to database.");
 		}
 		return null;
 	}

@@ -24,9 +24,8 @@ public class NoteDeleter {
 			System.out.println("NoteDeleter; Deleting note from database.");
 			conn.close();
 		} catch (SQLException se) {
-			System.err
+			System.out
 					.println("SQLException in NoteDeleter; Error connecting to database.");
-			se.printStackTrace();
 		}
 	}
 }

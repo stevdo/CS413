@@ -34,9 +34,8 @@ public class IDRetriever {
 			System.out.println("IDRetriever; D_id retrieved: " + deviceId);
 			return deviceId;
 		} catch (SQLException se) {
-			System.err
+			System.out
 					.println("SQLException in IDRetriever; Error connecting to database.");
-			se.printStackTrace();
 		}
 		return -1;
 	}

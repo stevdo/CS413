@@ -23,6 +23,7 @@ public class MainView {
 	private boolean set;
 	private boolean update;
 	private String window;
+	private int device_pin;
 
 	public void updateWindow(String screen) {
 
@@ -47,6 +48,7 @@ public class MainView {
 			NoticeBoardSettingsScreen settings_view = new NoticeBoardSettingsScreen(
 					noticeboard_frame);
 			settings_view.addButtonListener(button_listener);
+			settings_view.setDevicePin(device_pin);
 			settings_view.init_SettingsScreen();
 		} else if (screen.equals("warnings")) {
 			NoticeBoardWarningsScreen warning_view = new NoticeBoardWarningsScreen(
@@ -145,6 +147,11 @@ public class MainView {
 	
 	public String getWindow(){
 		return window;
+	}
+	
+	public void setPin(int device_pin){
+		System.out.println("MainView; pin set: " + device_pin);
+		this.device_pin = device_pin;
 	}
 
 	public void update() {

@@ -25,9 +25,8 @@ public class DeviceRegistrar {
 			System.out.println("DeviceRegistrar; adding device to database.");
 			conn.close();
 		} catch (SQLException se) {
-			System.err
+			System.out
 					.println("SQLException in DeviceRegistrar; Error connecting to database.");
-			se.printStackTrace();
 		}
 	}
 }

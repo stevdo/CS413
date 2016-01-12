@@ -33,6 +33,7 @@ public class NoticeBoardSettingsScreen {
 	
 	private JFrame settings_frame = new JFrame();
 	private ActionListener button_listener;
+	private int device_pin = 1;
 	
 	public NoticeBoardSettingsScreen(JFrame noticeboard_frame) {
 		settings_frame = noticeboard_frame;
@@ -41,6 +42,11 @@ public class NoticeBoardSettingsScreen {
 	public void addButtonListener(ActionListener button_listener) {
 		this.button_listener = button_listener;
 		System.out.println("Settings screen; listener added");
+	}
+	
+	public void setDevicePin(int device_pin){
+		System.out.println("Settings screen; pin set: " + device_pin);
+		this.device_pin = device_pin;
 	}
 
 	public void init_SettingsScreen(){
@@ -177,6 +183,8 @@ public class NoticeBoardSettingsScreen {
 //		warnings.addActionListener(button_listener);
 		warnings.addActionListener(button_listener);
 		
+		JLabel device_pin_label = new JLabel("The device pin for this device is: " + device_pin);
+		
 //		chooseColour.addActionListener(button_listener);
 		chooseColour.addActionListener(button_listener);
 		
@@ -192,6 +200,7 @@ public class NoticeBoardSettingsScreen {
 		settings_panel.add(horizontalBox2, c);
 		settings_panel.add(connectedLabel1, c);
 		settings_panel.add(connectedLabel2, c);
+		settings_panel.add(device_pin_label, c);
 		settings_panel.add(horiBox, c);
 		options_panel.add(verticalBox, c);
 		

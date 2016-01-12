@@ -59,7 +59,7 @@ public class Main {
 		}
 
 		// 1 = default deviceId
-		Model m = new Model(9000);
+		Model m = new Model(deviceId);
 		m.updateNotes();
 
 		NoticeboardImages.setSideImages();
@@ -78,6 +78,7 @@ public class Main {
 		mv.addKeyboardListener(keyboard_listener);
 		mv.addNotesListener(notes_listener);
 		m.setIndex();
+		mv.setPin(devicePin);
 		mv.setIndex(m.getNotes().size() - 1);
 		mv.setNotes(m.getNotes());
 		mv.init_NoticeboardFrame();
@@ -150,4 +151,6 @@ public class Main {
 		new FileWriterToo(filePath, Integer.toString(new PinGenerator()
 				.generatePin())).write();
 	}
+	
+	
 }
