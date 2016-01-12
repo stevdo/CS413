@@ -242,6 +242,10 @@ public class ButtonListener implements ActionListener {
 			else{
 				System.out.println("No note selected");
 			}
+			break;
+		case 17:
+			mv.updateWindow("notes");
+			mv.update();
 		}
 	}
 }

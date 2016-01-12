@@ -136,12 +136,6 @@ public class NoticeBoardWarningsScreen {
 //		settings.addActionListener(button_listener);
 		settings.addActionListener(button_listener);
 
-		// temporary exit button
-		JButton exit = new JButton("Exit System");
-		// set bounds probably has no effect anymore?
-		exit.setBounds(200, 200, 150, 100);
-		exit.addActionListener(exitActionListener);
-
 		// JLabels for the warnings
 		JLabel windows_warning = new JLabel();
 		windows_warning.setText("Windows have been opened");
@@ -175,8 +169,7 @@ public class NoticeBoardWarningsScreen {
 		washing_off.addActionListener(button_listener);
 		
 		// add the components to the panels
-		warnings_panel.add(title);
-		warnings_panel.add(exit, c);
+		warnings_panel.add(title, c);
 		warnings_panel.add(windows_warning);
 		warnings_panel.add(windows_on);
 		warnings_panel.add(windows_off, c);

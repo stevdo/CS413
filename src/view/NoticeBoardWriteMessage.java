@@ -167,10 +167,8 @@ public class NoticeBoardWriteMessage {
 		JButton warnings = new JButton(warning_icon);
 
 		JButton add_note = new JButton("Add Note");
-		add_note.setBackground(Color.red);
 
 		JButton add_note2 = new JButton("Add Note");
-		add_note2.setBackground(Color.red);
 
 		JButton toggle_keyboard = new JButton("Toggle Keyboard");
 		toggle_keyboard.addActionListener(new ActionListener() {
@@ -240,12 +238,14 @@ public class NoticeBoardWriteMessage {
 		warnings.addActionListener(button_listener);
 
 		// temporary exit button
-		JButton exit = new JButton("Exit System");
-		JButton exit2 = new JButton("Exit System");
-		exit.setBounds(0, 0, 150, 100);
-		exit.addActionListener(exitActionListener);
-		exit2.setBounds(0, 0, 150, 100);
-		exit2.addActionListener(exitActionListener);
+		JButton back = new JButton("Back to Notes");
+		JButton back2 = new JButton("Back to Notes");
+		back.setBounds(0, 0, 150, 100);
+		back.addActionListener(button_listener);
+		back2.setBounds(0, 0, 150, 100);
+		back2.addActionListener(button_listener);
+		back.setActionCommand("17");
+		back2.setActionCommand("17");
 
 		// Touch Keyboard
 		JPanel keyboard = new JPanel(new GridLayout(0, 1));
@@ -279,13 +279,13 @@ public class NoticeBoardWriteMessage {
 		// add to the panel
 		top_panel.add(textField, c);
 		top_panel.add(scroll, c);
-		top_panel.add(exit);
+		top_panel.add(back);
 		top_panel.add(add_note);
 		top_panel.add(toggle_keyboard);
 
 		top_panel_clone.add(textField2, c);
 		top_panel_clone.add(scroll2, c);
-		top_panel_clone.add(exit2);
+		top_panel_clone.add(back2);
 		top_panel_clone.add(add_note2);
 		top_panel_clone.add(toggle_keyboard2);
 

@@ -166,11 +166,6 @@ public class NoticeBoardNotesScreen {
 //		warnings.addActionListener(button_listener);
 		warnings.addActionListener(button_listener);
 		
-		// temporary close button
-		JButton exit = new JButton("Exit System");
-		exit.setBounds(200, 200, 150, 100);
-		exit.addActionListener(exitActionListener);
-		
 		/*
 		 * This button is made to allow the user to put new messages
 		 * on the database. Need to include it... if it works
@@ -242,7 +237,6 @@ public class NoticeBoardNotesScreen {
 		
 		
 		notes_panel.add(title, c);
-		notes_panel.add(exit, c);
 		notes_panel.add(horizBox2, c);
 		notes_panel.add(horizontalBox, c);
 		notes_panel.add(delete_note);

@@ -188,14 +188,8 @@ public class NoticeBoardSettingsScreen {
 //		chooseColour.addActionListener(button_listener);
 		chooseColour.addActionListener(button_listener);
 		
-		//temporary exit button
-		JButton exit = new JButton("Exit System"); 
-		exit.setBounds(200, 200, 150, 100);
-		exit.addActionListener(exitActionListener);
-		
 		// add to the panels
 		settings_panel.add(title, c);
-		settings_panel.add(exit, c);
 		settings_panel.add(horizontalBox, c);
 		settings_panel.add(horizontalBox2, c);
 		settings_panel.add(connectedLabel1, c);
