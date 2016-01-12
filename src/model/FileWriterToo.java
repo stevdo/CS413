@@ -21,8 +21,8 @@ public class FileWriterToo {
 		try {
 			pw = new PrintWriter(new FileWriter(filePath));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("IOException in PinWriter; error writing to: "
+					+ filePath);
 		}
 
 		System.out.println("FileWriterToo; printing pin to file");

@@ -9,6 +9,7 @@ public class Model {
 	private NoteList noteList;
 	private String title = "";
 	private String text = "";
+	private String filePath = "";
 	private String user = "posted on device";
 	private int index = 0;
 	private int deleteID = -1;
@@ -35,13 +36,11 @@ public class Model {
 			}
 			System.out.println("Model; Notes retrieved");
 		} catch (SQLException e) {
-			System.err
+			System.out
 					.println("SQLException in Model; Error reading from SQL result");
-			e.printStackTrace();
 		} catch (NullPointerException npe) {
-			System.err
+			System.out
 					.println("NullPointerException in Model; Error reading from SQL result");
-			npe.printStackTrace();
 		}
 		System.out.println("Note List size in model: " + noteList.size());
 	}
@@ -79,6 +78,15 @@ public class Model {
 
 	public void setIndex(int new_index) {
 		index = new_index;
+	}
+
+	public void setPath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	public void setColour(String colour) {
+		System.out.println("Model; editing file");
+		new ColourWriter(filePath, colour);
 	}
 
 	public void clearNotes() {

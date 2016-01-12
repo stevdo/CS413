@@ -66,7 +66,8 @@ public class ButtonListener implements ActionListener {
 		case 5:
 			String selectedColour = new String("");
 			selectedColour = ComboListener.editString();
-			System.out.println("Button listener colour is: " + selectedColour);
+			System.out.println("Selected colour is: " + selectedColour);
+			m.setColour(selectedColour);
 			if (selectedColour == "Green") {
 				nc.setNoticeboardColour("green");
 				mv.updateWindow("settings");

@@ -22,9 +22,8 @@ public class Main {
 
 	private static int deviceId = 1;
 	private static int devicePin = 1;
-	private static String filePath = "/Users/Chris/Desktop/Device/pin.txt";
-
-	// //
+	private static int oldSize = -1;
+	private static String filePath = "/Users/adam/Desktop/Device/pin.txt";
 
 	public static void main(String[] args) {
 
@@ -60,6 +59,7 @@ public class Main {
 
 		// 1 = default deviceId
 		Model m = new Model(deviceId);
+		m.setPath(filePath);
 		m.updateNotes();
 
 		NoticeboardImages.setSideImages();
@@ -83,28 +83,7 @@ public class Main {
 		mv.setNotes(m.getNotes());
 		mv.init_NoticeboardFrame();
 		mv.updateWindow("home");
-		
-		try {
-	        while (true) {
-	        	m.clearNotes();
-	        	m.updateNotes();
-	        	m.setIndex();
-	        	mv.setIndex(m.getNotes().size()-1);
-//	    		mv.updateCurrentIndex(m.getNotes().size()-1);
-	    		mv.setNotes(m.getNotes());
-	    		if (mv.getWindow() == "notes") {
-	    			//System.out.println();
-	    			mv.updateCurrentIndex(m.getIndex());
-	    			mv.setIndex(m.getIndex());
-	    			mv.updateWindow("notes");
-	    			mv.update();
-	    		}
-	    		System.out.println("Hi adam");
-	    		Thread.sleep(20 * 1000);
-	        }
-		} catch (InterruptedException e) {
-	        e.printStackTrace();
-	    }
+		update(m, mv);
 
 		// Cipher.simpleEncrypt("A B C D E F G");
 		// Cipher.simpleDecrypt("K L M N O P Q");
@@ -118,12 +97,35 @@ public class Main {
 
 	}
 
-	private static void setTimer(Model m, MainView mv) {
-		m.updateNotes();
-		m.setIndex();
-		mv.setIndex(m.getNotes().size() - 1);
-		mv.setNotes(m.getNotes());
-		setTimer(m, mv);
+	private static void update(Model m, MainView mv) {
+		try {
+			while (true) {
+				System.out.println("updating notes..");
+				int old = m.getNotes().size();
+				m.clearNotes();
+				m.updateNotes();
+				m.setIndex();
+				mv.setIndex(m.getNotes().size() - 1);
+				if (m.getNotes().size() == 0 && oldSize > 0) {
+					Thread.sleep(10 * 1000);
+					System.out.println("error updating notes; re-trying..");
+					update(m, mv);
+				} else {
+					oldSize = old;
+					mv.setNotes(m.getNotes());
+					if (mv.getWindow() == "notes") {
+						mv.updateCurrentIndex(m.getIndex());
+						mv.setIndex(m.getIndex());
+						mv.updateWindow("notes");
+						mv.update();
+					}
+					System.out.println("notes updated");
+					Thread.sleep(20 * 1000);
+				}
+			}
+		} catch (InterruptedException e) {
+			System.out.println("InterruptedException in Model; line 125");
+		}
 	}
 
 	private static int getPin(String filePath) {
@@ -151,6 +153,5 @@ public class Main {
 		new FileWriterToo(filePath, Integer.toString(new PinGenerator()
 				.generatePin())).write();
 	}
-	
-	
+
 }
