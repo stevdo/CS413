@@ -65,6 +65,7 @@ public class KeyboardListener implements ActionListener {
 			// System.out.println("Key pressed: " +
 			// buttonPressed.getClientProperty("buttonPressed"));
 			System.out.println(component_to_update);
+			try{
 			if (component_to_update.equals("text area")) {
 				System.out.println("Updating text area");
 				// System.out.println("Current Text Area contents: " +
@@ -81,6 +82,9 @@ public class KeyboardListener implements ActionListener {
 								+ (String) buttonPressed
 										.getClientProperty("buttonPressed"));
 				m.setTitle(NoticeBoardWriteMessage.textField.getText());
+			}
+			} catch (NullPointerException npe) {
+				System.out.println("ButtonListener; No text area selected");
 			}
 		}
 	}

@@ -197,34 +197,48 @@ public class NoticeBoardNotesScreen {
 		horizontalBox.add(Box.createRigidArea(new Dimension(20,0))); //Adds space between buttons
 		horizontalBox.add(next_notes);
 		
-		Box horizBox2 = Box.createHorizontalBox();
-		for(int i = 0; i < 3; i++) {
-			if(current_index-i >= 0){
-			JTextArea note_area = new JTextArea();
-			note_area.setBackground(new Color(240, 230, 80));
-			note_area.setEditable(false);
-			note_area.setPreferredSize(new Dimension((int)(notes_frame.getWidth() * 0.2), (int)(notes_frame.getHeight() * 0.4)));
-			Note n = this.noteList.get(current_index-i);
-			note_area.setText(n.getTitle() + "\n\n" + n.getBody() + "\n\n" + n.getUser());
-			int noteID = n.getNoteID();
-			String s = Integer.toString(noteID);
-			note_area.setName(s);
-			horizBox2.add(note_area);
-			note_area.addMouseListener(note_listener);
-			if(i < 2){
-				horizBox2.add(Box.createRigidArea(new Dimension(30,0))); //Adds space between buttons
-			}
-			}
-			else {
-				System.out.println("not adding the note");
-			}
-		}
-		
-		
 		// add components to the panel
 		JButton delete_note = new JButton("delete");
 		delete_note.addActionListener(button_listener);
 		delete_note.setActionCommand("16");
+		
+		Box horizBox2 = Box.createHorizontalBox();
+		if(noteList.size() > 0){			
+			for(int i = 0; i < 3; i++) {
+				if(current_index-i >= 0){
+				JTextArea note_area = new JTextArea();
+				note_area.setBackground(new Color(240, 230, 80));
+				note_area.setEditable(false);
+				note_area.setPreferredSize(new Dimension((int)(notes_frame.getWidth() * 0.2), (int)(notes_frame.getHeight() * 0.4)));
+				Note n = this.noteList.get(current_index-i);
+				note_area.setText(n.getTitle() + "\n\n" + n.getBody() + "\n\n" + n.getUser());
+				int noteID = n.getNoteID();
+				String s = Integer.toString(noteID);
+				note_area.setName(s);
+				horizBox2.add(note_area);
+				note_area.addMouseListener(note_listener);
+				if(i < 2){
+					horizBox2.add(Box.createRigidArea(new Dimension(30,0))); //Adds space between buttons
+				}
+				}
+				else {
+					System.out.println("not adding the note");
+				}
+			}
+		}
+		else{
+			JTextArea note_area = new JTextArea();
+			note_area.setBackground(new Color(240, 230, 80));
+			note_area.setEditable(false);
+			note_area.setPreferredSize(new Dimension((int)(notes_frame.getWidth() * 0.2), 
+					(int)(notes_frame.getHeight() * 0.4)));
+			note_area.setText("There are no messages to be viewed");
+			horizBox2.add(note_area);
+			previous_notes.setVisible(false);
+			next_notes.setVisible(false);
+			delete_note.setVisible(false);
+		}		
+		
 		
 		
 		notes_panel.add(title, c);

@@ -23,6 +23,7 @@ public class DeviceRegistrar {
 			query.execute("INSERT INTO Devices (pin) VALUES (" + devicePin
 					+ ")");
 			System.out.println("DeviceRegistrar; adding device to database.");
+			conn.close();
 		} catch (SQLException se) {
 			System.err
 					.println("SQLException in DeviceRegistrar; Error connecting to database.");

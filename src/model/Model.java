@@ -51,9 +51,9 @@ public class Model {
 		new NotePoster(deviceId, new Note(-1, title, text, user)).postNote();
 		System.out.println("Model; note posted");
 	}
-	
+
 	// hopefully this works
-	public void deleteNote(){
+	public void deleteNote() {
 		System.out.println("doing this");
 		NoteDeleter nd = new NoteDeleter(deleteID);
 		nd.postNote();
@@ -63,8 +63,8 @@ public class Model {
 		this.title = title;
 		System.out.println("Model; title set");
 	}
-	
-	public void setNoteToBeDeleted(int noteID){
+
+	public void setNoteToBeDeleted(int noteID) {
 		deleteID = noteID;
 	}
 
@@ -89,20 +89,20 @@ public class Model {
 		System.out.println("Model - the index is: " + index);
 		return index;
 	}
-	
-	public int getNoteToDelete(){
+
+	public int getNoteToDelete() {
 		return deleteID;
 	}
 
 	public Boolean titleValid() {
-		if (title.length() > 100) {
+		if (title.length() > 100 || title.length() < 1) {
 			return false;
 		}
 		return true;
 	}
 
 	public Boolean textValid() {
-		if (text.length() > 1000) {
+		if (text.length() > 1000 || text.length() < 1) {
 			return false;
 		}
 		return true;

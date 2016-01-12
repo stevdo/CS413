@@ -22,6 +22,7 @@ public class NoteDeleter {
 			Statement query = conn.createStatement();
 			query.execute("DELETE FROM Notes WHERE N_id = " + noteId);
 			System.out.println("NoteDeleter; Deleting note from database.");
+			conn.close();
 		} catch (SQLException se) {
 			System.err
 					.println("SQLException in NoteDeleter; Error connecting to database.");

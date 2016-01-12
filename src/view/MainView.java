@@ -22,10 +22,11 @@ public class MainView {
 	private boolean textValid;
 	private boolean set;
 	private boolean update;
+	private String window;
 
 	public void updateWindow(String screen) {
 
-		// noticeboard_frame.removeAll();
+		window = screen;
 
 		if (screen.equals("notes")) {
 			NoticeBoardNotesScreen notes_view = new NoticeBoardNotesScreen(
@@ -35,10 +36,13 @@ public class MainView {
 			notes_view.setNotes(noteList);
 			if (set) {
 				notes_view.setIndex(index);
-			} else if (update) {
+			}
+			if (update) {
 				notes_view.updateCurrentIndex(index);
 			}
 			notes_view.init_NotesScreen();
+			set = false;
+			update = false;
 		} else if (screen.equals("settings")) {
 			NoticeBoardSettingsScreen settings_view = new NoticeBoardSettingsScreen(
 					noticeboard_frame);
@@ -116,12 +120,10 @@ public class MainView {
 	public void setIndex(int index) {
 		this.index = index;
 		set = true;
-		update = false;
 	}
 
 	public void updateCurrentIndex(int index) {
 		this.index = index;
-		set = false;
 		update = true;
 	}
 
@@ -139,6 +141,10 @@ public class MainView {
 
 	public void setTextValid() {
 		textValid = true;
+	}
+	
+	public String getWindow(){
+		return window;
 	}
 
 	public void update() {

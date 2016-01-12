@@ -22,7 +22,7 @@ public class Main {
 
 	private static int deviceId = 1;
 	private static int devicePin = 1;
-	private static String filePath = "/Users/Neall/Desktop/Device/pin.txt";
+	private static String filePath = "/Users/Chris/Desktop/Device/pin.txt";
 
 	// //
 
@@ -59,7 +59,7 @@ public class Main {
 		}
 
 		// 1 = default deviceId
-		Model m = new Model(1);
+		Model m = new Model(9000);
 		m.updateNotes();
 
 		NoticeboardImages.setSideImages();
@@ -88,11 +88,18 @@ public class Main {
 	        	m.clearNotes();
 	        	m.updateNotes();
 	        	m.setIndex();
-	    		mv.setIndex(m.getNotes().size()-1);
+	        	mv.setIndex(m.getNotes().size()-1);
+//	    		mv.updateCurrentIndex(m.getNotes().size()-1);
 	    		mv.setNotes(m.getNotes());
+	    		if (mv.getWindow() == "notes") {
+	    			//System.out.println();
+	    			mv.updateCurrentIndex(m.getIndex());
+	    			mv.setIndex(m.getIndex());
+	    			mv.updateWindow("notes");
+	    			mv.update();
+	    		}
 	    		System.out.println("Hi adam");
-	    		mv.update();
-	    		Thread.sleep(5 * 1000);
+	    		Thread.sleep(20 * 1000);
 	        }
 		} catch (InterruptedException e) {
 	        e.printStackTrace();
