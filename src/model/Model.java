@@ -85,7 +85,7 @@ public class Model {
 
 	public void setColour(String colour) {
 		System.out.println("Model; editing file");
-		new ColourWriter(filePath, colour);
+		new ColourWriter(filePath, colour).write();
 	}
 
 	public void clearNotes() {
