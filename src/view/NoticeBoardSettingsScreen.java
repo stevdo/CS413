@@ -20,7 +20,6 @@ import javax.swing.JPanel;
 
 import controller.ColourCollect;
 import controller.ComboListener;
-import controller.ExitActionListener;
 import controller.ImageCollect;
 
 public class NoticeBoardSettingsScreen {
@@ -100,7 +99,6 @@ public class NoticeBoardSettingsScreen {
 		c.insets = new Insets(10, 0, 10, 0); // padding
 
 		// ActionListener's
-		ActionListener exitActionListener = new ExitActionListener();
 		ActionListener comboListener = new ComboListener();
 
 		// 3 buttons for the screen

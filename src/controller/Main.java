@@ -24,7 +24,7 @@ public class Main {
 	private static int devicePin = -1;
 	private static int oldSize = -1;
 	private static String colour = null;
-	private static String filePath = "/Users/Chris/Desktop/Device/pin.txt";
+	private static String filePath = "/home/cs413/Desktop/Device/pin.txt";
 
 	public static void main(String[] args) {
 

@@ -221,7 +221,7 @@ public class NoticeBoardNotesScreen {
 			note_area.setEditable(false);
 			note_area.setPreferredSize(new Dimension((int) (notes_frame
 					.getWidth() * 0.2), (int) (notes_frame.getHeight() * 0.4)));
-			note_area.setText("There are no messages to be viewed");
+			note_area.setText("No messages available.");
 			horizBox2.add(note_area);
 			previous_notes.setVisible(false);
 			next_notes.setVisible(false);

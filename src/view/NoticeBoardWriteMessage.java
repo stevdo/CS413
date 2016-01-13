@@ -22,7 +22,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import controller.ColourCollect;
-import controller.ExitActionListener;
 import controller.ImageCollect;
 import controller.TextFocusListener;
 

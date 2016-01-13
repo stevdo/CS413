@@ -15,7 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import controller.ColourCollect;
-import controller.ExitActionListener;
 import controller.ImageCollect;
 
 public class NoticeBoardHomeScreen {
@@ -56,10 +55,6 @@ public class NoticeBoardHomeScreen {
 													// entire row
 		c.insets = new Insets(10, 0, 10, 0); // padding
 
-		// ActionListener's
-		ActionListener exitActionListener;
-		exitActionListener = new ExitActionListener();
-
 		// create 3 Buttons for the home_screen
 		JButton notes = new JButton(note_icon);
 		JButton settings = new JButton(settings_icon);
@@ -82,9 +77,6 @@ public class NoticeBoardHomeScreen {
 		warnings.setContentAreaFilled(false);
 		warnings.addActionListener(button_listener);
 
-		// Exit system button for test purposes
-		JButton exit = new JButton("Exit System");
-		exit.addActionListener(exitActionListener);
 
 		// Create container for buttons
 		Box horizontalBox = Box.createHorizontalBox();
@@ -102,7 +94,6 @@ public class NoticeBoardHomeScreen {
 
 		// add the buttons to the panel
 		main_panel.add(horizontalBox, c);
-		main_panel.add(exit);
 
 		// adds panel to the frame
 		main_frame.add(main_panel);

@@ -18,7 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.ColourCollect;
-import controller.ExitActionListener;
 import controller.ImageCollect;
 
 public class NoticeBoardWarningsScreen {
@@ -84,9 +83,6 @@ public class NoticeBoardWarningsScreen {
 													// content take up the
 													// entire row
 		c.insets = new Insets(10, 0, 10, 0); // padding
-
-		// ActionListener's
-		ActionListener exitActionListener = new ExitActionListener();
 
 		// 3 buttons for the screen
 		JButton home = new JButton(home_icon);
