@@ -117,6 +117,19 @@ public class NoticeBoardWriteMessage {
 		// dimensions for components on the screen
 		int options_width = (int) (write_frame.getWidth() - (0.88 * write_frame
 				.getWidth()));
+		
+		//Initialise components for keyboard
+		JPanel keyboard = new JPanel(new GridLayout(0, 1)); //Keyboard layout
+		JPanel[] panel_array;
+		JButton[][] keys;
+		//Different array for each row on the keyboard
+		final String[][] keys_array = {
+				{ "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=",
+						"Backspace" },
+				{ "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Return" },
+				{ "A", "S", "D", "F", "G", "H", "J", "K", "L" },
+				{ "Shift", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "?" },
+				{ "Space" } };
 
 		JPanel options_panel = new JPanel();
 		options_panel.setPreferredSize(new Dimension(options_width, write_frame
@@ -236,33 +249,29 @@ public class NoticeBoardWriteMessage {
 		back2.setBounds(0, 0, 150, 100);
 		back2.addActionListener(button_listener);
 		back.setActionCommand("17");
-		back2.setActionCommand("17");
+		back2.setActionCommand("17");		
 
-		// Touch Keyboard
-		JPanel keyboard = new JPanel(new GridLayout(0, 1));
-		JPanel[] panel_array;
-		JButton[][] keys;
-		final String[][] keys_array = {
-				{ "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=",
-						"Backspace" },
-				{ "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Return" },
-				{ "A", "S", "D", "F", "G", "H", "J", "K", "L" },
-				{ "Shift", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "?" },
-				{ "Space" } };
-
+		//5 string arrays so need to create JPanel with value 5
 		panel_array = new JPanel[5];
+		//Creates a new button for each element in the keys_array(s)
 		for (int across = 0; across < keys_array.length; across++) {
 			panel_array[across] = new JPanel();
+			//Colour needs to match the rest of the panel.
 			panel_array[across].setBackground(colour);
-			keys = new JButton[20][20];
+			//Set to 5 as there are 5 rows at most. Set to 13 as there are 13 buttons at most in any row.
+			keys = new JButton[5][13];
 			for (int vertical = 0; vertical < keys_array[across].length; vertical++) {
 				keys[across][vertical] = new JButton(
 						keys_array[across][vertical]);
+				//Adds keyboard listener to each individual key, listener looks for the letter in the key.
 				keys[across][vertical].addActionListener(keyboard_listener);
+				//Used in the listener
 				keys[across][vertical].putClientProperty("buttonPressed",
 						keys_array[across][vertical]);
+				//Adds key to the appropriate panel / row
 				panel_array[across].add(keys[across][vertical]);
 			}
+			//Adds the row to the keyboard
 			keyboard.add(panel_array[across]);
 		}
 		lower_panel.add(keyboard, c);
